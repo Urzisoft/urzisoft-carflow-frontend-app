@@ -3,7 +3,9 @@ import { RoutesMapping } from "./Routes/RoutesMapping";
 
 const App = () => {
   return (
-      <RoutesMapping />
+      <>
+        <RoutesMapping />
+      </>
   );
 }
 

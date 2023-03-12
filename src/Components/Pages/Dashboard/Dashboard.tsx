@@ -3,6 +3,8 @@ import { DashboardContainer } from "./Dashboard.css";
 
 export const Dashboard: FC = () => {
     return (
-        <DashboardContainer />
+        <DashboardContainer>
+            Dashboard
+        </DashboardContainer>
     )
 }
