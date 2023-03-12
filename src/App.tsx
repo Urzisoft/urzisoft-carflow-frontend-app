@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container } from "./App.css";
+import { RoutesMapping } from "./Routes/RoutesMapping";
 
 const App = () => {
   return (
-      <Container />
+      <RoutesMapping />
   );
 }
 
