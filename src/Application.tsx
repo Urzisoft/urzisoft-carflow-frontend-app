@@ -1,7 +1,7 @@
 import React from 'react';
 import { RoutesMapping } from "./Routes/RoutesMapping";
 
-const App = () => {
+const Application = () => {
   return (
       <>
         <RoutesMapping />
@@ -9,4 +9,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default Application;
