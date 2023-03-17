@@ -8,18 +8,22 @@ import {
 import carVideo from "../../../Assets/Videos/CarVideo.mp4";
 import { FC } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { PageRoutes } from "../../../Utils/Routes";
+import { LOCAL_STORAGE_KEYS } from "../../../Utils/LocalStorage";
 
 export const Welcome: FC = () => {
     const navigate = useNavigate();
+    const wasWelcomePageVisited = localStorage.getItem(
+        LOCAL_STORAGE_KEYS.wasWelcomePageVisited
+    );
+
     const handleButtonClick = () => {
-        localStorage.setItem("redirect", "true");
+        localStorage.setItem(LOCAL_STORAGE_KEYS.wasWelcomePageVisited, "true");
         navigate("/dashboard");
     };
 
-    const redirect = localStorage.getItem("redirect");
-
-    return redirect ? (
-        <Navigate to="/dashboard" />
+    return wasWelcomePageVisited ? (
+        <Navigate to={PageRoutes.DASHBOARD} />
     ) : (
         <WelcomeContainer>
             <BackgroundVideo autoPlay muted loop>
