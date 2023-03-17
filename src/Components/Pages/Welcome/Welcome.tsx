@@ -19,7 +19,7 @@ export const Welcome: FC = () => {
 
     const handleButtonClick = () => {
         localStorage.setItem(LOCAL_STORAGE_KEYS.wasWelcomePageVisited, "true");
-        navigate("/dashboard");
+        navigate(PageRoutes.DASHBOARD);
     };
 
     return wasWelcomePageVisited ? (
