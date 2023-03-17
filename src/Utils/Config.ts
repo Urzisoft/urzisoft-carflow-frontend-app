@@ -7,11 +7,11 @@ export class Config {
     private constructor() {}
 
     public static getInstance(): Config {
-        if (!Config.getInstance()) {
+        if (!Config.instance) {
             Config.instance = new Config();
         }
 
-        return Config.getInstance();
+        return Config.instance;
     }
 
     public get WelcomePageConfig(): WelcomePageConfigType {
