@@ -10,8 +10,13 @@ import { FC } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { PageRoutes } from "../../../Utils/Routes";
 import { LOCAL_STORAGE_KEYS } from "../../../Utils/LocalStorage";
+import { WelcomePageConfigType} from "../../../Utils/Types";
 
-export const Welcome: FC = () => {
+type WelcomeType = {
+    config : WelcomePageConfigType
+}
+
+export const Welcome: FC < WelcomeType > = ( {config} ) => {
     const navigate = useNavigate();
     const wasWelcomePageVisited = localStorage.getItem(
         LOCAL_STORAGE_KEYS.wasWelcomePageVisited
@@ -29,13 +34,8 @@ export const Welcome: FC = () => {
             <BackgroundVideo autoPlay muted loop>
                 <source src={carVideo} type="video/mp4" />
             </BackgroundVideo>
-            <WelcomeTitle>CarFlow</WelcomeTitle>
-            <WelcomeText>
-                Provides you with the best possible vehicle management
-                experience, saving you time and hassle. No more keeping track of
-                piles of paperwork or manually recording maintenance
-                appointments.
-            </WelcomeText>
+            <WelcomeTitle> {config.title} </WelcomeTitle>
+            <WelcomeText> {config.description} </WelcomeText>
             <WelcomeButton onClick={handleButtonClick}>Continue</WelcomeButton>
         </WelcomeContainer>
     );

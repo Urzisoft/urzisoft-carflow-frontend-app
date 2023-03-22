@@ -3,13 +3,19 @@ import { Route, Routes } from "react-router-dom";
 import { Welcome } from "../Components/Pages/Welcome/Welcome";
 import { Dashboard } from "../Components/Pages/Dashboard/Dashboard";
 import { PageRoutes } from "../Utils/Routes";
-
-const pageRoutes = [
-    { path: PageRoutes.HOME, component: <Welcome /> },
-    { path: PageRoutes.DASHBOARD, component: <Dashboard /> }
-];
+import { Config } from "../Utils/Config";
+import { welcomePageValues } from "../Utils/HardcodedConfigs";
 
 export const RoutesMapping: FC = () => {
+
+    const config = Config.getInstance();
+    config.WelcomePageConfig = welcomePageValues;
+
+    const pageRoutes = [
+        { path: PageRoutes.HOME, component: <Welcome config={config.WelcomePageConfig} /> },
+        { path: PageRoutes.DASHBOARD, component: <Dashboard /> }
+    ];
+
     return (
         <Routes>
             {pageRoutes.map((route) => {
