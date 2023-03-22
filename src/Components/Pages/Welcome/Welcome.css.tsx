@@ -14,7 +14,7 @@ export const BackgroundVideo = styled.video`
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: brightness(0.3);
+    filter: brightness(0.5);
 `;
 
 export const WelcomeTitle = styled.div`
@@ -48,11 +48,14 @@ export const WelcomeButton = styled.button`
     bottom: 7vh;
     right: 6vw;
     padding: 10px 25px 10px 25px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     color: white;
     font-weight: bold;
     text-decoration: none;
     font-size: 2.5vh;
+    transition: all 300ms ease-in;
+    border-radius: 0.5rem;
+    
 
     @media (max-width: 992px) {
         position: fixed;
