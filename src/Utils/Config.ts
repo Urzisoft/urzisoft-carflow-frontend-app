@@ -2,7 +2,7 @@ import { WelcomePageConfigType } from "./Types";
 
 export class Config {
     private static instance: Config;
-    private _WelcomePageConfig !: WelcomePageConfigType;
+    private _WelcomePageConfig!: WelcomePageConfigType;
 
     private constructor() {}
 
