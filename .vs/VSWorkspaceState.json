@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Components",
+    "\\src\\Components\\Common",
+    "\\src\\Components\\Common\\Sidebar",
+    "\\src\\Components\\Pages",
+    "\\src\\Components\\Pages\\Dashboard",
+    "\\src\\Components\\Pages\\Welcome",
+    "\\src\\Routes",
+    "\\src\\Utils"
+  ],
+  "SelectedNode": "\\src\\Components\\Common\\Sidebar\\Siderbar.css.tsx",
+  "PreviewInSolutionExplorer": false
+}

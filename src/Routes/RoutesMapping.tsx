@@ -13,7 +13,8 @@ export const RoutesMapping: FC = () => {
 
     const pageRoutes = [
         { path: PageRoutes.HOME, component: <Welcome config={config.WelcomePageConfig} /> },
-        { path: PageRoutes.DASHBOARD, component: <Dashboard /> }
+        { path: PageRoutes.DASHBOARD, component: <Dashboard /> },
+        { path: PageRoutes.CARWASHES, component: <Dashboard /> } //added for tests
     ];
 
     return (
