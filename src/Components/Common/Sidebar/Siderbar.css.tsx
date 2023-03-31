@@ -66,7 +66,7 @@ export const MenuItemLinks = styled(Link)`
         height: 45px;
         text-align: center;
         border-radius: 5px;
-        margin: 0 2rem;
+        padding: 0 3rem;
         transition: .2s;
     }
 `;
