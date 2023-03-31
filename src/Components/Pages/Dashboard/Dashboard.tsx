@@ -22,7 +22,7 @@ export const Dashboard: FC = () => {
     return (
         <DashboardContainer>
             {cars?.map((car) => {
-                return <p>{car.engineSize}</p>;
+                return <p>{car.generation}</p>;
             })}
         </DashboardContainer>
     )
