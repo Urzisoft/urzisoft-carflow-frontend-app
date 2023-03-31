@@ -8,42 +8,37 @@ export const SidebarData = [
         icon: <FaIcons.FaTh />
     },
     {
-        path: "/",
+        path: PageRoutes.HOME,
         name: "User",
         icon: <FaIcons.FaUserAlt />
     },
     {
-        path: "/",
+        path: PageRoutes.HOME,
         name: "Analytics",
         icon: <FaIcons.FaRegChartBar />
     },
     {
-        path: "/",
-        name: "Ad: Curse cu scaunu cu rotile",
-        icon: <FaIcons.FaAccessibleIcon />
-    },
-    {
-        path: "/",
+        path: PageRoutes.HOME,
         name: "My cars",
         icon: <FaIcons.FaCar />
     },
     {
-        path: "/",
+        path: PageRoutes.HOME,
         name: "Gas Stations",
         icon: <FaIcons.FaGasPump />
     },
     {
-        path: "/",
+        path: PageRoutes.HOME,
         name: "Car Services",
         icon: <FaIcons.FaWrench />
     },
     {
-        path: PageRoutes.CARWASHES,
+        path: PageRoutes.HOME,
         name: "Car Washes",
         icon: <FaIcons.FaShower />
     },
     {
-        path: "/",
+        path: PageRoutes.HOME,
         name: "Settings",
         icon: <FaIcons.FaCog />
     }

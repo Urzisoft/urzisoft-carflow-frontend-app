@@ -5,7 +5,6 @@ import { RoutesMapping } from "./Routes/RoutesMapping";
 const Application = () => {
     return (
         <>
-            <Sidebar />
             <RoutesMapping />
         </>
     );

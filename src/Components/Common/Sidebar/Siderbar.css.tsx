@@ -48,7 +48,7 @@ export const MenuItems = styled.li`
     align-items: left;
     justify-content: start;
     width: 100%;
-    height: 40px;
+    height: 45px;
     padding: 1rem 0 1.25rem;
 `;
 
@@ -58,7 +58,9 @@ export const MenuItemLinks = styled(Link)`
     padding: 0 2rem;
     font-size: 20px;
     text-decoration: none;
+    border-radius: 5px;
     color: #ffffff;
+    transition: .2s;
     &:hover {
         background-color: #ffffff;
         color: #000080;
