@@ -1,20 +1,28 @@
-export type FetchResponse<data, param> = {
+export type FetchResponseGET<data, param> = {
     response: data | null;
     error: any;
     loading: boolean;
     fetcher: () => any;
 };
 
-export type Brand = {
+export type FetchResponsePOST<data, param> = {
+    response: data | null;
+    error: any;
+    loading: boolean;
+    fetcher: (arg: param) => any;
+};
 
+export type Brand = {
+    name: string;
+    description: string;
 }
 
 export type Model = {
-
+    name: string;
 }
 
 export type Car = {
-    id: number,
+    id?: number,
     brand: Brand,
     model: Model,
     generation: string,
