@@ -4,6 +4,8 @@ import { Welcome } from "../Components/Pages/Welcome/Welcome";
 import { Dashboard } from "../Components/Pages/Dashboard/Dashboard";
 import { PageRoutes } from "../Utils/Routes";
 import { Register} from "../Components/Pages/Register/Register";
+import { Config } from "../Utils/Config";
+import { welcomePageValues } from "../Utils/HardcodedConfigs";
 
 const pageRoutes = [
     { path: PageRoutes.HOME, component: <Welcome /> },
@@ -12,6 +14,15 @@ const pageRoutes = [
 ];
 
 export const RoutesMapping: FC = () => {
+
+    const config = Config.getInstance();
+    config.WelcomePageConfig = welcomePageValues;
+
+    const pageRoutes = [
+        { path: PageRoutes.HOME, component: <Welcome config={config.WelcomePageConfig} /> },
+        { path: PageRoutes.DASHBOARD, component: <Dashboard /> }
+    ];
+
     return (
         <Routes>
             {pageRoutes.map((route) => {

@@ -5,6 +5,12 @@ export const Breakpoints = {
     xxLarge: '1920px',
 };
 
+export enum SCREEN_SIZES {
+    desktop = 1200,
+    tablet = 768,
+    mobile = 400
+}
+
 export const minWidthQuery = (breakpoint: string) =>
     `@media screen and (min-width: ${breakpoint})`;
 
