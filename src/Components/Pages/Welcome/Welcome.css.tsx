@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Breakpoints, maxWidthQuery } from "../../../Utils/cssMedia";
 
 
 export const WelcomeContainer = styled.div`
@@ -55,9 +56,8 @@ export const WelcomeButton = styled.button`
     font-size: 2.5vh;
     transition: all 300ms ease-in;
     border-radius: 0.5rem;
-    
 
-    @media (max-width: 992px) {
+    ${maxWidthQuery(Breakpoints.medium)} {
         position: fixed;
         bottom: 5vh;
         left: 50%;
@@ -67,8 +67,10 @@ export const WelcomeButton = styled.button`
         text-align: center;
     }
 
+    
+
     &:hover {
         background-color: #ca0606;
-        cursor:pointer;
+        cursor: pointer;
     }
 `;
