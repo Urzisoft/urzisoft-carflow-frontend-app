@@ -11,6 +11,11 @@ export enum SCREEN_SIZES {
     mobile = 400
 }
 
+export const Colors = {
+    backgroundColor: '#ca0606',
+    textsColor: '#ffffff',
+}
+
 export const minWidthQuery = (breakpoint: string) =>
     `@media screen and (min-width: ${breakpoint})`;
 
