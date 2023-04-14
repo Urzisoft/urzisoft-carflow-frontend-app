@@ -65,7 +65,7 @@ export const WelcomeButton = styled.button`
     }
 
     &:hover {
-        background-color: ${Colors.backgroundColor};
+        background-color: ${Colors.buttonBackgroundHoverState};
         cursor:pointer;
     }
 `;
