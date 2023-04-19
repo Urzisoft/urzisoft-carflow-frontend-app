@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Colors } from "../../../Utils/cssMedia";
 
 export const WelcomeContainer = styled.div`
     width: 100%;
@@ -23,7 +23,7 @@ export const WelcomeTitle = styled.div`
     margin-bottom: 20px;
     padding-top: 4vw;
     padding-left: 8vw;
-    color: white;
+    color: ${Colors.textsColor};
     @media (max-width: 992px) {
         font-size: 7vh;
     }
@@ -35,7 +35,7 @@ export const WelcomeText = styled.div`
     max-width: 40%;
     padding-top: 3vh;
     padding-left: 8vw;
-    color: white;
+    color: ${Colors.textsColor};
     @media (max-width: 992px) {
         max-width: 70%;
         font-size: 3vh;
@@ -43,13 +43,13 @@ export const WelcomeText = styled.div`
 `;
 
 export const WelcomeButton = styled.button`
-    background-color: #e12020;
+    background-color: ${Colors.backgroundColor};
     position: fixed;
     bottom: 7vh;
     right: 6vw;
     padding: 10px 25px 10px 25px;
     border-radius: 5px;
-    color: white;
+    color: ${Colors.textsColor};
     font-weight: bold;
     text-decoration: none;
     font-size: 2.5vh;
@@ -65,7 +65,7 @@ export const WelcomeButton = styled.button`
     }
 
     &:hover {
-        background-color: #ca0606;
+        background-color: ${Colors.buttonBackgroundHoverState};
         cursor:pointer;
     }
 `;
