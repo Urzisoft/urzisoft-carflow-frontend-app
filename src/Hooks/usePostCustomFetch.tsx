@@ -1,22 +1,27 @@
-import { useState } from "react";
-import { FetchResponseGET } from "../Utils/Types";
+import { useState } from 'react';
+import { FetchResponsePOST } from "../Utils/Types";
 
-const useGetCustomFetch = <Data extends any, Param extends any>(url: RequestInfo): FetchResponseGET<Data, Param>  => {
+const usePostCustomFetch = <Data extends any, Param extends any>(url: RequestInfo, method?: 'PUT' | 'DELETE'
+): FetchResponsePOST<Data, Param> => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [apiData, setApiData] = useState<Data | null>(null);
     const [serverError, setServerError] = useState(null);
 
-    const fetcher = async () => {
+    const fetcher = async (param?: Param) => {
         setIsLoading(true);
         try {
             const request = await fetch(url, {
-                method: 'GET',
+                method: method || 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            const response = await request.json();
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                ...(param && {
+                    body: JSON.stringify(param)
+                })
+            });
 
+            const response = await request.json();
             if (response.errors) {
                 setServerError(response);
             } else {
@@ -36,6 +41,6 @@ const useGetCustomFetch = <Data extends any, Param extends any>(url: RequestInfo
         loading: isLoading,
         fetcher
     };
-}
+};
 
-export default useGetCustomFetch;
+export default usePostCustomFetch;

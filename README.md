@@ -46,3 +46,34 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React Application documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## DOCUMENTATION
+
+How to use post request example:
+
+```
+    const { response: carPostResponse, fetcher: addCar } = usePostCustomFetch<any, any>(requestUrls.cars);
+    
+    useEffect(() => {
+        const newCarObject: Car = {
+            brand: {
+                name: "camifdjsiugjsid",
+                description: "The fdslkjfgoisdfjgt"
+            },
+            model: {
+                name: "sodgjoifdg4"
+            },
+            generation: "B8sdfnsdfknsdkf.5",
+            year: 2014,
+            gasType: "Diesel",
+            mileage: "250.000",
+            gearbox: "Manual",
+            power: 150,
+            engineSize: 2,
+            driveWheel: "frontal",
+            licensePlate: "SM21CIG"
+        };
+
+        addCar(newCarObject);
+    }, []);
+```
