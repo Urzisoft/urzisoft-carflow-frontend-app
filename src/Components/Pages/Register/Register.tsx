@@ -8,7 +8,7 @@ import {
     ResisterBox,
 } from "./Register.css";
 
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { InputField } from "../../Common/Input Field/InputField";
 
 export const Register: FC = () => {
@@ -37,6 +37,10 @@ export const Register: FC = () => {
     const handleInputConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmPassword(event.target.value);
     };
+
+    useEffect(() => {
+        // validate and send payload;
+    }, [fullName, username, email, password, confirmPassword]);
 
     return (
         <ResisterBox>
