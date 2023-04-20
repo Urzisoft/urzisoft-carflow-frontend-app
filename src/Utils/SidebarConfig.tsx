@@ -1,7 +1,8 @@
 import * as FaIcons from 'react-icons/fa'
-import { PageRoutes } from "../../../Utils/Routes";
+import { PageRoutes } from "./Routes";
+import { SideBarConfigType } from "./Types";
 
-export const SidebarData = [
+export const SidebarConfig: SideBarConfigType[] = [
     {
         path: PageRoutes.DASHBOARD,
         name: "Dashboard",

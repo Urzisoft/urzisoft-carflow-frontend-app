@@ -22,18 +22,18 @@ export type Model = {
 }
 
 export type Car = {
-    id?: number,
-    brand: Brand,
-    model: Model,
-    generation: string,
-    year: number,
-    gasType: string,
-    mileage: string,
-    gearbox: string,
-    power: number,
-    engineSize: number,
-    driveWheel: string,
-    licensePlate: string,
+    id?: number;
+    brand: Brand;
+    model: Model;
+    generation: string;
+    year: number;
+    gasType: string;
+    mileage: string;
+    gearbox: string;
+    power: number;
+    engineSize: number;
+    driveWheel: string;
+    licensePlate: string;
 }
 
 export type WelcomePageConfigType = {
@@ -41,3 +41,9 @@ export type WelcomePageConfigType = {
     description: string;
     buttonText: string;
 };
+
+export type SideBarConfigType = {
+    path: string;
+    name: string;
+    icon: JSX.Element;
+}
