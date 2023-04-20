@@ -49,7 +49,6 @@ export const WelcomeButton = styled.button`
     bottom: 7vh;
     right: 6vw;
     padding: 10px 25px 10px 25px;
-    /* border-radius: 5px; */
     color: white;
     font-weight: bold;
     text-decoration: none;
