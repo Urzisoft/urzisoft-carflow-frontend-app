@@ -18,9 +18,7 @@ type WelcomeType = {
 
 export const Welcome: FC < WelcomeType > = ( {config} ) => {
     const navigate = useNavigate();
-    const wasWelcomePageVisited = localStorage.getItem(
-        LOCAL_STORAGE_KEYS.wasWelcomePageVisited
-    );
+    const wasWelcomePageVisited = localStorage.getItem(LOCAL_STORAGE_KEYS.wasWelcomePageVisited);
 
     const handleButtonClick = () => {
         localStorage.setItem(LOCAL_STORAGE_KEYS.wasWelcomePageVisited, "true");
