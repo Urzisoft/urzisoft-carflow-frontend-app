@@ -15,11 +15,11 @@ export type FetchResponsePOST<data, param> = {
 export type Brand = {
     name: string;
     description: string;
-}
+};
 
 export type Model = {
     name: string;
-}
+};
 
 export type Car = {
     id?: number;
@@ -34,7 +34,7 @@ export type Car = {
     engineSize: number;
     driveWheel: string;
     licensePlate: string;
-}
+};
 
 export type WelcomePageConfigType = {
     title: string;
@@ -46,4 +46,4 @@ export type SideBarConfigType = {
     path: string;
     name: string;
     icon: JSX.Element;
-}
+};
