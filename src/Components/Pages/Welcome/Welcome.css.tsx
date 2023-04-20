@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Colors } from "../../../Utils/cssMedia";
+import { Breakpoints, maxWidthQuery, Colors } from "../../../Utils/cssMedia";
+
 
 export const WelcomeContainer = styled.div`
     width: 100%;
@@ -14,7 +15,7 @@ export const BackgroundVideo = styled.video`
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: brightness(0.3);
+    filter: brightness(0.5);
 `;
 
 export const WelcomeTitle = styled.div`
@@ -48,13 +49,14 @@ export const WelcomeButton = styled.button`
     bottom: 7vh;
     right: 6vw;
     padding: 10px 25px 10px 25px;
-    border-radius: 5px;
     color: ${Colors.textsColor};
     font-weight: bold;
     text-decoration: none;
     font-size: 2.5vh;
+    transition: all 300ms ease-in;
+    border-radius: 0.5rem;
 
-    @media (max-width: 992px) {
+    ${maxWidthQuery(Breakpoints.medium)} {
         position: fixed;
         bottom: 5vh;
         left: 50%;
@@ -63,9 +65,9 @@ export const WelcomeButton = styled.button`
         width: 80%;
         text-align: center;
     }
-
+  
     &:hover {
         background-color: ${Colors.buttonBackgroundHoverState};
-        cursor:pointer;
+        cursor: pointer;
     }
 `;
