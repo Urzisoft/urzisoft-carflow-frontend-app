@@ -35,7 +35,8 @@ export const RegisterTitle = styled.div`
 export const RegisterUserInputDetailsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    align-content: center;
     margin: 5% 0 3% 0;
 `;
 
@@ -46,9 +47,8 @@ export const RegisterButton = styled.button`
     border-radius: 0.3em;
     background-color: rgb(225, 32, 32);
     font-size: 1.2em;
-    border-width: 0px;
+    border-width: 0;
     color: white;
-    margin-left: 0.9em;
     font-weight: bold;
     text-decoration: none;
     margin-top: 0.7em;
@@ -59,8 +59,6 @@ export const RegisterButton = styled.button`
         cursor: pointer;
     }
 `;
-
-
 
 export const RegisterBackgroundColor = styled.div`
     clip-path: polygon(0 0, 70vw 0, 50vw 100%, 0% 100%);
@@ -74,17 +72,15 @@ export const RegisterBackgroundColor = styled.div`
     ${maxWidthQuery(Breakpoints.large)} {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         height:auto;
-        
     }
-    
 `;
 
 export const BackgroundImage = styled.div`
     background-image: url(${BackgroundImg});
     background-size:cover;
-   position:absolute;
-   z-index: -1;
-   width:100%;
-   height:100%;
-   margin:0;
+    position:absolute;
+    z-index: -1;
+    width:100%;
+    height:100%;
+    margin:0;
 `;
