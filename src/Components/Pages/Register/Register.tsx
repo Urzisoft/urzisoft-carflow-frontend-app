@@ -9,7 +9,7 @@ import {
 } from "./Register.css";
 
 import React, { FC, useEffect, useState } from "react";
-import { InputField } from "../../Common/Input Field/InputField";
+import { InputField } from "../../Common/InputField/InputField";
 
 export const Register: FC = () => {
     const [fullName, setFullName] = useState<string>('');

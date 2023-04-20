@@ -41,11 +41,9 @@ export const SidebarMenu = styled.div<{ isOpen: boolean }>`
     transition: .2s;
 `;
 
-
 export const MenuItems = styled.li`
     list-style: none;
     display: flex;
-    align-items: left;
     justify-content: start;
     width: 100%;
     height: 45px;
@@ -61,6 +59,7 @@ export const MenuItemLinks = styled(Link)`
     border-radius: 5px;
     color: #ffffff;
     transition: .2s;
+  
     &:hover {
         background-color: #ffffff;
         color: #000080;
