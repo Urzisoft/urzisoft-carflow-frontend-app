@@ -4,14 +4,14 @@ import {
     InputText,
 } from "./InputField.css"
 
-type InputFieldProps = {
+type InputFieldType = {
     type: string;
     placeholder: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     required?: boolean;
 }
 
-export const InputField: FC<InputFieldProps> = ({ type, placeholder, onChange,
+export const InputField: FC<InputFieldType> = ({ type, placeholder, onChange,
                                                     required = true }) => {
     return (
         <InputBox>

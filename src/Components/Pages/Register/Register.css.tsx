@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BackgroundImg from "../../../Assets/Images/BlueCarRegisterBackground.png";
-import {  Breakpoints, maxHeightQuery, maxWidthQuery } from "../../../Utils/cssMedia";
+import {  Breakpoints, maxWidthQuery } from "../../../Utils/cssMedia";
 
 export const ResisterBox = styled.div`
     background-color: #011341;
