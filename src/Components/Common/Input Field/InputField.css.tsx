@@ -7,7 +7,7 @@ export const InputBox = styled.div`
     margin-bottom: 9%;
 `;
 
-export const Text = styled.input`
+export const InputText = styled.input`
     height: 100%;
     width: 100%;
 

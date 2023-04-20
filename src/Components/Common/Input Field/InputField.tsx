@@ -1,19 +1,21 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import {
     InputBox,
-    Text,
+    InputText,
 } from "./InputField.css"
 
 type InputFieldProps = {
     type: string;
     placeholder: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     required?: boolean;
 }
 
-export const InputField: FC<InputFieldProps> = ({ type, placeholder, required = true }) => {
+export const InputField: FC<InputFieldProps> = ({ type, placeholder, onChange,
+                                                    required = true }) => {
     return (
         <InputBox>
-            <Text type={type} placeholder={placeholder} required={required}></Text>
+            <InputText type={type} placeholder={placeholder} required={required} onChange={onChange}></InputText>
         </InputBox>
     );
 };

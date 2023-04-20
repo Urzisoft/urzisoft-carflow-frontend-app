@@ -2,9 +2,8 @@ import styled from "styled-components";
 import BackgroundImg from "../../../Assets/Images/BlueCarRegisterBackground.png";
 import {  Breakpoints, maxHeightQuery, maxWidthQuery } from "../../../Utils/cssMedia";
 
-export const Container = styled.div`
+export const ResisterBox = styled.div`
     background-color: #011341;
-   
 `;
 
 export const RegisterContainer = styled.div`
@@ -33,7 +32,7 @@ export const RegisterTitle = styled.div`
     text-align: center;
 `;
 
-export const UserDetailsContainer = styled.div`
+export const RegisterUserInputDetailsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

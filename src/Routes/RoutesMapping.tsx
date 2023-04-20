@@ -7,12 +7,6 @@ import { Register} from "../Components/Pages/Register/Register";
 import { Config } from "../Utils/Config";
 import { welcomePageValues } from "../Utils/HardcodedConfigs";
 
-const pageRoutes = [
-    { path: PageRoutes.HOME, component: <Welcome /> },
-    { path: PageRoutes.DASHBOARD, component: <Dashboard /> },
-    { path: PageRoutes.REGISTER, component: <Register />},
-];
-
 export const RoutesMapping: FC = () => {
 
     const config = Config.getInstance();
@@ -20,7 +14,8 @@ export const RoutesMapping: FC = () => {
 
     const pageRoutes = [
         { path: PageRoutes.HOME, component: <Welcome config={config.WelcomePageConfig} /> },
-        { path: PageRoutes.DASHBOARD, component: <Dashboard /> }
+        { path: PageRoutes.DASHBOARD, component: <Dashboard /> },
+        { path: PageRoutes.REGISTER, component: <Register />},
     ];
 
     return (
