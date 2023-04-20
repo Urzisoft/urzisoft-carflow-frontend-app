@@ -62,7 +62,7 @@ export const RegisterButton = styled.button`
 
 
 
-export const BackgroundColor = styled.div`
+export const RegisterBackgroundColor = styled.div`
     clip-path: polygon(0 0, 70vw 0, 50vw 100%, 0% 100%);
     background-color: #011341;
     position: absolute;

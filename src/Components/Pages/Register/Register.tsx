@@ -2,7 +2,7 @@ import {
     RegisterContainer,
     RegisterTitle,
     RegisterUserInputDetailsContainer,
-    BackgroundColor,
+    RegisterBackgroundColor,
     BackgroundImage,
     RegisterButton,
     ResisterBox,
@@ -16,6 +16,7 @@ export const Register: FC = () => {
     const [username, setUsername] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>();
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
 
     const handleInputFullNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFullName(event.target.value);
@@ -33,9 +34,13 @@ export const Register: FC = () => {
         setPassword(event.target.value);
     };
 
+    const handleInputConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setConfirmPassword(event.target.value);
+    };
+
     return (
         <ResisterBox>
-            <BackgroundColor>
+            <RegisterBackgroundColor>
                 <RegisterContainer>
                     <RegisterTitle>Register</RegisterTitle>
                     <RegisterUserInputDetailsContainer>
@@ -43,14 +48,11 @@ export const Register: FC = () => {
                         <InputField type="text" placeholder="Username" onChange={handleInputUsernameChange} />
                         <InputField type="text" placeholder="Email" onChange={handleInputEmailChange} />
                         <InputField type="password" placeholder="Password" onChange={handleInputPasswordChange} />
-                        <InputField
-                            type="password"
-                            placeholder="Confirm Password"
-                        />
+                        <InputField type="password" placeholder="Confirm Password" onChange={handleInputConfirmPasswordChange}/>
                         <RegisterButton>Create Account</RegisterButton>
                     </RegisterUserInputDetailsContainer>
                 </RegisterContainer>
-            </BackgroundColor>
+            </RegisterBackgroundColor>
             <BackgroundImage />
         </ResisterBox>
     );
