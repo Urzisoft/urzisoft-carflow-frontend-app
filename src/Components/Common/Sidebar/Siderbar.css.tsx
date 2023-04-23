@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../Utils/cssMedia";
 import { Link } from 'react-router-dom'
 
 export const SidebarContainer = styled.div`
@@ -9,7 +10,7 @@ export const Navbar = styled.div`
     justify-content: start;
     align-items: center;
     height: 100vh;
-    background-color: #000080;
+    background-color: ${Colors.backgroundColor};
     position: fixed;
 `;
 
@@ -19,7 +20,7 @@ export const MenuIconOpen = styled(Link)`
     justify-content: start;
     font-size: 1.5rem;
     margin-left: 2rem;
-    color: #ffffff;
+    color: ${Colors.textsColor};
 `;
 
 export const MenuIconClose = styled(Link)`
@@ -28,13 +29,13 @@ export const MenuIconClose = styled(Link)`
     font-size: 1.5rem;
     margin-top: 0.75rem;
     margin-right: 0.75rem;
-    color: #ffffff;
+    color: ${Colors.textsColor};
 `;
 
 export const SidebarMenu = styled.div<{ isOpen: boolean }>`
     width: 250px;
     height: 100vh;
-    background-color: #000080;
+    background-color:  ${Colors.backgroundColor};
     position: fixed;
     top: 0;
     left: ${({ isOpen }) => isOpen ? '0' : '-100%'};
@@ -57,12 +58,12 @@ export const MenuItemLinks = styled(Link)`
     font-size: 20px;
     text-decoration: none;
     border-radius: 5px;
-    color: #ffffff;
+    color: ${Colors.textsColor};
     transition: .2s;
   
     &:hover {
-        background-color: #ffffff;
-        color: #000080;
+        background-color: ${Colors.buttonBackgroundHoverState};
+        color: ${Colors.buttonIconHoverState};
         width: 100%;
         height: 45px;
         text-align: center;
