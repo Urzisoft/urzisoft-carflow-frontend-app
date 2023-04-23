@@ -14,7 +14,7 @@ export enum SCREEN_SIZES {
 export const Colors = {
     backgroundColor: '#ca0606',
     buttonBackgroundHoverState: '#ca0606',
-    buttonSidebarBackgroundHoverState:"#ffffff",
+    buttonSidebarBackgroundHoverState: "#ffffff",
     buttonSidebarIconHoverState: '#ca0606',
     textsColor: '#ffffff',
 }
