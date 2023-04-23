@@ -62,8 +62,8 @@ export const MenuItemLinks = styled(Link)`
     transition: .2s;
   
     &:hover {
-        background-color: ${Colors.buttonBackgroundHoverState};
-        color: ${Colors.buttonIconHoverState};
+        background-color: ${Colors.buttonSidebarBackgroundHoverState};
+        color: ${Colors.buttonSidebarIconHoverState};
         width: 100%;
         height: 45px;
         text-align: center;
