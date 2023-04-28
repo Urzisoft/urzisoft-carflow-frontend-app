@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { Breakpoints, maxWidthQuery } from "../../../Utils/cssMedia";
-
-interface AuthenticationBackgroundColorProps {
+import { Colors } from "../../../Utils/cssMedia";
+type AuthenticationBackgroundColorProps = {
     backgroundColor?: string;
-}
-interface BackgroundImageProps {
+};
+type BackgroundImageProps = {
     backgroundImg: string;
-}
-interface AuthenticationButtonProps {
+};
+type AuthenticationButtonProps = {
     backgroundColor?: string;
     hoverBackgroundColor?: string;
-}
+};
 
 export const AuthenticationBox = styled.div`
     background-color: #011341;
@@ -55,7 +55,7 @@ export const AuthenticationButton = styled.button<AuthenticationButtonProps>`
     width: 100%;
     outline: none;
     border-radius: 0.3em;
-    background-color: ${(props) => props.backgroundColor || "rgb(225, 32, 32)"};
+    background-color: ${(props) => props.backgroundColor || Colors.brightRed};
     font-size: 1.2em;
     border-width: 0;
     color: white;
@@ -65,19 +65,24 @@ export const AuthenticationButton = styled.button<AuthenticationButtonProps>`
 
     :hover {
         transition: 5ms;
-        background-color: ${(props) => props.hoverBackgroundColor || "#ca0606"};
+        background-color: ${(props) => props.hoverBackgroundColor || Colors.darkRed};
         cursor: pointer;
     }
 `;
 
 export const AuthenticationBackgroundColor = styled.div<AuthenticationBackgroundColorProps>`
     clip-path: polygon(0 0, 70vw 0, 50vw 100%, 0% 100%);
-    background-color: ${(props) => props.backgroundColor || "#011341"};
+    background-color: ${(props) => props.backgroundColor || Colors.darkBlue};
     position: absolute;
     bottom: 0;
     top: 0;
     width: 100%;
     z-index: 1;
+
+    ${maxWidthQuery(Breakpoints.large)} {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        height: auto;
+    }
 `;
 
 export const AuthenticationBackgroundImage = styled.div<BackgroundImageProps>`
