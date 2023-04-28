@@ -8,7 +8,7 @@ export const useGetScreenSize = () => {
 
     const setupResolutionAdaptation = (): boolean => {
         Object.entries(SCREEN_SIZES).some(([key, value]) => {
-            if (value <= window.innerWidth) {
+            if ((value as number) <= window.innerWidth) {
                 setResolution(key as resolutions);
                 return true;
             }
