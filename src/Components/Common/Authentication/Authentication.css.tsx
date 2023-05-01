@@ -4,22 +4,24 @@ import { Colors } from "../../../Utils/cssMedia";
 type AuthenticationBackgroundColorProps = {
     backgroundColor?: string;
 };
+
 type BackgroundImageProps = {
     backgroundImg: string;
 };
+
 type AuthenticationButtonProps = {
     backgroundColor?: string;
     hoverBackgroundColor?: string;
 };
 
 export const AuthenticationBox = styled.div`
-    background-color: #011341;
+    background-color: ${Colors.darkBlue};
 `;
 
 export const AuthenticationContainer = styled.div`
     max-width: 20%;
     width: 100%;
-    background: white;
+    background: ${Colors.white};
     padding: 1.5% 2%;
     border-radius: 5px;
     margin: 9% 10% 0;
@@ -58,7 +60,7 @@ export const AuthenticationButton = styled.button<AuthenticationButtonProps>`
     background-color: ${(props) => props.backgroundColor || Colors.brightRed};
     font-size: 1.2em;
     border-width: 0;
-    color: white;
+    color: ${Colors.white};
     font-weight: bold;
     text-decoration: none;
     margin-top: 0.7em;
