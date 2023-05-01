@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Breakpoints, maxWidthQuery } from "../../../Utils/cssMedia";
 import { Colors } from "../../../Utils/cssMedia";
+
 type AuthenticationBackgroundColorProps = {
     backgroundColor?: string;
 };
