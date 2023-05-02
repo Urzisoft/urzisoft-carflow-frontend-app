@@ -6,10 +6,12 @@ export const isNotParamEmpty = (param: string): boolean => {
 };
 
 export const validateUsername = (username: string): string => {
+    const usernameIsNotAlphanumeric = !/^[a-z0-9]+$/i.test(username);
+
     if (username === "") {
         return "";
     }
-    if (!/^[a-z0-9]+$/i.test(username)) {
+    if (usernameIsNotAlphanumeric) {
         return "Username must be alphanumeric.";
     }
     if (username.length < 7) {
@@ -22,6 +24,8 @@ export const validateUsername = (username: string): string => {
 };
 
 export const validatePassword = (password: string): string => {
+    const isPasswordGenerallyNotValid = !/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(password);
+
     if (password === "") {
         return "";
     }
@@ -31,11 +35,7 @@ export const validatePassword = (password: string): string => {
     if (commonPasswords.includes(password)) {
         return "The password is too common. Please choose a different one.";
     }
-    if (
-        !/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(
-            password
-        )
-    ) {
+    if (isPasswordGenerallyNotValid) {
         return "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
     }
 
@@ -45,16 +45,25 @@ export const validatePassword = (password: string): string => {
 export const validateEmail = (email: string): string => {
     const atIndex = email.indexOf("@");
     const dotIndex = email.lastIndexOf(".");
+    const localPart = email.substring(0, atIndex);
+    const domain = email.substring(atIndex + 1);
+    const isEmailGenerallyNotValid = localPart.startsWith(".") || localPart.endsWith(".") || localPart.includes("..");
+    const domainParts = domain.split(".");
+    const emailNotHyphenValidated = domainParts.some((part) =>
+            part.startsWith("-") ||
+            part.endsWith("-") ||
+            part.includes("--")
+    );
+    const emailDotIndexNotValid = dotIndex === -1 || dotIndex < atIndex;
+    const isDomainInvalid = commonDomains && !commonDomains.includes(domain);
 
     if (email === "") {
         return "";
     }
+
     if (atIndex === -1) {
         return "Email address should contain '@'.";
     }
-
-    const localPart = email.substring(0, atIndex);
-    const domain = email.substring(atIndex + 1);
 
     if (localPart.length === 0) {
         return "Email address local part is missing.";
@@ -64,52 +73,26 @@ export const validateEmail = (email: string): string => {
         return "Email address domain part is missing.";
     }
 
-    if (
-        localPart.startsWith(".") ||
-        localPart.endsWith(".") ||
-        localPart.includes("..")
-    ) {
+    if (isEmailGenerallyNotValid) {
         return "Email address local part should not start or end with a dot, or contain consecutive dots.";
     }
 
-    const domainParts = domain.split(".");
-    if (
-        domainParts.some(
-            (part) =>
-                part.startsWith("-") ||
-                part.endsWith("-") ||
-                part.includes("--")
-        )
-    ) {
+    if (emailNotHyphenValidated) {
         return "Email address domain part should not start or end with a hyphen, or contain consecutive hyphens.";
     }
 
-    if (dotIndex === -1 || dotIndex < atIndex) {
+    if (emailDotIndexNotValid) {
         return "Email address should contain a dot (.) after '@'.";
     }
 
-    if (commonDomains && !commonDomains.includes(domain)) {
+    if (isDomainInvalid) {
         return "This domain does not exist.";
     }
 
     return "";
 };
 
-export const validateName = (name: string): string => {
-    if (name === "") {
-        return "";
-    }
-    if (!/^[A-Za-z]+$/.test(name)) {
-        return "Wrong name format.";
-    }
-
-    return "";
-};
-
-export const validateConfirmPassword = (
-    password: string,
-    confirmPassword: string
-): string => {
+export const validateConfirmPassword = (password: string, confirmPassword: string): string => {
     if (password === "" || confirmPassword === "") {
         return "";
     }
