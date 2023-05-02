@@ -29,7 +29,11 @@ export const Dashboard: FC = () => {
             <Sidebar />
             <DashboardContainer>
                 {cars?.map((car) => {
-                return <p>{car.generation}</p>;
+                return (
+                    <>
+                        <p>{car?.brand.name}</p>
+                    </>
+                );
             })}
             </DashboardContainer>
         </>
