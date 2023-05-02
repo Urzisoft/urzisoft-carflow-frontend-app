@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../../Utils/cssMedia";
+
 export const InputBox = styled.div`
     width: 100%;
     padding-left: 1%;

@@ -12,6 +12,7 @@ import { InputField, InputValidation } from "../../Common/InputField/InputField"
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
 import { Colors } from "../../../Utils/cssMedia";
 import { validateUsername, validatePassword } from "../../../Utils/Validation/Validation";
+
 export const Login: FC = () => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
