@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import {
     AuthenticationContainer,
     AuthenticationTitle,
@@ -11,8 +11,10 @@ import {
 import { InputField } from "../../Common/InputField/InputField";
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
 import { Colors } from "../../../Utils/cssMedia";
+import { useAuth } from "../../../Hooks/useAuth";
 
 export const Login: FC = () => {
+    const { logUserIn } = useAuth();
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
@@ -24,9 +26,11 @@ export const Login: FC = () => {
         setPassword(event.target.value);
     };
 
-    useEffect(() => {
-        // validate and send payload;
-    }, [username, password]);
+    const onLoginButtonClick = () => {
+        if (username !== '' && password !== '') {
+            logUserIn(username, password);
+        }
+    };
 
     return (
         <AuthenticationBox>
@@ -44,7 +48,7 @@ export const Login: FC = () => {
                             placeholder="Password"
                             onChange={handleInputPasswordChange}
                         />
-                        <AuthenticationButton>Login</AuthenticationButton>
+                        <AuthenticationButton onClick={onLoginButtonClick}>Login</AuthenticationButton>
                     </AuthenticationUserInputDetailsContainer>
                 </AuthenticationContainer>
             </AuthenticationBackgroundColor>

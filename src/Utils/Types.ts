@@ -47,3 +47,13 @@ export type SideBarConfigType = {
     name: string;
     icon: JSX.Element;
 };
+
+export type AuthResponseType = {
+    token: string;
+    expiration: string;
+};
+
+export type CredentialsType = {
+    username: string;
+    password: string;
+};

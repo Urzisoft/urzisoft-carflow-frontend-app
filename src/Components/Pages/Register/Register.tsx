@@ -7,21 +7,20 @@ import {
     AuthenticationContainer,
     AuthenticationUserInputDetailsContainer,
 } from "../../Common/Authentication/Authentication.css";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { InputField } from "../../Common/InputField/InputField";
 import registerBackgroundImage from "../../../Assets/Images/RedCarRegisterBackground.jpg";
 import { Colors } from "../../../Utils/cssMedia";
+import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
+import { requestUrls } from "../../../Backend/requestUrls";
 
 export const Register: FC = () => {
-    const [fullName, setFullName] = useState<string>("");
+    const { fetcher: sendRegisterPayload } = usePostCustomFetch<any, any>(requestUrls.authRegister);
+
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>();
     const [confirmPassword, setConfirmPassword] = useState<string>("");
-
-    const handleInputFullNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFullName(event.target.value);
-    };
 
     const handleInputUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
@@ -39,9 +38,17 @@ export const Register: FC = () => {
         setConfirmPassword(event.target.value);
     };
 
-    useEffect(() => {
-        // validate and send payload;
-    }, [fullName, username, email, password, confirmPassword]);
+    const onRegisterButtonClick = () => {
+        if (username !== '' && email !== '' && password !== '' && confirmPassword !== '' && password === confirmPassword) {
+            const payload = {
+                username: username,
+                email: email,
+                password: password
+            };
+
+            sendRegisterPayload(payload);
+        }
+    }
 
     return (
         <AuthenticationBox>
@@ -49,11 +56,6 @@ export const Register: FC = () => {
                 <AuthenticationContainer>
                     <AuthenticationTitle>Register</AuthenticationTitle>
                     <AuthenticationUserInputDetailsContainer>
-                        <InputField
-                            type="text"
-                            placeholder="Full Name"
-                            onChange={handleInputFullNameChange}
-                        />
                         <InputField
                             type="text"
                             placeholder="Username"
@@ -74,7 +76,7 @@ export const Register: FC = () => {
                             placeholder="Confirm Password"
                             onChange={handleInputConfirmPasswordChange}
                         />
-                        <AuthenticationButton>
+                        <AuthenticationButton onClick={onRegisterButtonClick}>
                             Create Account
                         </AuthenticationButton>
                     </AuthenticationUserInputDetailsContainer>
