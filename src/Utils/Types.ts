@@ -2,7 +2,7 @@ export type FetchResponseGET<data, param> = {
     response: data | null;
     error: any;
     loading: boolean;
-    fetcher: () => any;
+    fetcher: (arg: param, token?: string, isFormData?: boolean) => any;
 };
 
 export type FetchResponsePOST<data, param> = {
@@ -46,4 +46,14 @@ export type SideBarConfigType = {
     path: string;
     name: string;
     icon: JSX.Element;
+};
+
+export type AuthResponseType = {
+    token: string;
+    expiration: string;
+};
+
+export type CredentialsType = {
+    username: string;
+    password: string;
 };

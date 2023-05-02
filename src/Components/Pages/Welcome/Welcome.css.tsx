@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Breakpoints, maxWidthQuery, Colors } from "../../../Utils/cssMedia";
 
-
 export const WelcomeContainer = styled.div`
     width: 100%;
     height: 100%;
@@ -24,7 +23,7 @@ export const WelcomeTitle = styled.div`
     margin-bottom: 20px;
     padding-top: 4vw;
     padding-left: 8vw;
-    color: ${Colors.textsColor};
+    color: ${Colors.white};
     @media (max-width: 992px) {
         font-size: 7vh;
     }
@@ -36,7 +35,7 @@ export const WelcomeText = styled.div`
     max-width: 40%;
     padding-top: 3vh;
     padding-left: 8vw;
-    color: ${Colors.textsColor};
+    color: ${Colors.white};
     @media (max-width: 992px) {
         max-width: 70%;
         font-size: 3vh;
@@ -44,12 +43,12 @@ export const WelcomeText = styled.div`
 `;
 
 export const WelcomeButton = styled.button`
-    background-color: ${Colors.backgroundColor};
+    background-color: ${Colors.brightRed};
     position: fixed;
     bottom: 7vh;
     right: 6vw;
     padding: 10px 25px 10px 25px;
-    color: ${Colors.textsColor};
+    color: ${Colors.white};
     font-weight: bold;
     text-decoration: none;
     font-size: 2.5vh;
@@ -65,9 +64,9 @@ export const WelcomeButton = styled.button`
         width: 80%;
         text-align: center;
     }
-  
+
     &:hover {
-        background-color: ${Colors.buttonBackgroundHoverState};
+        background-color: ${Colors.brightRed};
         cursor: pointer;
     }
 `;
