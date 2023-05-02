@@ -20,9 +20,11 @@ import {
     validatePassword,
     validateUsername
 } from "../../../Utils/Validation/Validation";
+import { useRedirectHome } from "../../../Hooks/useRedirectHome";
 
 export const Register: FC = () => {
-    const { fetcher: sendRegisterPayload } = usePostCustomFetch<any, any>(requestUrls.authRegister);
+    const { response: RegisterResponse, fetcher: sendRegisterPayload } = usePostCustomFetch<any, any>(requestUrls.authRegister);
+    const { navigateHome } = useRedirectHome();
 
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -77,6 +79,7 @@ export const Register: FC = () => {
             };
 
             sendRegisterPayload(payload);
+            if (RegisterResponse.status === 'Success') navigateHome();
         }
     }
 
