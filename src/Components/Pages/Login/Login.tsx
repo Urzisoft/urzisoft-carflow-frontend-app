@@ -11,7 +11,7 @@ import {
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
 import { Colors } from "../../../Utils/cssMedia";
-import { validatePassword, validateUsername } from "../../../Utils/Validation/Validation";
+import { isNotParamEmpty, validatePassword, validateUsername } from "../../../Utils/Validation/Validation";
 
 export const Login: FC = () => {
     const [username, setUsername] = useState<string>("");
@@ -47,7 +47,7 @@ export const Login: FC = () => {
                             placeholder="Username"
                             onChange={handleInputUsernameChange}
                             isValid={!usernameError}
-                            isEligible={username !== ""}
+                            isEligible={isNotParamEmpty(username)}
                         />
                         {usernameError && <InputValidation>{usernameError}</InputValidation>}
                         <InputField
@@ -55,7 +55,7 @@ export const Login: FC = () => {
                             placeholder="Password"
                             onChange={handleInputPasswordChange}
                             isValid={!passwordError}
-                            isEligible={password !== ""}
+                            isEligible={isNotParamEmpty(password)}
                         />
                         {passwordError && <InputValidation>{passwordError}</InputValidation>}
                         <AuthenticationButton>Login</AuthenticationButton>
