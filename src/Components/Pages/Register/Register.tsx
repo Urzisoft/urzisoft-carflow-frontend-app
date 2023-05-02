@@ -62,7 +62,14 @@ export const Register: FC = () => {
     }, [username, email, password, confirmPassword]);
 
     const onRegisterButtonClick = () => {
-        if (username !== '' && email !== '' && password !== '' && confirmPassword !== '' && password === confirmPassword) {
+        const isUsernameValidForPayload = !usernameError && isNotParamEmpty(username);
+        const isEmailValidForPayload = !emailError && isNotParamEmpty(email);
+        const isPasswordValidForPayload = !passwordError && isNotParamEmpty(password);
+        const isConfirmPasswordValidForPayload = !confirmPasswordError && isNotParamEmpty(confirmPassword);
+        const isFormValid = isUsernameValidForPayload && isEmailValidForPayload && isPasswordValidForPayload
+            && isConfirmPasswordValidForPayload;
+
+        if (isFormValid) {
             const payload = {
                 username: username,
                 email: email,

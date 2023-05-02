@@ -38,7 +38,11 @@ export const Login: FC = () => {
     }, [username, password]);
 
     const onLoginButtonClick = () => {
-        if (username !== '' && password !== '') {
+        const isUsernameValidForPayload = !usernameError && isNotParamEmpty(username);
+        const isPasswordValidForPayload = !passwordError && isNotParamEmpty(password);
+        const isFormValid = isUsernameValidForPayload && isPasswordValidForPayload;
+
+        if (isFormValid) {
             logUserIn(username, password);
         }
     };
