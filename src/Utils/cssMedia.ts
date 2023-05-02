@@ -17,6 +17,7 @@ export const Colors = {
     white: "#ffffff",
     darkBlue: "#011341",
     turquoise: "#099781",
+    
 };
 
 export const minWidthQuery = (breakpoint: string) =>
