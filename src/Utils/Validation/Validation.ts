@@ -1,6 +1,10 @@
 import { commonPasswords } from "./commonPasswords";
 import { commonDomains } from "./commonDomains";
 
+export const isNotParamEmpty = (param: string): boolean => {
+    return param !== "";
+};
+
 export const validateUsername = (username: string): string => {
     if (username === "") {
         return "";

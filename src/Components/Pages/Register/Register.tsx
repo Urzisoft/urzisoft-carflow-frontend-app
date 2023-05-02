@@ -1,17 +1,23 @@
 import {
-    AuthenticationBox,
-    AuthenticationTitle,
     AuthenticationBackgroundColor,
     AuthenticationBackgroundImage,
+    AuthenticationBox,
     AuthenticationButton,
     AuthenticationContainer,
+    AuthenticationTitle,
     AuthenticationUserInputDetailsContainer,
 } from "../../Common/Authentication/Authentication.css";
 import React, { FC, useEffect, useState } from "react";
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import registerBackgroundImage from "../../../Assets/Images/RedCarRegisterBackground.jpg";
 import { Colors } from "../../../Utils/cssMedia";
-import { validateUsername, validateEmail, validatePassword, validateConfirmPassword } from "../../../Utils/Validation/Validation";
+import {
+    isNotParamEmpty,
+    validateConfirmPassword,
+    validateEmail,
+    validatePassword,
+    validateUsername
+} from "../../../Utils/Validation/Validation";
 
 export const Register: FC = () => {
     const [username, setUsername] = useState<string>("");
@@ -41,18 +47,15 @@ export const Register: FC = () => {
     };
 
     useEffect(() => {
-        const validateAndSendPayload = () => {
-            const usernameErrorMsg = validateUsername(username);
-            const emailErrorMsg = validateEmail(email);
-            const passwordErrorMsg = validatePassword(password);
-            const confirmPasswordErrorMsg = validateConfirmPassword(password,confirmPassword);
+        const usernameErrorMsg = validateUsername(username);
+        const emailErrorMsg = validateEmail(email);
+        const passwordErrorMsg = validatePassword(password);
+        const confirmPasswordErrorMsg = validateConfirmPassword(password, confirmPassword);
 
-            setUsernameError(usernameErrorMsg);
-            setEmailError(emailErrorMsg);
-            setPasswordError(passwordErrorMsg);
-            setConfirmPasswordError(confirmPasswordErrorMsg);
-        }
-        validateAndSendPayload();
+        setUsernameError(usernameErrorMsg);
+        setEmailError(emailErrorMsg);
+        setPasswordError(passwordErrorMsg);
+        setConfirmPasswordError(confirmPasswordErrorMsg);
     }, [username, email, password, confirmPassword]);
     
     return (
@@ -66,7 +69,7 @@ export const Register: FC = () => {
                             placeholder="Username"
                             onChange={handleInputUsernameChange}
                             isValid={!usernameError}
-                            isEligible={username !== ""}
+                            isEligible={isNotParamEmpty(username)}
                         />
                         {usernameError && <InputValidation>{usernameError}</InputValidation>}
                         <InputField
@@ -74,7 +77,7 @@ export const Register: FC = () => {
                             placeholder="Email"
                             onChange={handleInputEmailChange}
                             isValid={!emailError}
-                            isEligible={email !== ""}
+                            isEligible={isNotParamEmpty(email)}
                         />
                         {emailError && <InputValidation>{emailError}</InputValidation>}
                         <InputField
@@ -82,7 +85,7 @@ export const Register: FC = () => {
                             placeholder="Password"
                             onChange={handleInputPasswordChange}
                             isValid={!passwordError}
-                            isEligible={password !== ""}
+                            isEligible={isNotParamEmpty(password)}
                         />
                         {passwordError && <InputValidation>{passwordError}</InputValidation>}
                         <InputField
@@ -90,7 +93,7 @@ export const Register: FC = () => {
                             placeholder="Confirm Password"
                             onChange={handleInputConfirmPasswordChange}
                             isValid={!confirmPasswordError}
-                            isEligible={confirmPassword !== ""}
+                            isEligible={isNotParamEmpty(confirmPassword)}
                         />
                         {confirmPasswordError && <InputValidation>{confirmPasswordError}</InputValidation>}
                         <AuthenticationButton>

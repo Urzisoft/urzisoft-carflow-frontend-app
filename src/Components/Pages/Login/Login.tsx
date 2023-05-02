@@ -1,17 +1,17 @@
 import React, { FC, useEffect, useState } from "react";
 import {
-    AuthenticationContainer,
-    AuthenticationTitle,
-    AuthenticationUserInputDetailsContainer,
     AuthenticationBackgroundColor,
     AuthenticationBackgroundImage,
     AuthenticationBox,
     AuthenticationButton,
+    AuthenticationContainer,
+    AuthenticationTitle,
+    AuthenticationUserInputDetailsContainer,
 } from "../../Common/Authentication/Authentication.css";
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
 import { Colors } from "../../../Utils/cssMedia";
-import { validateUsername, validatePassword } from "../../../Utils/Validation/Validation";
+import { validatePassword, validateUsername } from "../../../Utils/Validation/Validation";
 
 export const Login: FC = () => {
     const [username, setUsername] = useState<string>("");
@@ -29,14 +29,11 @@ export const Login: FC = () => {
     };
 
     useEffect(() => {
-        const validateAndSendPayload = () => {
-            const usernameErrorMsg = validateUsername(username);
-            const passwordErrorMsg = validatePassword(password);
+        const usernameErrorMsg = validateUsername(username);
+        const passwordErrorMsg = validatePassword(password);
 
-            setUsernameError(usernameErrorMsg);
-            setPasswordError(passwordErrorMsg);
-        }
-        validateAndSendPayload();
+        setUsernameError(usernameErrorMsg);
+        setPasswordError(passwordErrorMsg);
     }, [username, password]);
     
     return (

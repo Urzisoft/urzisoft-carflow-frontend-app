@@ -15,8 +15,8 @@ export const InputText = styled.input<{ isValid?: boolean, isEligible?: boolean 
     border: 2px solid ${(props) => props.isEligible ? (props.isValid ? Colors.turquoise : Colors.brightRed) : Colors.white};
     font-size: 18px;
     padding: 1.5% 2% 1.5% 2%;
-    transition: all 0.3 ease;
-    background-color: #edefee;   
+    transition: all 0.3s ease;
+    background-color: ${Colors.openGray};   
 
     :focus{
         outline: none;

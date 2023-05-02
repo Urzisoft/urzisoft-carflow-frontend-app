@@ -11,7 +11,7 @@ import {
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import { Colors } from "../../../Utils/cssMedia";
 import changePasswordBackgroundImage from "../../../Assets/Images/GreenCarChangePasswordBackground.png"
-import { validatePassword, validateConfirmPassword} from "../../../Utils/Validation/Validation";
+import { isNotParamEmpty, validateConfirmPassword, validatePassword } from "../../../Utils/Validation/Validation";
 
 export const ChangePassword: FC = () => {
 
@@ -36,16 +36,13 @@ export const ChangePassword: FC = () => {
     }
 
     useEffect(() => {
-        const validateAndSendPayload = () => {
-            const oldPasswordErrorMsg = validatePassword(oldPassword);
-            const newpasswordErrorMsg = validatePassword(newPassword);
-            const confirmNewPasswordErrorMsg = validateConfirmPassword(newPassword, confirmNewPassword);
+        const oldPasswordErrorMsg = validatePassword(oldPassword);
+        const newPasswordErrorMsg = validatePassword(newPassword);
+        const confirmNewPasswordErrorMsg = validateConfirmPassword(newPassword, confirmNewPassword);
 
-            setOldPasswordError(oldPasswordErrorMsg);
-            setNewPasswordError(newpasswordErrorMsg);
-            setConfirmNewPasswordError(confirmNewPasswordErrorMsg);    
-        }
-        validateAndSendPayload();
+        setOldPasswordError(oldPasswordErrorMsg);
+        setNewPasswordError(newPasswordErrorMsg);
+        setConfirmNewPasswordError(confirmNewPasswordErrorMsg);
     },[oldPassword, newPassword, confirmNewPassword]);
 
     return (
@@ -59,7 +56,7 @@ export const ChangePassword: FC = () => {
                             placeholder="Old Password"
                             onChange={handleInputOldPasswordChange}
                             isValid={!oldPasswordError}
-                            isEligible={oldPassword !== ""}
+                            isEligible={isNotParamEmpty(oldPassword)}
                         />
                         {oldPasswordError && <InputValidation>{oldPasswordError}</InputValidation>}
                         <InputField
@@ -67,7 +64,7 @@ export const ChangePassword: FC = () => {
                             placeholder="New Password"
                             onChange={handleInputNewPasswordChange}
                             isValid={!newPasswordError}
-                            isEligible={newPassword !== ""}
+                            isEligible={isNotParamEmpty(newPassword)}
                         />
                         {newPasswordError && <InputValidation>{newPasswordError}</InputValidation>}
                         <InputField
@@ -75,7 +72,7 @@ export const ChangePassword: FC = () => {
                             placeholder="Confirm New Password"
                             onChange={handleInputConfirmNewPasswordChange}
                             isValid={!confirmNewPasswordError}
-                            isEligible={confirmNewPassword !== ""}
+                            isEligible={isNotParamEmpty(confirmNewPassword)}
                         />
                         {confirmNewPasswordError && <InputValidation>{confirmNewPasswordError}</InputValidation>}
                         <AuthenticationButton>Change Password</AuthenticationButton>
