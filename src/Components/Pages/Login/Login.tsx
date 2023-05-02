@@ -1,20 +1,24 @@
 import React, { FC, useEffect, useState } from "react";
 import {
-    AuthenticationContainer,
-    AuthenticationTitle,
-    AuthenticationUserInputDetailsContainer,
     AuthenticationBackgroundColor,
     AuthenticationBackgroundImage,
     AuthenticationBox,
     AuthenticationButton,
+    AuthenticationContainer,
+    AuthenticationTitle,
+    AuthenticationUserInputDetailsContainer,
 } from "../../Common/Authentication/Authentication.css";
-import { InputField } from "../../Common/InputField/InputField";
+import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
 import { Colors } from "../../../Utils/cssMedia";
+import { isNotParamEmpty, validatePassword, validateUsername } from "../../../Utils/Validation/Validation";
 
 export const Login: FC = () => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+
+    const [usernameError, setUsernameError] = useState<string>("");
+    const [passwordError, setPasswordError] = useState<string>("");
 
     const handleInputUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
@@ -25,9 +29,13 @@ export const Login: FC = () => {
     };
 
     useEffect(() => {
-        // validate and send payload;
-    }, [username, password]);
+        const usernameErrorMsg = validateUsername(username);
+        const passwordErrorMsg = validatePassword(password);
 
+        setUsernameError(usernameErrorMsg);
+        setPasswordError(passwordErrorMsg);
+    }, [username, password]);
+    
     return (
         <AuthenticationBox>
             <AuthenticationBackgroundColor backgroundColor={Colors.darkBlue}>
@@ -38,12 +46,18 @@ export const Login: FC = () => {
                             type="text"
                             placeholder="Username"
                             onChange={handleInputUsernameChange}
+                            isValid={!usernameError}
+                            isEligible={isNotParamEmpty(username)}
                         />
+                        {usernameError && <InputValidation>{usernameError}</InputValidation>}
                         <InputField
                             type="password"
                             placeholder="Password"
                             onChange={handleInputPasswordChange}
+                            isValid={!passwordError}
+                            isEligible={isNotParamEmpty(password)}
                         />
+                        {passwordError && <InputValidation>{passwordError}</InputValidation>}
                         <AuthenticationButton>Login</AuthenticationButton>
                     </AuthenticationUserInputDetailsContainer>
                 </AuthenticationContainer>
