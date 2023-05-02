@@ -1,20 +1,21 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { FetchResponseGET } from "../Utils/Types";
 
-const useGetCustomFetch = <Data extends any, Param extends any>(url: RequestInfo): FetchResponseGET<Data, Param>  => {
+const useGetCustomFetch = <Data, Param>(url: RequestInfo): FetchResponseGET<Data, Param> => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [apiData, setApiData] = useState<Data | null>(null);
     const [serverError, setServerError] = useState(null);
 
-    const fetcher = async () => {
+    const fetcher = async (token?: Param) => {
         setIsLoading(true);
         try {
             const request = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
+                    ...(token && { Authorization: `Bearer ${token}` })
                 }
-            })
+            });
             const response = await request.json();
 
             if (response.errors) {
@@ -36,6 +37,6 @@ const useGetCustomFetch = <Data extends any, Param extends any>(url: RequestInfo
         loading: isLoading,
         fetcher
     };
-}
+};
 
 export default useGetCustomFetch;

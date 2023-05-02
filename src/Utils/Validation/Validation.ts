@@ -24,8 +24,6 @@ export const validateUsername = (username: string): string => {
 };
 
 export const validatePassword = (password: string): string => {
-    const isPasswordGenerallyNotValid = !/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(password);
-
     if (password === "") {
         return "";
     }
@@ -34,9 +32,6 @@ export const validatePassword = (password: string): string => {
     }
     if (commonPasswords.includes(password)) {
         return "The password is too common. Please choose a different one.";
-    }
-    if (isPasswordGenerallyNotValid) {
-        return "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
     }
 
     return "";

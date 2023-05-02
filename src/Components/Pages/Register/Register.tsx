@@ -11,6 +11,8 @@ import React, { FC, useEffect, useState } from "react";
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import registerBackgroundImage from "../../../Assets/Images/RedCarRegisterBackground.jpg";
 import { Colors } from "../../../Utils/cssMedia";
+import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
+import { requestUrls } from "../../../Backend/requestUrls";
 import {
     isNotParamEmpty,
     validateConfirmPassword,
@@ -18,13 +20,16 @@ import {
     validatePassword,
     validateUsername
 } from "../../../Utils/Validation/Validation";
+import { useRedirectHome } from "../../../Hooks/useRedirectHome";
 
 export const Register: FC = () => {
+    const { response: RegisterResponse, fetcher: sendRegisterPayload } = usePostCustomFetch<any, any>(requestUrls.authRegister);
+    const { navigateHome } = useRedirectHome();
+
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
-
     const [usernameError, setUsernameError] = useState<string>("");
     const [emailError, setEmailError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
@@ -57,7 +62,27 @@ export const Register: FC = () => {
         setPasswordError(passwordErrorMsg);
         setConfirmPasswordError(confirmPasswordErrorMsg);
     }, [username, email, password, confirmPassword]);
-    
+
+    const onRegisterButtonClick = () => {
+        const isUsernameValidForPayload = !usernameError && isNotParamEmpty(username);
+        const isEmailValidForPayload = !emailError && isNotParamEmpty(email);
+        const isPasswordValidForPayload = !passwordError && isNotParamEmpty(password);
+        const isConfirmPasswordValidForPayload = !confirmPasswordError && isNotParamEmpty(confirmPassword);
+        const isFormValid = isUsernameValidForPayload && isEmailValidForPayload && isPasswordValidForPayload
+            && isConfirmPasswordValidForPayload;
+
+        if (isFormValid) {
+            const payload = {
+                username: username,
+                email: email,
+                password: password
+            };
+
+            sendRegisterPayload(payload);
+            if (RegisterResponse.status === 'Success') navigateHome();
+        }
+    }
+
     return (
         <AuthenticationBox>
             <AuthenticationBackgroundColor backgroundColor={Colors.darkRed}>
@@ -96,7 +121,7 @@ export const Register: FC = () => {
                             isEligible={isNotParamEmpty(confirmPassword)}
                         />
                         {confirmPasswordError && <InputValidation>{confirmPasswordError}</InputValidation>}
-                        <AuthenticationButton>
+                        <AuthenticationButton onClick={onRegisterButtonClick}>
                             Create Account
                         </AuthenticationButton>
                     </AuthenticationUserInputDetailsContainer>
@@ -107,5 +132,5 @@ export const Register: FC = () => {
             />
         </AuthenticationBox>
     );
-    
+
 };

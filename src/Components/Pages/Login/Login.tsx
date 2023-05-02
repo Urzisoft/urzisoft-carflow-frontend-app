@@ -12,11 +12,12 @@ import { InputField, InputValidation } from "../../Common/InputField/InputField"
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
 import { Colors } from "../../../Utils/cssMedia";
 import { isNotParamEmpty, validatePassword, validateUsername } from "../../../Utils/Validation/Validation";
+import { useAuth } from "../../../Hooks/useAuth";
 
 export const Login: FC = () => {
+    const { logUserIn } = useAuth();
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-
     const [usernameError, setUsernameError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
 
@@ -35,7 +36,17 @@ export const Login: FC = () => {
         setUsernameError(usernameErrorMsg);
         setPasswordError(passwordErrorMsg);
     }, [username, password]);
-    
+
+    const onLoginButtonClick = () => {
+        const isUsernameValidForPayload = !usernameError && isNotParamEmpty(username);
+        const isPasswordValidForPayload = !passwordError && isNotParamEmpty(password);
+        const isFormValid = isUsernameValidForPayload && isPasswordValidForPayload;
+
+        if (isFormValid) {
+            logUserIn(username, password);
+        }
+    };
+
     return (
         <AuthenticationBox>
             <AuthenticationBackgroundColor backgroundColor={Colors.darkBlue}>
@@ -58,7 +69,7 @@ export const Login: FC = () => {
                             isEligible={isNotParamEmpty(password)}
                         />
                         {passwordError && <InputValidation>{passwordError}</InputValidation>}
-                        <AuthenticationButton>Login</AuthenticationButton>
+                        <AuthenticationButton onClick={onLoginButtonClick}>Login</AuthenticationButton>
                     </AuthenticationUserInputDetailsContainer>
                 </AuthenticationContainer>
             </AuthenticationBackgroundColor>
