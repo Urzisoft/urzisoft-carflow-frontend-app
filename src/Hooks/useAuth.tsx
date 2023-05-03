@@ -56,7 +56,7 @@ const useAuthService = () => {
 
     useEffect(() => {
         if (loginResponse) {
-            setAuthFields(loginResponse);
+            setAuthFields(loginResponse?.status ? undefined : loginResponse);
             navigateHome();
         }
         // eslint-disable-next-line
