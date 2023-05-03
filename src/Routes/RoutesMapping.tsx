@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link, redirect, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { Welcome } from "../Components/Pages/Welcome/Welcome";
 import { Dashboard } from "../Components/Pages/Dashboard/Dashboard";
 import { PageRoutes } from "../Utils/Routes";
@@ -11,8 +11,6 @@ import { ChangePassword } from "../Components/Pages/ChangePassword/ChangePasswor
 import { useAuth } from "../Hooks/useAuth";
 
 export const RoutesMapping: FC = () => {
-    const { isLoggedIn } = useAuth();
-
     const config = Config.getInstance();
     config.WelcomePageConfig = welcomePageValues;
 
@@ -24,18 +22,9 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.CHANGE_PASSWORD, component: <ChangePassword/>}
     ];
 
-    const requiredLoggedIn = [
-        PageRoutes.DASHBOARD,
-        PageRoutes.CHANGE_PASSWORD
-    ];
-
     return (
         <Routes>
             {pageRoutes.map((route) => {
-                if (requiredLoggedIn.includes(route.path) && !isLoggedIn) {
-                    return null;
-                }
-
                 return (
                     <Route
                         key={route.path}
