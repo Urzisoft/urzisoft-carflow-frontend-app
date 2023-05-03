@@ -10,15 +10,14 @@ const useAuthService = () => {
     const { set: setToken } = usePersistentState('token');
     const { store: isLoggedIn, set: setIsLoggedIn } = usePersistentState('loggedIn');
     const { store: tokenExpiration, set: setTokenExpiration } = usePersistentState('tokenExpiration');
-
-    const [directTokenAccess, setDirectTokenAccess] = useState<string>('');
-
     const {
         response: loginResponse,
         error: loginError,
         loading: loginLoading,
         fetcher: sendLoginPayload
     } = usePostCustomFetch<AuthResponseType, CredentialsType>(requestUrls.authLogin);
+
+    const [directTokenAccess, setDirectTokenAccess] = useState<string>('');
 
     const logUserIn = (username: string, password: string) => {
         const payload = {

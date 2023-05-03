@@ -2,13 +2,26 @@ import { Navbar, SidebarContainer, MenuIconOpen, SidebarMenu, MenuIconClose, Men
 import { FC, useState } from 'react';
 import * as FaIcons from 'react-icons/fa'
 import { SidebarConfig } from "../../../Utils/SidebarConfig";
+import { useAuth } from "../../../Hooks/useAuth";
 
 export const Sidebar: FC = () => {
+    const { logUserOut } = useAuth();
+
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
     const renderMenuItems = (shouldDisplayName?: boolean): JSX.Element[] => {
         return SidebarConfig.map((item, index) => {
+            if (item.name === 'Logout') {
+                return (
+                    <MenuItems key={index}>
+                        <MenuItemLinks to={item.path} onClick={logUserOut}>
+                            {item.icon}
+                            {shouldDisplayName && <span style={{ marginLeft: '16px' }}>{item.name}</span>}
+                        </MenuItemLinks>
+                    </MenuItems>
+                )
+            }
             return (
                 <MenuItems key={index}>
                     <MenuItemLinks to={item.path}>
