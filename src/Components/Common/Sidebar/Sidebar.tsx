@@ -12,19 +12,9 @@ export const Sidebar: FC = () => {
 
     const renderMenuItems = (shouldDisplayName?: boolean): JSX.Element[] => {
         return SidebarConfig.map((item, index) => {
-            if (item.name === 'Logout') {
-                return (
-                    <MenuItems key={index}>
-                        <MenuItemLinks to={item.path} onClick={logUserOut}>
-                            {item.icon}
-                            {shouldDisplayName && <span style={{ marginLeft: '16px' }}>{item.name}</span>}
-                        </MenuItemLinks>
-                    </MenuItems>
-                )
-            }
             return (
                 <MenuItems key={index}>
-                    <MenuItemLinks to={item.path}>
+                    <MenuItemLinks to={item.path} onClick={item.name === 'Logout' ? logUserOut : () => null}>
                         {item.icon}
                         {shouldDisplayName && <span style={{ marginLeft: '16px' }}>{item.name}</span>}
                     </MenuItemLinks>
