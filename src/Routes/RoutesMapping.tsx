@@ -1,14 +1,13 @@
 import { FC } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Welcome } from "../Components/Pages/Welcome/Welcome";
 import { Dashboard } from "../Components/Pages/Dashboard/Dashboard";
 import { PageRoutes } from "../Utils/Routes";
-import { Register} from "../Components/Pages/Register/Register";
+import { Register } from "../Components/Pages/Register/Register";
 import { Config } from "../Utils/Config";
 import { welcomePageValues } from "../Utils/HardcodedConfigs";
 import { Login } from "../Components/Pages/Login/Login";
 import { ChangePassword } from "../Components/Pages/ChangePassword/ChangePassword";
-import { useAuth } from "../Hooks/useAuth";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
