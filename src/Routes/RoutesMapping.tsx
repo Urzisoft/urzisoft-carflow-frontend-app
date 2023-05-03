@@ -10,7 +10,6 @@ import { Login } from "../Components/Pages/Login/Login";
 import { ChangePassword } from "../Components/Pages/ChangePassword/ChangePassword";
 
 export const RoutesMapping: FC = () => {
-
     const config = Config.getInstance();
     config.WelcomePageConfig = welcomePageValues;
 
