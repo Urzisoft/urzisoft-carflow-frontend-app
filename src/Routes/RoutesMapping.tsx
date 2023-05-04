@@ -19,7 +19,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.DASHBOARD, component: <Dashboard /> },
         { path: PageRoutes.REGISTER, component: <Register />},
         { path: PageRoutes.LOGIN,component: <Login />},
-        { path: PageRoutes.FUEL,component: <Fuel />}
+        { path: PageRoutes.FUEL,component: <Fuel />},
         { path: PageRoutes.LOGIN, component: <Login />},
         { path: PageRoutes.CHANGE_PASSWORD, component: <ChangePassword/>}
     ];
