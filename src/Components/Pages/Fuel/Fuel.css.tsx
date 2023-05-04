@@ -3,11 +3,11 @@ import { Breakpoints, maxWidthQuery, Colors } from "../../../Utils/cssMedia";
 import fuelDetailBackgroundImage from "../../../Assets/Images/FuelDetailBackgroundImage.jpg"
 
 type BackgroundImageProps = {
-    backgroundImg?: string;
+  backgroundImg?: string;
 };
 
 type LegendSquareColor = {
-    squareColor?: string;
+  squareColor?: string;
 }
 
 export const FuelContainer = styled.div`
@@ -27,11 +27,9 @@ export const FuelMainDescription = styled.div`
   color:${Colors.white};
   font-size:3em;
   background-color: ${Colors.darkBlue};
-
   ${maxWidthQuery(Breakpoints.medium)} {
     font-size: 2em;
   }
-
   ${maxWidthQuery(Breakpoints.small)} {
     font-size: 1.5em;
   }
@@ -39,8 +37,7 @@ export const FuelMainDescription = styled.div`
 
 export const FuelContentContainer = styled.div`
     background-color: ${Colors.darkBlue};
-    color:${Colors.darkBlue};
-    
+    color:${Colors.darkBlue}; 
 `
 export const CircleContainer = styled.div`
     background-color: ${Colors.darkBlue};
@@ -50,7 +47,7 @@ export const CircleContainer = styled.div`
     width: 100%;
     padding-top:10em;
      ${maxWidthQuery(Breakpoints.small)} {
-        flex-direction: column; // Change flex direction to column on small screens
+        flex-direction: column;
         align-items: center;
         display: flex;
         margin-left: 0;
@@ -60,7 +57,6 @@ export const CircleContainer = styled.div`
 
 export const Circle = styled.div<BackgroundImageProps>`
   justify-content: space-evenly;
-  
   width: 15vw;
   height: 15vw;
   border-radius: 50%;
@@ -68,23 +64,20 @@ export const Circle = styled.div<BackgroundImageProps>`
   background-image: url(${(props) => props.backgroundImg});
   background-size: 100%;
   filter:brightness(0.9);
-  transition: box-shadow 0.1s ease, transform 0.1s ease; // Add transition for box-shadow and transform
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
 
   &:hover {
-    border-radius: 49%; // Adjust border-radius to make the box-shadow more visible
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); // Adjust the box-shadow to spread around the circle
+    border-radius: 49%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
     transform: scale(1.05);
   }
-
   ${maxWidthQuery(Breakpoints.medium)} {
     width: 20vw;
     height: 20vw;
   }
-
   ${maxWidthQuery(Breakpoints.small)} {
     width: 30vw;
     height: 30vw;
-    
   }
 `;
 
@@ -92,18 +85,14 @@ export const CircleTextContainer = styled.div`
     background-color: ${Colors.darkBlue};
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: nowrap; // Add flex-wrap property to wrap elements when there's not enough space
+    flex-wrap: nowrap; 
     flex-direction: row;
-    
-    
     padding-top: 3em;
     padding-bottom: 3em;
-
-    // Add media query for small screens
     ${maxWidthQuery(Breakpoints.small)} {
-        flex-direction: column; // Change flex direction to column on small screens
+        flex-direction: column;
         align-items: center;
-        flex-wrap: wrap; // Align items to center on small screens
+        flex-wrap: wrap;
     }
 `;
 
@@ -111,23 +100,20 @@ export const CircleText = styled.div`
     justify-content: space-evenly;
     font-size: 1.5vw;
     color: ${Colors.white};
-    margin: 0.5em; // Add margin for better spacing
-
+    margin: 0.5em;
     ${maxWidthQuery(Breakpoints.medium)} {
         font-size: 2.5vw;
     }
-
     ${maxWidthQuery(Breakpoints.small)} {
         font-size: 4vw;
-        width: 100%; // Add width property to 100% on small screens
-        text-align: center; // Align text to center on small screens
+        width: 100%;
+        text-align: center;
     }
 `;
 
 export const FuelInformationContainer = styled.div`
   background-color: ${Colors.darkBlue} ;
   width:100%;
-  
   padding-top: 5%;
   padding-bottom:10%;
    ${maxWidthQuery(Breakpoints.small)} {
@@ -149,18 +135,16 @@ export const FuelInformation = styled.text`
     font-size: 2vw;
     padding-left: 5%;
   }
-
-  ${maxWidthQuery(Breakpoints.small)} {
+    ${maxWidthQuery(Breakpoints.small)} {
     font-size: 4vw;
     padding-left: 2%;
-  }
+    }
 `;
 
 export const GasPricesChartContainer = styled.div`
   width: 80%;
   padding-left: 10%;
   position: relative;
-  
   background-color: white;
   &:before {
     content: '';
@@ -229,13 +213,8 @@ width: 2rem;
 height: 2rem;
 background-color: ${(props) => props.squareColor};
 margin-right: 1rem;
-
 ${maxWidthQuery(Breakpoints.small)} {
     width:1rem;
     height:1rem;
   }
 `;
-
-
-
-
