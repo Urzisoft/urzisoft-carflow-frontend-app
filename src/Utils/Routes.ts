@@ -3,6 +3,6 @@ export enum PageRoutes {
     DASHBOARD = '/dashboard',
     REGISTER = '/register',
     LOGIN = '/login',
-    FUEL = '/fuel'
+    FUEL = '/fuel',
     CHANGE_PASSWORD = "/change-password"
 }
