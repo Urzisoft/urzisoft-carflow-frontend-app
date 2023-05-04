@@ -20,7 +20,6 @@ export const FuelContainer = styled.div`
   }
 `;
 
-
 export const FuelMainDescription = styled.div`
   text-align: center;
   padding-top: 15vh;
@@ -35,10 +34,6 @@ export const FuelMainDescription = styled.div`
   }
 `;
 
-export const FuelContentContainer = styled.div`
-    background-color: ${Colors.darkBlue};
-    color:${Colors.darkBlue}; 
-`
 export const CircleContainer = styled.div`
     background-color: ${Colors.darkBlue};
     justify-content: space-evenly;

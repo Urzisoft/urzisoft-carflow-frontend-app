@@ -1,7 +1,19 @@
 import React, { FC, useEffect, useState } from "react";
 import {
-    FuelContainer, FuelMainDescription, FuelContentContainer,
-    Circle, CircleContainer, CircleText, CircleTextContainer, GasPricesChartContainer, GasPricesWidthContainer, FuelInformation, FuelInformationContainer, LegendContainer, LegendTitle, LegendList, LegendListElement, LegendListSquare
+    FuelContainer,
+    FuelMainDescription,
+    Circle, CircleContainer,
+    CircleText,
+    CircleTextContainer,
+    GasPricesChartContainer,
+    GasPricesWidthContainer,
+    FuelInformation,
+    FuelInformationContainer,
+    LegendContainer,
+    LegendTitle,
+    LegendList,
+    LegendListElement,
+    LegendListSquare
 } from "./Fuel.css";
 import petrolBackgroundImage from "../../../Assets/Images/PetrolBackgroundImage.png";
 import dieselBackgroundImage from "../../../Assets/Images/DieselBackgroundImage.png"
@@ -19,15 +31,6 @@ export const Fuel: FC = () => {
             <FuelContainer>
             </FuelContainer>
             <FuelMainDescription>Prices for Petrol - Diesel - GPL</FuelMainDescription>
-            {/* <CircleContainer>
-                <Circle backgroundImg={petrolBackgroundImage} />
-
-
-                <Circle backgroundImg={dieselBackgroundImage} />
-                <Circle backgroundImg={gplBackgroundImage} />
-
-            </CircleContainer> */}
-
             <CircleTextContainer>
                 <CircleContainer>
                     <Circle backgroundImg={petrolBackgroundImage} />
@@ -42,8 +45,6 @@ export const Fuel: FC = () => {
                     <CircleText>GPL price is 3.81 lei/liter.</CircleText>
                 </CircleContainer>
             </CircleTextContainer>
-
-
             <FuelInformationContainer>
                 <FuelInformation>Updated on 3/5/2023.</FuelInformation>
                 <FuelInformation>Standard fuel prices.</FuelInformation>
@@ -66,17 +67,13 @@ export const Fuel: FC = () => {
                         <LegendListSquare squareColor={Colors.brightRed}></LegendListSquare>
                         GPL Prices
                     </LegendListElement>
-
                 </LegendList>
-
-
             </LegendContainer>
             <GasPricesWidthContainer>
                 <GasPricesChartContainer>
                     <GasPricesChart data1={petrolPrices} data2={dieselPrices} data3={gplPrices} />
                 </GasPricesChartContainer>
             </GasPricesWidthContainer>
-
         </>
     );
 }
