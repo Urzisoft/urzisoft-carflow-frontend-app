@@ -8,22 +8,24 @@ export const InputBox = styled.div`
     margin-bottom: 9%;
 `;
 
-export const InputText = styled.input`
+export const InputText = styled.input<{ isValid?: boolean, isEligible?: boolean }>`
     height: 100%;
     width: 100%;
-
     border-radius: 5px;
-    border: 1px solid ${Colors.gray};
+    border: 2px solid ${(props) => props.isEligible ? (props.isValid ? Colors.turquoise : Colors.brightRed) : Colors.white};
     font-size: 18px;
     padding: 1.5% 2% 1.5% 2%;
     transition: all 0.3s ease;
-    background-color: ${Colors.openGray};
-  
-    :focus {
-        border-color: ${Colors.darkBlue};
+    background-color: ${Colors.openGray};   
+
+    :focus{
+        outline: none;
     }
-  
-    :valid {
-        border-color: ${Colors.green};
-    }
+`;
+
+export const InputValidation = styled.p`
+  color: ${Colors.brightRed} ;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: -10px;
 `;
