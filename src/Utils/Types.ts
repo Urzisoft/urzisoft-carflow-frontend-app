@@ -51,6 +51,7 @@ export type SideBarConfigType = {
 export type AuthResponseType = {
     token: string;
     expiration: string;
+    status?: number;
 };
 
 export type CredentialsType = {

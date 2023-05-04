@@ -5,6 +5,7 @@ import { Car } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import useValidateUser from "../../../Hooks/useValidateUser";
+import { useAuth } from "../../../Hooks/useAuth";
 
 export const Dashboard: FC = () => {
     const { response, loading, error, fetcher } = useGetCustomFetch<Car[], string>(requestUrls.cars);
@@ -21,8 +22,6 @@ export const Dashboard: FC = () => {
            setCars(response);
        }
     }, [response]);
-
-    if (loading || error) return null;
 
     return (
         <>
