@@ -3,14 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import { Welcome } from "../Components/Pages/Welcome/Welcome";
 import { Dashboard } from "../Components/Pages/Dashboard/Dashboard";
 import { PageRoutes } from "../Utils/Routes";
-import { Register} from "../Components/Pages/Register/Register";
+import { Register } from "../Components/Pages/Register/Register";
 import { Config } from "../Utils/Config";
 import { welcomePageValues } from "../Utils/HardcodedConfigs";
 import { Login } from "../Components/Pages/Login/Login";
+import { Fuel } from "../Components/Pages/Fuel/Fuel";
 import { ChangePassword } from "../Components/Pages/ChangePassword/ChangePassword";
 
 export const RoutesMapping: FC = () => {
-
     const config = Config.getInstance();
     config.WelcomePageConfig = welcomePageValues;
 
@@ -19,7 +19,9 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.DASHBOARD, component: <Dashboard /> },
         { path: PageRoutes.REGISTER, component: <Register />},
         { path: PageRoutes.LOGIN,component: <Login />},
-        { path: PageRoutes.CHANGEPASSWORD,component: <ChangePassword/>}
+        { path: PageRoutes.FUEL,component: <Fuel />}
+        { path: PageRoutes.LOGIN, component: <Login />},
+        { path: PageRoutes.CHANGE_PASSWORD, component: <ChangePassword/>}
     ];
 
     return (
