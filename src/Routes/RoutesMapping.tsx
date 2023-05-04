@@ -8,6 +8,7 @@ import { Config } from "../Utils/Config";
 import { welcomePageValues } from "../Utils/HardcodedConfigs";
 import { Login } from "../Components/Pages/Login/Login";
 import { Fuel } from "../Components/Pages/Fuel/Fuel";
+import { ChangePassword } from "../Components/Pages/ChangePassword/ChangePassword";
 
 export const RoutesMapping: FC = () => {
 
@@ -20,6 +21,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.REGISTER, component: <Register />},
         { path: PageRoutes.LOGIN,component: <Login />},
         { path: PageRoutes.FUEL,component: <Fuel />}
+        { path: PageRoutes.CHANGEPASSWORD,component: <ChangePassword/>}
     ];
 
     return (
