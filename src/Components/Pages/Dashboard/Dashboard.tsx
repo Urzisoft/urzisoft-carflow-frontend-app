@@ -5,8 +5,11 @@ import { Car } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import useValidateUser from "../../../Hooks/useValidateUser";
+import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
+import { useAuth } from "../../../Hooks/useAuth";
 
 export const Dashboard: FC = () => {
+    const { isLoggedIn } = useAuth();
     const { response, loading, error, fetcher } = useGetCustomFetch<Car[], string>(requestUrls.cars);
     const { token } = useValidateUser();
 
@@ -22,8 +25,9 @@ export const Dashboard: FC = () => {
        }
     }, [response]);
 
-    if (loading || error) return null;
-
+    if (!isLoggedIn) {
+        return <OverlayNotification message={'Authentication required'} />;
+    }
     return (
         <>
             <Sidebar />

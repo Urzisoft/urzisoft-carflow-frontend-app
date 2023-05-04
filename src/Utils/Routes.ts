@@ -4,5 +4,5 @@ export enum PageRoutes {
     REGISTER = '/register',
     LOGIN = '/login',
     FUEL = '/fuel'
-    CHANGEPASSWORD = "/changepassword"
+    CHANGE_PASSWORD = "/change-password"
 }

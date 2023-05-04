@@ -66,7 +66,7 @@ export const WelcomeButton = styled.button`
     }
 
     &:hover {
-        background-color: ${Colors.brightRed};
+        background-color: ${Colors.darkRed};
         cursor: pointer;
     }
 `;
