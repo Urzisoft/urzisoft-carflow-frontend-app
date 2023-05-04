@@ -28,7 +28,6 @@ export const Dashboard: FC = () => {
     if (!isLoggedIn) {
         return <OverlayNotification message={'Authentication required'} />;
     }
-
     return (
         <>
             <Sidebar />
