@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 export const SidebarContainer = styled.div`
     display: flex;
+    position: relative;
+    z-index: 5;
 `;
 
 export const Navbar = styled.div`

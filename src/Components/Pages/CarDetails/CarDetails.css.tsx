@@ -21,10 +21,6 @@ export const DetailsContainer = styled.div`
   }
 `;
 
-export const Description = styled.div`
-    height: 80vh;
-`;
-
 export const TitleContainer = styled.div`
     height: 20%;
     width: 50%;
