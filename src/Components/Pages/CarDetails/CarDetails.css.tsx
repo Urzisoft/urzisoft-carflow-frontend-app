@@ -85,7 +85,7 @@ export const ModelContainer = styled.div`
 export const ImageContainer = styled.div`
     width=50%
     ${maxWidthQuery(Breakpoints.small)} {
-         width=100%
+         width=101%
     }
 `;
 export const Image = styled.div<ImgProps>`
