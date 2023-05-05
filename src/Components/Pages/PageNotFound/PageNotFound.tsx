@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC} from "react";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 import { useAuth } from "../../../Hooks/useAuth";
