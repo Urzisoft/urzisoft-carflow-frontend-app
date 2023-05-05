@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { CardItem,CardLink,CardImageWrapper, CardImage, CardInfo,CardText } from "./CarWashCardItem.css";
 
 interface CarWashCardProps {
@@ -7,10 +7,10 @@ interface CarWashCardProps {
     src: string;
     text: string;
 }
-
 interface CarWashCardItemProps extends CarWashCardProps {
     children?: React.ReactNode;
 }
+
 export const CarWashCardItem: FC<CarWashCardItemProps>= (props) => {
     return (
         <>

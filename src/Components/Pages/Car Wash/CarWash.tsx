@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { CardsSection, CardsMainTitle, CarWashBackgroundImage, CarWashButton, CarWashButtonsContainer, CarWashContainer, CarWashDetailText, CarWashTitle, CardsContainer, CardsWrapper, CardsList } from "./CarWash.css";
 import { CarWashCardItem } from "./CarWashCardItem/CarWashCardItem";
 import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
@@ -7,7 +7,6 @@ import EcoservWash from "../../../Assets/Images/Ecoservwash.jpg"
 import UltraProWash from "../../../Assets/Images/UltraPro.png"
 
 export const CarWash: FC = () => {
-
     const scrollToCardsSection = () => {
         const cardsSection = document.getElementById("cards-section");
         if (cardsSection) {
@@ -17,14 +16,14 @@ export const CarWash: FC = () => {
 
     return (
         <>
-        <CarWashContainer>
-            <CarWashBackgroundImage src={CarWashBackground} />
-            <CarWashTitle>KEEP YOUR CAR CLEAN</CarWashTitle>
-            <CarWashDetailText>What are you waiting for?</CarWashDetailText>
-            <CarWashButtonsContainer>
-                    <CarWashButton onClick={scrollToCardsSection}>GET STARTED</CarWashButton>       
-            </CarWashButtonsContainer>
-        </CarWashContainer>
+            <CarWashContainer>
+                <CarWashBackgroundImage src={CarWashBackground} />
+                <CarWashTitle>KEEP YOUR CAR CLEAN</CarWashTitle>
+                <CarWashDetailText>What are you waiting for?</CarWashDetailText>
+                <CarWashButtonsContainer>
+                    <CarWashButton onClick={scrollToCardsSection}>GET STARTED</CarWashButton>
+                </CarWashButtonsContainer>
+            </CarWashContainer>
             <CardsSection id="cards-section">
                 <CardsMainTitle>Check out these EPIC car washes</CardsMainTitle>
                 <CardsContainer>
@@ -32,7 +31,7 @@ export const CarWash: FC = () => {
                         <CardsList>
                             <CarWashCardItem
                                 src={UltraProWash}
-                                text=' József Attila 11 Street, Cluj-Napoca 400347'
+                                text='József Attila 11 Street, Cluj-Napoca 400347'
                                 label='Open'
                                 path='https://www.google.com/maps/dir//ultra+pro+wash+cluj/@46.7552032,23.5791962,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x47490dea8f92f4e7:0x3d9e00eb92dafb33!2m2!1d23.5975541!2d46.7598694'
                             >
@@ -58,8 +57,6 @@ export const CarWash: FC = () => {
                     </CardsWrapper>
                 </CardsContainer>
             </CardsSection>
-
         </>
-
     );
 }
