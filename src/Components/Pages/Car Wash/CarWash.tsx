@@ -26,7 +26,7 @@ export const CarWash: FC = () => {
             </CarWashButtonsContainer>
         </CarWashContainer>
             <CardsSection id="cards-section">
-                <CardsMainTitle>Check out these EPIC Destinations</CardsMainTitle>
+                <CardsMainTitle>Check out these EPIC car washes</CardsMainTitle>
                 <CardsContainer>
                     <CardsWrapper>
                         <CardsList>
