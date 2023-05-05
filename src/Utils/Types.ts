@@ -47,6 +47,11 @@ export type SideBarConfigType = {
     name: string;
     icon: JSX.Element;
 };
+export type CarDetailsConfigType = {
+    name: string;
+    value: string;
+    icon: JSX.Element;
+};
 
 export type AuthResponseType = {
     token: string;
