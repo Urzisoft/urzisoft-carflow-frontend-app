@@ -10,14 +10,18 @@ export const CarDetailContainer = styled.div`
    height: 80vh;  
    margin: auto;
    max-width: 75%;
-   margin-top: 3%;
+   margin-top: 5%;
    background-color: ${Colors.gray};
+    ${maxWidthQuery(Breakpoints.small)} {
+        position: relative;
+        left: 10%;
+        max-width: 70%;
+        height: 90vh;
+        }
 `;
 export const DetailsContainer = styled.div`
     width: 50%;
     padding: 30px;
-     ${maxWidthQuery(Breakpoints.small)} {
-    display: none;
   }
 `;
 
@@ -26,6 +30,10 @@ export const TitleContainer = styled.div`
     width: 50%;
     font-family:    Arial, Helvetica, sans-serif;
     font-weight:    bold;
+     ${maxWidthQuery(Breakpoints.small)} {
+        height: 10%;
+        width: 100%;
+  }
 `;
 
 export const BackButton = styled(Link)`
@@ -37,11 +45,13 @@ export const BackButton = styled(Link)`
     transition: 0.2s;
      &:hover {
         background-color: ${Colors.black};
-        border-radius: 50%;
         font-size: 1.4vw;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
         transform: scale(1.05);
         transition: 0.2s;
+    }
+    ${maxWidthQuery(Breakpoints.small)} {
+         font-size: 7vw;
     }
 `;
 export const BrandContainer = styled.div`
@@ -52,6 +62,10 @@ export const BrandContainer = styled.div`
     top 20%;
     font-size: 1.5vw;
     color: ${Colors.black};
+    ${maxWidthQuery(Breakpoints.small)} {
+         float: left;
+         font-size: 1em;
+    }
 `;
 
 export const ModelContainer = styled.div`
@@ -60,11 +74,18 @@ export const ModelContainer = styled.div`
     left: 13%;
     font-size: 2.5vw;
     margin: 2%;
+    ${maxWidthQuery(Breakpoints.small)} {
+         float: left;
+         font-size: 1.5em;
+         top 10%;
+    }
 `;
 
 export const ImageContainer = styled.div`
     width=50%
-    float: left;
+    ${maxWidthQuery(Breakpoints.small)} {
+         width=100%
+    }
 `;
 export const Image = styled.div<ImgProps>`
   width: 35vw;
@@ -80,19 +101,21 @@ export const Image = styled.div<ImgProps>`
     transform: scale(1.05);
     transition: 0.2s;
   }
-  ${maxWidthQuery(Breakpoints.medium)} {
-    width: 20vw;
-    height: 20vw;
-  }
   ${maxWidthQuery(Breakpoints.small)} {
-    width: 30vw;
-    height: 30vw;
-  }
+         width: 96%;
+         height: 40vw;
+         top:10%;
+    }
+
 `;
 export const DetailsGrid = styled.div`
     display: grid;
     grid-template-columns: 80% 80%;
     gap: 30px;
+    ${maxWidthQuery(Breakpoints.small)} {
+         gap: 10px;
+         grid-template-columns: 75% 75%;
+    }
 `;
 export const DetailsItem = styled.div`
     padding: 20px;
@@ -103,6 +126,10 @@ export const DetailsItem = styled.div`
     &:hover {
         transform: scale(1.05);
         transition: 0.2s;
+        }
+    ${maxWidthQuery(Breakpoints.small)} {
+         font-size: 10px;
+    }
 `;
 export const ContentGrid = styled.div`
     display: grid;
@@ -110,4 +137,7 @@ export const ContentGrid = styled.div`
     justify-content: space-evenly;
     flex-direction: row;
     width: 100%;
+    ${maxWidthQuery(Breakpoints.small)} {
+        grid-template-columns: 100%;
+    }
 `;
