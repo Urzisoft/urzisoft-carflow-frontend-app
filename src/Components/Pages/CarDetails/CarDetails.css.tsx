@@ -11,6 +11,7 @@ export const CarDetailContainer = styled.div`
    margin: auto;
    max-width: 75%;
    margin-top: 5%;
+   border-radius: 1%;
    background-color: ${Colors.gray};
     ${maxWidthQuery(Breakpoints.small)} {
         position: relative;
