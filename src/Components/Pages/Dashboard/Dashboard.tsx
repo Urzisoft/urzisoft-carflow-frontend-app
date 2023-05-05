@@ -1,12 +1,21 @@
 import { FC, useEffect, useState } from "react";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import { DashboardContainer } from "./Dashboard.css";
+import {
+    CarBrandName,
+    CardContainer,
+    CarModelName,
+    CarName,
+    DashboardContainer,
+    CarsGrid,
+    ImageContainer
+} from "./Dashboard.css";
 import { Car } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 import { useAuth } from "../../../Hooks/useAuth";
+import BmwX3M from "../../../Assets/Images/BMW_x3m.jpg";
 
 export const Dashboard: FC = () => {
     const { isLoggedIn } = useAuth();
@@ -35,10 +44,21 @@ export const Dashboard: FC = () => {
                 {cars?.map((car) => {
                 return (
                     <>
-                        <p>{car?.brand.name}</p>
+                        <CardContainer>
+                            <ImageContainer backgroundImg={BmwX3M}></ImageContainer>
+                            <CarName>
+                                <CarBrandName>{car.brand.name}</CarBrandName>
+                                <CarModelName>{car.model.name} {car.year} {car.gasType}</CarModelName>
+                            </CarName>
+                        </CardContainer>
                     </>
                 );
             })}
+
+               {/*<CarsGrid>*/}
+
+               {/*</CarsGrid>*/}
+
             </DashboardContainer>
         </>
     )
