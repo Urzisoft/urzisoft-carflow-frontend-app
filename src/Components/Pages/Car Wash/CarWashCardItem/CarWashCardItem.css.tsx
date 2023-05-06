@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { Colors } from "../../../../Utils/cssMedia";
+import { Breakpoints, Colors, minWidthQuery } from "../../../../Utils/cssMedia";
 
 export const CardItem = styled.li`
     display: flex;
     flex-wrap: wrap; 
-    width: 33%;
+    width: 90%;
     border-radius: 10px;
+
+      ${minWidthQuery(Breakpoints.large)} {
+          width: 33%;
+      }
 `;
 
 export const CardLink = styled(Link).attrs(props => ({ to: props.to }))`

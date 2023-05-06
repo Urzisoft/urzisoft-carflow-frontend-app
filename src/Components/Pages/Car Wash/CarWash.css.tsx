@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Breakpoints, maxWidthQuery, Colors, } from "../../../Utils/cssMedia";
 
 export const CarWashContainer = styled.div`
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     display: flex;
     flex-direction: column;
