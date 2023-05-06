@@ -17,7 +17,6 @@ export const Dashboard: FC = () => {
 
     useEffect(() => {
         fetcher(token);
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
