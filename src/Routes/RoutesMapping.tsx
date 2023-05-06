@@ -9,6 +9,7 @@ import { welcomePageValues } from "../Utils/HardcodedConfigs";
 import { Login } from "../Components/Pages/Login/Login";
 import { Fuel } from "../Components/Pages/Fuel/Fuel";
 import { ChangePassword } from "../Components/Pages/ChangePassword/ChangePassword";
+import { CarWash } from "../Components/Pages/Car Wash/CarWash";
 import { PageNotFound } from "../Components/Pages/PageNotFound/PageNotFound";
 
 export const RoutesMapping: FC = () => {
@@ -22,7 +23,8 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.LOGIN,component: <Login />},
         { path: PageRoutes.FUEL,component: <Fuel />},
         { path: PageRoutes.LOGIN, component: <Login />},
-        { path: PageRoutes.CHANGE_PASSWORD, component: <ChangePassword /> },
+        { path: PageRoutes.CHANGE_PASSWORD, component: <ChangePassword/>},
+        { path: PageRoutes.CAR_WASH, component: <CarWash/>},
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> }
     ];
 
