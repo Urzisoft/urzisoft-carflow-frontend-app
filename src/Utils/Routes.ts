@@ -5,5 +5,6 @@ export enum PageRoutes {
     LOGIN = '/login',
     FUEL = '/fuel',
     CHANGE_PASSWORD = "/change-password",
-    CAR_WASH="/car-wash"
+    CAR_WASH = "/car-wash",
+    PAGE_NOT_FOUND = "*"
 }
