@@ -1,19 +1,20 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import {
-    FuelContainer,
-    FuelMainDescription,
-    Circle, CircleContainer,
+    Circle,
+    CircleContainer,
     CircleText,
     CircleTextContainer,
-    GasPricesChartContainer,
-    GasPricesWidthContainer,
+    FuelContainer,
     FuelInformation,
     FuelInformationContainer,
+    FuelMainDescription,
+    GasPricesChartContainer,
+    GasPricesWidthContainer,
     LegendContainer,
-    LegendTitle,
     LegendList,
     LegendListElement,
-    LegendListSquare
+    LegendListSquare,
+    LegendTitle
 } from "./Fuel.css";
 import petrolBackgroundImage from "../../../Assets/Images/PetrolBackgroundImage.png";
 import dieselBackgroundImage from "../../../Assets/Images/DieselBackgroundImage.png"
