@@ -79,10 +79,8 @@ export const CardsMainTitle = styled.h1`
 `;
 
 export const CardsContainer = styled.div`
-    display: flex;
     flex-flow: column;
     align-items: center;
-    max-width: 1120px;
     width: 100%;
     margin: 0 auto;  
 `;
@@ -92,16 +90,15 @@ export const CardsWrapper = styled.div`
     margin: 50px 0 45px;
 `;
 
-export const CardsList = styled.ul`
-    padding-right:30px;
-    margin-bottom: 24px;
+export const CardsList = styled.div`
     display: flex;
-    flex: 1;
-    margin: 0 1rem;
+    flex-wrap: wrap;
     border-radius: 10px;
-    
+    justify-content: center;
+    align-items: center;
+  
     ${maxWidthQuery(Breakpoints.medium)} {
         display: flex;
         flex-direction: column;
-  }
+    }
 `;

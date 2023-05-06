@@ -13,17 +13,15 @@ interface CarWashCardItemProps extends CarWashCardProps {
 
 export const CarWashCardItem: FC<CarWashCardItemProps>= (props) => {
     return (
-        <>
-    <CardItem>
-        <CardLink to={props.path}>
-            <CardImageWrapper data-category={props.label}>
-                <CardImage src={props.src}></CardImage>
-            </CardImageWrapper>
-            <CardInfo>
-                <CardText>{props.text}</CardText>
-            </CardInfo>
-        </CardLink>
-    </CardItem>
-        </>
-    );
+        <CardItem>
+            <CardLink to={props.path}>
+                <CardImageWrapper data-category={props.label}>
+                    <CardImage src={props.src}></CardImage>
+                </CardImageWrapper>
+                <CardInfo>
+                    <CardText>{props.text}</CardText>
+                </CardInfo>
+            </CardLink>
+        </CardItem>
+    )
 }
