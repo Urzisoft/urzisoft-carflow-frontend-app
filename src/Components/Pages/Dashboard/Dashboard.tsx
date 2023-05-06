@@ -37,28 +37,40 @@ export const Dashboard: FC = () => {
     if (!isLoggedIn) {
         return <OverlayNotification message={'Authentication required'} />;
     }
+
+    const carsObjectMockup = [
+        {
+            thumbnail: BmwX3M,
+            title: "BMW",
+            model: "X3 2014 Diesel"
+        },
+        {
+            thumbnail: BmwX3M,
+            title: "BMW",
+            model: "X3 2014 Diesel"
+        },
+        {
+            thumbnail: BmwX3M,
+            title: "BMW",
+            model: "X3 2014 Diesel"
+        },
+    ];
+
     return (
         <>
             <Sidebar />
             <DashboardContainer>
-                {cars?.map((car) => {
-                return (
-                    <>
+                {carsObjectMockup.map((item) => {
+                    return (
                         <CardContainer>
-                            <ImageContainer backgroundImg={BmwX3M}></ImageContainer>
+                            <ImageContainer backgroundImg={item.thumbnail}></ImageContainer>
                             <CarName>
-                                <CarBrandName>{car.brand.name}</CarBrandName>
-                                <CarModelName>{car.model.name} {car.year} {car.gasType}</CarModelName>
+                                <CarBrandName>{item.title}</CarBrandName>
+                                <CarModelName>{item.model}</CarModelName>
                             </CarName>
                         </CardContainer>
-                    </>
-                );
-            })}
-
-               {/*<CarsGrid>*/}
-
-               {/*</CarsGrid>*/}
-
+                    );
+                })}
             </DashboardContainer>
         </>
     )
