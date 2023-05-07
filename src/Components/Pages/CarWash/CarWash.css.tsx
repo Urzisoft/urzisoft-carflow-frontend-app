@@ -71,6 +71,7 @@ export const CarWashButton = styled.button.attrs(props => ({
 
 export const CardsSection = styled.div`
     background: ${Colors.white};
+    margin-left: 5rem;
 `;
 
 export const CardsMainTitle = styled.h1`
