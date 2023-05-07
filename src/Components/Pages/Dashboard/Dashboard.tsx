@@ -10,19 +10,21 @@ import { useAuth } from "../../../Hooks/useAuth";
 
 export const Dashboard: FC = () => {
     const { isLoggedIn } = useAuth();
-    const { response, loading, error, fetcher } = useGetCustomFetch<Car[], string>(requestUrls.cars);
+    const { response, fetcher } = useGetCustomFetch<Car[], string>(requestUrls.cars);
     const { token } = useValidateUser();
 
     const [cars, setCars] = useState<Car[]>([]);
 
     useEffect(() => {
         fetcher(token);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     useEffect(() => {
        if (response) {
            setCars(response);
        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [response]);
 
     if (!isLoggedIn) {
