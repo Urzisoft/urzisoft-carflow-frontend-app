@@ -24,9 +24,9 @@ export const SidebarConfig: SideBarConfigType[] = [
         icon: <FaIcons.FaShower />
     },
     {
-        path: PageRoutes.HOME,
-        name: 'Settings',
-        icon: <FaIcons.FaTools />
+        path: PageRoutes.CHANGE_PASSWORD,
+        name: 'Change Password',
+        icon: <FaIcons.FaUserCheck />
     },
     {
         path: PageRoutes.LOGIN,

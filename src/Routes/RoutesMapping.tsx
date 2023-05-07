@@ -22,7 +22,6 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.REGISTER, component: <Register />},
         { path: PageRoutes.LOGIN,component: <Login />},
         { path: PageRoutes.FUEL,component: <Fuel />},
-        { path: PageRoutes.LOGIN, component: <Login />},
         { path: PageRoutes.CHANGE_PASSWORD, component: <ChangePassword/>},
         { path: PageRoutes.CAR_WASH, component: <CarWash/>},
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> }
