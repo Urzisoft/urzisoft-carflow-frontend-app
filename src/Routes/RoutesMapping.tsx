@@ -9,7 +9,7 @@ import { welcomePageValues } from "../Utils/HardcodedConfigs";
 import { Login } from "../Components/Pages/Login/Login";
 import { Fuel } from "../Components/Pages/Fuel/Fuel";
 import { ChangePassword } from "../Components/Pages/ChangePassword/ChangePassword";
-import { CarWash } from "../Components/Pages/Car Wash/CarWash";
+import { CarWash } from "../Components/Pages/CarWash/CarWash";
 import { PageNotFound } from "../Components/Pages/PageNotFound/PageNotFound";
 
 export const RoutesMapping: FC = () => {

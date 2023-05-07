@@ -1,10 +1,11 @@
 import React, { FC } from "react";
 import { CardsSection, CardsMainTitle, CarWashBackgroundImage, CarWashButton, CarWashButtonsContainer, CarWashContainer, CarWashDetailText, CarWashTitle, CardsContainer, CardsWrapper, CardsList } from "./CarWash.css";
-import { CarWashCardItem } from "./CarWashCardItem/CarWashCardItem";
+import { CarWashCardItem } from "../../Common/CarWashCardItem/CarWashCardItem";
 import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
 import JetPointImage from "../../../Assets/Images/JetPoint.jpeg"
 import EcoservWash from "../../../Assets/Images/Ecoservwash.jpg"
 import UltraProWash from "../../../Assets/Images/UltraPro.png"
+import { Sidebar } from "../../Common/Sidebar/Sidebar";
 
 export const CarWash: FC = () => {
     const scrollToCardsSection = () => {
@@ -72,6 +73,7 @@ export const CarWash: FC = () => {
 
     return (
         <>
+            <Sidebar />
             <CarWashContainer>
                 <CarWashBackgroundImage src={CarWashBackground} />
                 <CarWashTitle>KEEP YOUR CAR CLEAN</CarWashTitle>

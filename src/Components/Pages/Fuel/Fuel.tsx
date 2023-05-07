@@ -21,16 +21,18 @@ import dieselBackgroundImage from "../../../Assets/Images/DieselBackgroundImage.
 import gplBackgroundImage from "../../../Assets/Images/GPLBackgroundImage.png"
 import GasPricesChart from './GasPricesChart';
 import { Colors } from "../../../Utils/cssMedia";
+import { Sidebar } from "../../Common/Sidebar/Sidebar";
 
 export const Fuel: FC = () => {
 
     const petrolPrices = [4.78, 5.01, 5.47, 5.47, 5.56, 5.7, 5.82, 5.88, 5.97, 6.33, 6.19, 6.03, 6.39, 6.96, 7.95, 7.86, 8.18, 8.53, 8.58, 7.45, 7.18, 7.12, 7.67, 6.65, 6.4, 6.55, 6.53];
     const dieselPrices = [4.98, 5.19, 5.39, 5.36, 5.47, 5.55, 5.76, 5.73, 5.83, 6.22, 6.31, 6.05, 6.29, 6.84, 7.89, 8.34, 8.88, 9.16, 9.24, 8.13, 8.51, 8.51, 8.96, 7.78, 7.66, 7.4, 7.06];
     const gplPrices = [3.1, 3.26, 3.61, 3.61, 3.68, 3.79, 3.88, 3.93, 3.99, 4.25, 4.14, 4.01, 4.3, 4.76, 4.67, 4.7, 4.8, 4.9, 4.64, 4.41, 4.35, 4.81, 3.9, 3.7, 3.81, 3.71, 3.81]
+
     return (
         <>
-            <FuelContainer>
-            </FuelContainer>
+            <Sidebar />
+            <FuelContainer />
             <FuelMainDescription>Prices for Petrol - Diesel - GPL</FuelMainDescription>
             <CircleTextContainer>
                 <CircleContainer>

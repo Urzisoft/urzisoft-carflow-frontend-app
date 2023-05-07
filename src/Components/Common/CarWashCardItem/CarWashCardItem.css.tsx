@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { Breakpoints, Colors, minWidthQuery } from "../../../../Utils/cssMedia";
+import { Breakpoints, Colors, minWidthQuery } from "../../../Utils/cssMedia";
 
 export const CardItem = styled.li`
     display: flex;
