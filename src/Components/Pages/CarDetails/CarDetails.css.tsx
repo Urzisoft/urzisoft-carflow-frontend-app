@@ -45,10 +45,7 @@ export const BackButton = styled(Link)`
     border-radius: 50%;
     transition: 0.2s;
      &:hover {
-        background-color: ${Colors.black};
-        font-size: 1.4vw;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-        transform: scale(1.05);
+        color: ${Colors.black};
         transition: 0.2s;
     }
     ${maxWidthQuery(Breakpoints.small)} {
@@ -98,10 +95,6 @@ export const Image = styled.div<ImgProps>`
   background-image: url(${(props) => props.backgroundImg});
   background-size: 100%;
   transition: 0.2s;
-   &:hover {
-    transform: scale(1.05);
-    transition: 0.2s;
-  }
   ${maxWidthQuery(Breakpoints.small)} {
          width: 96%;
          height: 40vw;
@@ -111,6 +104,8 @@ export const Image = styled.div<ImgProps>`
 `;
 export const DetailsGrid = styled.div`
     display: grid;
+    position: relative;
+    top: 20px;
     grid-template-columns: 80% 80%;
     gap: 30px;
     ${maxWidthQuery(Breakpoints.small)} {
