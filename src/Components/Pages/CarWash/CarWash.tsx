@@ -1,16 +1,26 @@
 import React, { FC, useEffect, useState } from "react";
-import { CardsSection, CardsMainTitle, CarWashBackgroundImage, CarWashButton, CarWashButtonsContainer, CarWashContainer, CarWashDetailText, CarWashTitle, CardsContainer, CardsWrapper, CardsList } from "./CarWash.css";
+import {
+    CardsContainer,
+    CardsList,
+    CardsMainTitle,
+    CardsSection,
+    CardsWrapper,
+    CarWashBackgroundImage,
+    CarWashButton,
+    CarWashButtonsContainer,
+    CarWashContainer,
+    CarWashDetailText,
+    CarWashTitle
+} from "./CarWash.css";
 import { CarWashCardItem } from "../../Common/CarWashCardItem/CarWashCardItem";
 import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
-import JetPointImage from "../../../Assets/Images/JetPoint.jpeg"
-import EcoservWash from "../../../Assets/Images/Ecoservwash.jpg"
-import UltraProWash from "../../../Assets/Images/UltraPro.png"
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import { Car, CarWashStations } from "../../../Utils/Types";
+import { CarWashStations } from "../../../Utils/Types";
 import { useAuth } from "../../../Hooks/useAuth";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
+import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 
 export const CarWash: FC = () => {
     const { isLoggedIn } = useAuth();
@@ -41,6 +51,10 @@ export const CarWash: FC = () => {
     const getStationStatusByCurrentTime = (): string => {
         const currentHour = new Date().getHours();
         return (currentHour >= 8 && currentHour < 20) ? "Open" : "Closed";
+    }
+
+    if (!isLoggedIn) {
+        return <OverlayNotification message={'Authentication required'} />;
     }
 
     return (
