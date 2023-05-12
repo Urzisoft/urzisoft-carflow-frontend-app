@@ -74,11 +74,6 @@ export const CardsSection = styled.div`
     margin-left: 5rem;
 `;
 
-export const CardsMainTitle = styled.h1`
-    padding-top:3vw;
-    text-align: center;
-`;
-
 export const CardsContainer = styled.div`
     flex-flow: column;
     align-items: center;

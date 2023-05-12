@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
 import { Breakpoints, Colors, minWidthQuery } from "../../../Utils/cssMedia";
 
 export const CardItem = styled.li`
@@ -17,13 +16,17 @@ export const CardLink = styled.div`
     display: flex;
     flex-flow: column;
     width: 100%;
-    margin: 4rem;
+    margin-top: 4rem;
     box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
     -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
     filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
     border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
+
+      ${minWidthQuery(Breakpoints.medium)} {
+            margin: 4rem;
+      }
 `;
 
 export const CardImageWrapper = styled.figure<{ isClosed?: boolean }>`

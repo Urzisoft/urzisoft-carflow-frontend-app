@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import {
     CardsContainer,
     CardsList,
-    CardsMainTitle,
     CardsSection,
     CardsWrapper,
     CarWashBackgroundImage,
@@ -69,7 +68,6 @@ export const CarWash: FC = () => {
                 </CarWashButtonsContainer>
             </CarWashContainer>
             <CardsSection id="cards-section">
-                <CardsMainTitle>Check out these EPIC car washes</CardsMainTitle>
                 <CardsContainer>
                     <CardsWrapper>
                         <CardsList>
