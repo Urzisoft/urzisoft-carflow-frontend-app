@@ -65,6 +65,7 @@ export const CarWash: FC = () => {
                                         src={item.storageImageUrl}
                                         text={`${item.name} ${item.address}`}
                                         label={getStationStatusByCurrentTime()}
+                                        content={`City: ${item.city.name} | Price: ${item.standardPrice} EURO | Rank ${item.rank}`}
                                     />
                                 )
                             })}

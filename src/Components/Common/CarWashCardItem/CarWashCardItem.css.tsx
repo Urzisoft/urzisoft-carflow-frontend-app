@@ -78,3 +78,5 @@ export const CardText = styled.h5`
     font-size: 18px;
     line-height: 24px;
 `;
+
+export const CardContent = styled.p``;
