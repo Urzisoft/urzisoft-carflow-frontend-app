@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 export const SidebarContainer = styled.div`
     display: flex;
+    position: relative;
+    z-index: 5;
   
     * {
       z-index: 2;
@@ -51,7 +53,7 @@ export const MenuItems = styled.li`
     display: flex;
     justify-content: start;
     width: 100%;
-    height: 45px;
+    height: 35px;
     padding: 1rem 0 1.25rem;
 `;
 
