@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-type ImgProps = {
-    backgroundImg?: string;
-};
-
-
 export const DashboardContainer = styled.div`
     box-sizing: border-box;  
     padding: 0;
@@ -20,36 +15,25 @@ export const DashboardContainer = styled.div`
     height: 100vh;
 `;
 
-export const CarsGrid = styled.div`
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 30px;
-    border: solid black;
-    background-color: ghostwhite;
-    width: 75%;
-    height: 60%;
-    padding: 10px;
-    border-radius: 25px;
-`;
-
 export const CardContainer = styled.div`
     background-color: white;
-    width: 270px;
-    height: 300px;
+    width: 15rem;
+    height: 18rem;
     margin: 10px;
     border-radius: 15px;
     color: black;
+    transition: all 0.2s ease;
   
     :hover {
       background-color: rgb(62, 62, 62);
       color: white;
       cursor: pointer;
       transform: scale(1.1);
-      transition: all 1s ease;
+      transition: all 0.2s ease;
     }
 `;
 
-export const ImageContainer = styled.div<ImgProps>`
+export const ImageContainer = styled.div<{ backgroundImg?: string; }>`
     height: 170px;
     margin-bottom: 15px;
     background-size: cover;
