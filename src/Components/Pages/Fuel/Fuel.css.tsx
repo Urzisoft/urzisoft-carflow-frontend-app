@@ -24,9 +24,9 @@ export const FuelContainer = styled.div`
 export const FuelMainDescription = styled.div`
     text-align: center;
     padding-top: 15vh;
-    color:${Colors.white};
-    font-size:3em;
-    background-color: ${Colors.darkBlue};
+    color:${Colors.black};
+    font-size: 3em;
+    font-weight: bold;
   
     ${maxWidthQuery(Breakpoints.medium)} {
         font-size: 2em;
@@ -38,7 +38,6 @@ export const FuelMainDescription = styled.div`
 `;
 
 export const CircleContainer = styled.div`
-    background-color: ${Colors.darkBlue};
     justify-content: space-evenly;
     flex-direction: row;
     margin-left: 9%;
@@ -80,13 +79,10 @@ export const Circle = styled.div<BackgroundImageProps>`
 `;
 
 export const CircleTextContainer = styled.div`
-    background-color: ${Colors.darkBlue};
     display: flex;
     justify-content: space-evenly;
     flex-wrap: nowrap; 
     flex-direction: row;
-    padding-top: 3em;
-    padding-bottom: 3em;
   
     ${maxWidthQuery(Breakpoints.small)} {
         flex-direction: column;
@@ -98,8 +94,9 @@ export const CircleTextContainer = styled.div`
 export const CircleText = styled.div`
     justify-content: space-evenly;
     font-size: 1.5vw;
-    color: ${Colors.white};
+    color: ${Colors.black};
     margin: 0.5em;
+    font-weight: bold;
   
     ${maxWidthQuery(Breakpoints.medium)} {
         font-size: 2.5vw;
@@ -113,7 +110,6 @@ export const CircleText = styled.div`
 `;
 
 export const FuelInformationContainer = styled.div`
-    background-color: ${Colors.darkBlue} ;
     width:100%;
     padding-top: 5%;
     padding-bottom:10%;
@@ -124,12 +120,11 @@ export const FuelInformationContainer = styled.div`
 `;
 
 export const FuelInformation = styled.text`
-    background-color: ${Colors.darkBlue};
     width: 80%;
     height: 30%;
     display: block;
     font-size: 1.5vw;
-    color: ${Colors.white};
+    color: ${Colors.black};
     padding-top: 2%;
     padding-left: 9%;
     line-height: 1.6;
@@ -158,20 +153,17 @@ export const GasPricesChartContainer = styled.div`
         left: 0;
         bottom: 0;
         width: 10%;
-        background-color: ${Colors.darkBlue} 
     }
 `;
 
 export const GasPricesWidthContainer = styled.div`
     width:100%;
-    background-color: ${Colors.darkBlue};
     padding-bottom: 10vh;
     padding-top:4vh;
 `;
 
 export const LegendContainer = styled.div`
     position: relative;
-    background-color: ${Colors.darkBlue};
     padding-bottom: 1px;
 
     ${maxWidthQuery(Breakpoints.small)} {
@@ -184,7 +176,7 @@ export const LegendTitle = styled.div`
     font-weight: bold;
     margin-bottom: 1rem;
     margin-left: -9%;
-    color:${Colors.white};
+    color:${Colors.black};
     
     ${maxWidthQuery(Breakpoints.small)} {
         font-size:1.5rem;
@@ -205,7 +197,7 @@ export const LegendList = styled.ul`
 
 export const LegendListElement = styled.li`
     margin-right: 2rem;
-    color:${Colors.white};
+    color: ${Colors.black};
     font-size: 1.5rem;
   
     ${maxWidthQuery(Breakpoints.small)} {
