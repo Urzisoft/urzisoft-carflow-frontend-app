@@ -9,22 +9,7 @@ export const SidebarConfig: SideBarConfigType[] = [
         icon: <FaIcons.FaTh />
     },
     {
-        path: PageRoutes.HOME,
-        name: 'User',
-        icon: <FaIcons.FaUserAlt />
-    },
-    {
-        path: PageRoutes.HOME,
-        name: 'Analytics',
-        icon: <FaIcons.FaRegChartBar />
-    },
-    {
-        path: PageRoutes.HOME,
-        name: 'My cars',
-        icon: <FaIcons.FaCar />
-    },
-    {
-        path: PageRoutes.HOME,
+        path: PageRoutes.FUEL,
         name: 'Gas Stations',
         icon: <FaIcons.FaGasPump />
     },
@@ -34,14 +19,14 @@ export const SidebarConfig: SideBarConfigType[] = [
         icon: <FaIcons.FaWrench />
     },
     {
-        path: PageRoutes.HOME,
+        path: PageRoutes.CAR_WASH,
         name: 'Car Washes',
         icon: <FaIcons.FaShower />
     },
     {
-        path: PageRoutes.HOME,
-        name: 'Settings',
-        icon: <FaIcons.FaTools />
+        path: PageRoutes.CHANGE_PASSWORD,
+        name: 'Change Password',
+        icon: <FaIcons.FaUserCheck />
     },
     {
         path: PageRoutes.LOGIN,

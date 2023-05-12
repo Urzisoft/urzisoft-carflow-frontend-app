@@ -6,6 +6,10 @@ export const SidebarContainer = styled.div`
     display: flex;
     position: relative;
     z-index: 5;
+  
+    * {
+      z-index: 2;
+    }
 `;
 
 export const Navbar = styled.div`
