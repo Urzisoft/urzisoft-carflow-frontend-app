@@ -6,7 +6,6 @@ import {
     CarModelName,
     CarName,
     DashboardContainer,
-    CarsGrid,
     ImageContainer
 } from "./Dashboard.css";
 import { Car } from "../../../Utils/Types";

@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { PageRoutes } from "../../../Utils/Routes";
-import { Car, Brand, Model } from "../../../Utils/Types";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
 import BlueCarLoginBackground from "../../../Assets/Images/BlueCarLoginBackground.png";
 import * as FaIcons from 'react-icons/fa'
@@ -24,7 +23,7 @@ import { CarDetailsConfig } from "../../../Utils/CarDetailsConfig";
 const renderCharacteristics = (): JSX.Element[] => {
     return CarDetailsConfig.map((item, index) => {
         return (
-                <DetailsItem>
+                <DetailsItem key={index}>
                     {item.icon}
                     <span style={{ marginLeft: '16px' }}>{item.value}</span>
                 </DetailsItem>
