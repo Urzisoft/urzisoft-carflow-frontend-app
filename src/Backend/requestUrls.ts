@@ -10,6 +10,9 @@ export const requestUrls = {
     cities: `${backendEnvironment}${routeBase}/cities`,
     city: `${backendEnvironment}${routeBase}/cities/${id}`,
 
+    carWashStations: `${backendEnvironment}${routeBase}/car-wash-stations`,
+    carWashStation: `${backendEnvironment}${routeBase}/car-wash-stations/${id}`,
+
     authRegister: `${backendEnvironment}${routeBase}/${authRouteBase}/register`,
     authLogin: `${backendEnvironment}${routeBase}/${authRouteBase}/login`,
 };

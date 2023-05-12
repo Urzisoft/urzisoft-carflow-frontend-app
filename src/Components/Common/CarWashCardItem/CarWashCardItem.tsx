@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { CardItem,CardLink,CardImageWrapper, CardImage, CardInfo,CardText } from "./CarWashCardItem.css";
 
 interface CarWashCardProps {
-    path: string;
     label: string;
     src: string;
     text: string;
@@ -14,8 +13,8 @@ interface CarWashCardItemProps extends CarWashCardProps {
 export const CarWashCardItem: FC<CarWashCardItemProps>= (props) => {
     return (
         <CardItem>
-            <CardLink to={props.path}>
-                <CardImageWrapper data-category={props.label}>
+            <CardLink>
+                <CardImageWrapper isClosed={props.label === 'Open'} data-category={props.label}>
                     <CardImage src={props.src}></CardImage>
                 </CardImageWrapper>
                 <CardInfo>

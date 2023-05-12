@@ -13,7 +13,7 @@ export const CardItem = styled.li`
       }
 `;
 
-export const CardLink = styled(Link).attrs(props => ({ to: props.to }))`
+export const CardLink = styled.div`
     display: flex;
     flex-flow: column;
     width: 100%;
@@ -26,7 +26,7 @@ export const CardLink = styled(Link).attrs(props => ({ to: props.to }))`
     text-decoration: none;
 `;
 
-export const CardImageWrapper = styled.figure`
+export const CardImageWrapper = styled.figure<{ isClosed?: boolean }>`
     position: relative;
     width: 100%;
     padding-top: 67%;
@@ -45,7 +45,7 @@ export const CardImageWrapper = styled.figure`
         font-size: 12px;
         font-weight: 700;
         color: ${Colors.white};
-        background-color: ${Colors.green};
+        background-color: ${(props) => props.isClosed ? Colors.green : Colors.brightRed };
         box-sizing: border-box;
     }
 `;

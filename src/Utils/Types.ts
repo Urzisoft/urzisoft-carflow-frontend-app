@@ -36,6 +36,25 @@ export type Car = {
     licensePlate: string;
 };
 
+export type CityType = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    county: string;
+};
+
+export type CarWashStations = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    standardPrice: number;
+    premiumPrice: number;
+    city: CityType;
+    address: string;
+    rank: string;
+    isSelfWash: boolean;
+};
+
 export type WelcomePageConfigType = {
     title: string;
     description: string;
