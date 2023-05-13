@@ -30,6 +30,7 @@ export const Dashboard: FC = () => {
     const [cities, setCities] = useState<CityType[]>([]);
 
     const ownBrands = useRef<BrandType[]>([]);
+    const mySet = new Set<BrandType>();
 
     useEffect(() => {
         fetchCars(token);
@@ -63,11 +64,15 @@ export const Dashboard: FC = () => {
     useEffect(() => {
         brands.forEach((brand) => {
             cars.forEach((car) => {
-                if (brand.name === car.brand.name && car.username === username && !ownBrands.current.includes(brand)) {
-                    ownBrands.current.push(brand);
+                if (brand.name === car.brand.name && car.username === username) {
+                    mySet.add(brand);
+                    const myArray = Array.from(mySet);
+                    const lastElement = myArray[myArray.length - 1];
+                    ownBrands.current.push(lastElement);
                 }
             })
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cars, brands]);
 
     if (!isLoggedIn) {
@@ -98,6 +103,8 @@ export const Dashboard: FC = () => {
                                 </CardContainer>
                             );
                         }
+
+                        return null;
                     })}
                 </DashboardContainer>
                 <StripeTitle>These all registered brands in the app</StripeTitle>
