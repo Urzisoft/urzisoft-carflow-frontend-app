@@ -12,19 +12,19 @@ export type FetchResponsePOST<data, param> = {
     fetcher: (arg: param) => any;
 };
 
-export type Brand = {
+export type BrandType = {
     name: string;
     description: string;
 };
 
-export type Model = {
+export type ModelType = {
     name: string;
 };
 
-export type Car = {
+export type CarType = {
     id?: number;
-    brand: Brand;
-    model: Model;
+    brand: BrandType;
+    model: ModelType;
     generation: string;
     year: number;
     gasType: string;
@@ -43,7 +43,7 @@ export type CityType = {
     county: string;
 };
 
-export type CarWashStations = {
+export type CarWashStationType = {
     id: number;
     storageImageUrl: string;
     name: string;
@@ -54,6 +54,13 @@ export type CarWashStations = {
     rank: string;
     isSelfWash: boolean;
 };
+
+export type PriceType = {
+    id: number;
+    value: number;
+    fuel: string;
+    date: string;
+}
 
 export type WelcomePageConfigType = {
     title: string;

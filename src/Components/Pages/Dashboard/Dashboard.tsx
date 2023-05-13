@@ -8,7 +8,7 @@ import {
     DashboardContainer,
     ImageContainer
 } from "./Dashboard.css";
-import { Car } from "../../../Utils/Types";
+import { CarType } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import useValidateUser from "../../../Hooks/useValidateUser";
@@ -18,10 +18,10 @@ import BmwX3M from "../../../Assets/Images/BMW_x3m.jpg";
 
 export const Dashboard: FC = () => {
     const { isLoggedIn } = useAuth();
-    const { response, fetcher } = useGetCustomFetch<Car[], string>(requestUrls.cars);
+    const { response, fetcher } = useGetCustomFetch<CarType[], string>(requestUrls.cars);
     const { token } = useValidateUser();
 
-    const [cars, setCars] = useState<Car[]>([]);
+    const [cars, setCars] = useState<CarType[]>([]);
 
     useEffect(() => {
         fetcher(token);

@@ -14,7 +14,7 @@ import {
 import { CarWashCardItem } from "../../Common/CarWashCardItem/CarWashCardItem";
 import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import { CarWashStations } from "../../../Utils/Types";
+import { CarWashStationType } from "../../../Utils/Types";
 import { useAuth } from "../../../Hooks/useAuth";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
@@ -23,10 +23,10 @@ import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNot
 
 export const CarWash: FC = () => {
     const { isLoggedIn } = useAuth();
-    const { response, fetcher } = useGetCustomFetch<CarWashStations[], string>(requestUrls.carWashStations);
+    const { response, fetcher } = useGetCustomFetch<CarWashStationType[], string>(requestUrls.carWashStations);
     const { token } = useValidateUser();
 
-    const [stations, setStations] = useState<CarWashStations[]>([]);
+    const [stations, setStations] = useState<CarWashStationType[]>([]);
 
     useEffect(() => {
         fetcher(token);
