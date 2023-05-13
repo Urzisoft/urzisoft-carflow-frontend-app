@@ -30,7 +30,7 @@ export const Dashboard: FC = () => {
     const [cities, setCities] = useState<CityType[]>([]);
 
     const ownBrands = useRef<BrandType[]>([]);
-    const mySet = new Set<BrandType>();
+    const brandsSet = new Set<BrandType>();
 
     useEffect(() => {
         fetchCars(token);
@@ -65,10 +65,8 @@ export const Dashboard: FC = () => {
         brands.forEach((brand) => {
             cars.forEach((car) => {
                 if (brand.name === car.brand.name && car.username === username) {
-                    mySet.add(brand);
-                    const myArray = Array.from(mySet);
-                    const lastElement = myArray[myArray.length - 1];
-                    ownBrands.current.push(lastElement);
+                    brandsSet.add(brand);
+                    ownBrands.current = Array.from(brandsSet);
                 }
             })
         })
