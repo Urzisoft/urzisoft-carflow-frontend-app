@@ -12,19 +12,23 @@ export type FetchResponsePOST<data, param> = {
     fetcher: (arg: param) => any;
 };
 
-export type Brand = {
+export type BrandType = {
+    id: number;
+    storageImageUrl: string;
     name: string;
     description: string;
 };
 
-export type Model = {
+export type ModelType = {
     name: string;
 };
 
-export type Car = {
-    id?: number;
-    brand: Brand;
-    model: Model;
+export type CarType = {
+    id: number;
+    storageImageUrl: string;
+    username: string;
+    brand: BrandType;
+    model: ModelType;
     generation: string;
     year: number;
     gasType: string;
@@ -34,6 +38,59 @@ export type Car = {
     engineSize: number;
     driveWheel: string;
     licensePlate: string;
+};
+
+export type CityType = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    county: string;
+};
+
+export type CarWashStationType = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    standardPrice: number;
+    premiumPrice: number;
+    city: CityType;
+    address: string;
+    rank: string;
+    isSelfWash: boolean;
+};
+
+export type PriceType = {
+    id: number;
+    value: number;
+    fuel: string;
+    date: string;
+};
+
+export type FuelType = {
+    id: number;
+    name: string;
+    description: string;
+    type: string;
+    quality: string;
+};
+
+export type GasStationsType = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    fuel: FuelType;
+    city: CityType;
+    address: string;
+    rank: string;
+};
+
+export type CarServicesType = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    description: string;
+    address: string;
+    mainBrand: BrandType;
 };
 
 export type WelcomePageConfigType = {
@@ -47,8 +104,14 @@ export type SideBarConfigType = {
     name: string;
     icon: JSX.Element;
 };
+export type CarDetailsConfigType = {
+    name: string;
+    value: any;
+    icon: JSX.Element;
+};
 
 export type AuthResponseType = {
+    username: string;
     token: string;
     expiration: string;
     status?: number;
@@ -58,3 +121,8 @@ export type CredentialsType = {
     username: string;
     password: string;
 };
+
+export type ChangePasswordType = {
+    username: string;
+    newPassword: string;
+}

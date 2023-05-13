@@ -7,6 +7,7 @@ import { requestUrls } from "../Backend/requestUrls";
 
 const useAuthService = () => {
     const { navigateHome } = useRedirectHome();
+    const { set: setUsername } = usePersistentState('userName');
     const { set: setToken } = usePersistentState('token');
     const { store: isLoggedIn, set: setIsLoggedIn } = usePersistentState('loggedIn');
     const { store: tokenExpiration, set: setTokenExpiration } = usePersistentState('tokenExpiration');
@@ -30,6 +31,7 @@ const useAuthService = () => {
 
     const setAuthFields = (props?: AuthResponseType) => {
         setIsLoggedIn(!!props);
+        setUsername(props ? props.username : '');
         setToken(props ? props.token : '');
         setDirectTokenAccess(props ? props.token : '');
         setTokenExpiration(props ? props.expiration : '');

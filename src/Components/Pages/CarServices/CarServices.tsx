@@ -1,33 +1,29 @@
 import React, { FC, useEffect, useState } from "react";
-import {
-    CardsContainer,
-    CardsList,
-    CardsSection,
-    CardsWrapper,
-    CarLocationBackgroundImage,
-    CarLocationButton,
-    CarLocationButtonsContainer,
-    CarLocationContainer,
-    CarLocationDetailText,
-    CarLocationTitle
-} from "../CommonCss/CarLocations.css";
 import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
-import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
+import CarServiceBackground from "../../../Assets/Images/CarServiceBackground.jpg"
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import { CarWashStationType } from "../../../Utils/Types";
+import { CarServicesType } from "../../../Utils/Types";
 import { useAuth } from "../../../Hooks/useAuth";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
+import {
+    CardsContainer, CardsList,
+    CardsSection, CardsWrapper,
+    CarLocationBackgroundImage, CarLocationButton,
+    CarLocationButtonsContainer, CarLocationContainer,
+    CarLocationDetailText,
+    CarLocationTitle
+} from "../CommonCss/CarLocations.css";
 
-export const CarWash: FC = () => {
+export const CarServices: FC = () => {
     const { isLoggedIn } = useAuth();
-    const { response, fetcher } = useGetCustomFetch<CarWashStationType[], string>(requestUrls.carWashStations);
+    const { response, fetcher } = useGetCustomFetch<CarServicesType[], string>(requestUrls.carServices);
     const { token } = useValidateUser();
 
-    const [stations, setStations] = useState<CarWashStationType[]>([]);
+    const [stations, setStations] = useState<CarServicesType[]>([]);
 
     useEffect(() => {
         fetcher(token);
@@ -56,8 +52,8 @@ export const CarWash: FC = () => {
         <>
             <Sidebar />
             <CarLocationContainer>
-                <CarLocationBackgroundImage src={CarWashBackground} />
-                <CarLocationTitle>KEEP YOUR CAR CLEAN</CarLocationTitle>
+                <CarLocationBackgroundImage src={CarServiceBackground} />
+                <CarLocationTitle>KEEP YOUR CAR MODERN</CarLocationTitle>
                 <CarLocationDetailText>What are you waiting for?</CarLocationDetailText>
                 <CarLocationButtonsContainer>
                     <CarLocationButton onClick={scrollToCardsSection}>GET STARTED</CarLocationButton>
@@ -73,7 +69,7 @@ export const CarWash: FC = () => {
                                         src={item.storageImageUrl}
                                         text={`${item.name} - ${item.address}`}
                                         label={getStationStatusByCurrentTime()}
-                                        content={`City: ${item.city.name} | Price: ${item.standardPrice} EURO | Rank ${item.rank}`}
+                                        content={`Brand: ${item.mainBrand.name}`}
                                     />
                                 )
                             })}

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
     Circle,
     CircleContainer,
@@ -22,30 +22,110 @@ import gplBackgroundImage from "../../../Assets/Images/GPLBackgroundImage.png"
 import GasPricesChart from './GasPricesChart';
 import { Colors } from "../../../Utils/cssMedia";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
+import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
+import { GasStationsType, PriceType } from "../../../Utils/Types";
+import { requestUrls } from "../../../Backend/requestUrls";
+import useValidateUser from "../../../Hooks/useValidateUser";
+import { useAuth } from "../../../Hooks/useAuth";
+import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
+import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
+import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
+import { CardsContainer, CardsList, CardsSection, CardsWrapper } from "../CommonCss/CarLocations.css";
 
 export const Fuel: FC = () => {
+    const { isLoggedIn } = useAuth();
+    const { response: pricesResponse, fetcher: fetchPrices } = useGetCustomFetch<PriceType[], string>(requestUrls.prices);
+    const { response: stationsResponse, fetcher: fetchStations } = useGetCustomFetch<GasStationsType[], string>(requestUrls.gasStations);
+    const { token } = useValidateUser();
 
-    const petrolPrices = [4.78, 5.01, 5.47, 5.47, 5.56, 5.7, 5.82, 5.88, 5.97, 6.33, 6.19, 6.03, 6.39, 6.96, 7.95, 7.86, 8.18, 8.53, 8.58, 7.45, 7.18, 7.12, 7.67, 6.65, 6.4, 6.55, 6.53];
-    const dieselPrices = [4.98, 5.19, 5.39, 5.36, 5.47, 5.55, 5.76, 5.73, 5.83, 6.22, 6.31, 6.05, 6.29, 6.84, 7.89, 8.34, 8.88, 9.16, 9.24, 8.13, 8.51, 8.51, 8.96, 7.78, 7.66, 7.4, 7.06];
-    const gplPrices = [3.1, 3.26, 3.61, 3.61, 3.68, 3.79, 3.88, 3.93, 3.99, 4.25, 4.14, 4.01, 4.3, 4.76, 4.67, 4.7, 4.8, 4.9, 4.64, 4.41, 4.35, 4.81, 3.9, 3.7, 3.81, 3.71, 3.81]
+    const [prices, setPrices] = useState<PriceType[]>([]);
+    const [petrolPricesState, setPetrolPricesState] = useState<number[]>([]);
+    const [dieselPricesState, setDieselPricesState] = useState<number[]>([]);
+    const [gplPricesState, setGplPricesState] = useState<number[]>([]);
+    const [priceDates, setPriceDates] = useState<string[]>([]);
+
+    const [stations, setStations] = useState<GasStationsType[]>([]);
+
+    useEffect(() => {
+        fetchPrices(token);
+        fetchStations(token);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token]);
+
+    useEffect(() => {
+        if (pricesResponse) {
+            setPrices(pricesResponse);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pricesResponse]);
+
+    useEffect(() => {
+        if (stationsResponse) {
+           setStations(stationsResponse);
+        }
+    }, [stationsResponse]);
+
+    let petrolPrices: number[] = [];
+    let gplPrices: number[] = [];
+    let dateLabels: string[] = [];
+    let dieselPrices: number[] = [];
+
+    useEffect(() => {
+        prices.forEach((price) => {
+           if (price.fuel === 'Petrol') {
+               dateLabels.push(price.date);
+               petrolPrices.push(price.value);
+               setPriceDates(dateLabels);
+               setPetrolPricesState(petrolPrices);
+           } else if (price.fuel === 'Gpl') {
+               gplPrices.push(price.value);
+               setGplPricesState(gplPrices);
+           } else if (price.fuel === 'Diesel') {
+               dieselPrices.push(price.value);
+               setDieselPricesState(dieselPrices);
+           }
+        });
+    }, [prices]);
+
+    if (!isLoggedIn) {
+        return <OverlayNotification message={'Authentication required'} />;
+    }
 
     return (
         <>
             <Sidebar />
             <FuelContainer />
+            <CardsSection id="cards-section">
+                <CardsContainer>
+                    <CardsWrapper>
+                        <CardsList>
+                            {stations.map((item) => {
+                                return (
+                                    <CardLocation
+                                        src={item.storageImageUrl}
+                                        text={`${item.name} - ${item.address}`}
+                                        label={getStationStatusByCurrentTime()}
+                                        content={`City: ${item.city.name} | Main Fuel: ${item.fuel.name} EURO | Rank ${item.rank}`}
+                                    />
+                                )
+                            })}
+                        </CardsList>
+                    </CardsWrapper>
+                </CardsContainer>
+            </CardsSection>
             <FuelMainDescription>Prices for Petrol - Diesel - GPL</FuelMainDescription>
             <CircleTextContainer>
                 <CircleContainer>
                     <Circle backgroundImg={petrolBackgroundImage} />
-                    <CircleText>Petrol price is 6.61 lei/liter.</CircleText>
+                    <CircleText>Petrol price is {petrolPricesState[petrolPricesState.length - 1]} lei/liter.</CircleText>
                 </CircleContainer>
                 <CircleContainer>
                     <Circle backgroundImg={dieselBackgroundImage} />
-                    <CircleText>Diesel price is 7.06 lei/liter.</CircleText>
+                    <CircleText>Diesel price is {dieselPricesState[dieselPricesState.length - 1]} lei/liter.</CircleText>
                 </CircleContainer>
                 <CircleContainer>
                     <Circle backgroundImg={gplBackgroundImage} />
-                    <CircleText>GPL price is 3.81 lei/liter.</CircleText>
+                    <CircleText>GPL price is {gplPricesState[gplPricesState.length - 1]} lei/liter.</CircleText>
                 </CircleContainer>
             </CircleTextContainer>
             <FuelInformationContainer>
@@ -74,7 +154,7 @@ export const Fuel: FC = () => {
             </LegendContainer>
             <GasPricesWidthContainer>
                 <GasPricesChartContainer>
-                    <GasPricesChart data1={petrolPrices} data2={dieselPrices} data3={gplPrices} />
+                    <GasPricesChart petrolPrices={petrolPricesState} dieselPrices={dieselPricesState} gplPrices={gplPricesState} dateLabels={priceDates} />
                 </GasPricesChartContainer>
             </GasPricesWidthContainer>
         </>

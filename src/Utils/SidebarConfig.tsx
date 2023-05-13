@@ -14,9 +14,9 @@ export const SidebarConfig: SideBarConfigType[] = [
         icon: <FaIcons.FaGasPump />
     },
     {
-        path: PageRoutes.HOME,
+        path: PageRoutes.CAR_SERVICES,
         name: 'Car Services',
-        icon: <FaIcons.FaWrench />
+        icon: <FaIcons.FaTools />
     },
     {
         path: PageRoutes.CAR_WASH,

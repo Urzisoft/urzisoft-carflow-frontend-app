@@ -4,12 +4,14 @@ import { Chart, ChartConfiguration, LineController, LineElement, PointElement, L
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale);
 
 interface GasPricesChartProps {
-    data1: number[];
-    data2: number[];
-    data3: number[];
+    petrolPrices: number[];
+    dieselPrices: number[];
+    gplPrices: number[];
+    dateLabels: string[];
 }
 
-const GasPricesChart: React.FC<GasPricesChartProps> = ({ data1, data2, data3 }) => {
+const GasPricesChart: React.FC<GasPricesChartProps> = ({ petrolPrices, dieselPrices,
+                                                           gplPrices, dateLabels }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const chartRef = useRef<Chart>();
 
@@ -24,31 +26,27 @@ const GasPricesChart: React.FC<GasPricesChartProps> = ({ data1, data2, data3 }) 
                 const config: ChartConfiguration = {
                     type: 'line',
                     data: {
-                        labels: [
-                            '01-21', '02-21', '03-21', '04-21', '05-21', '06-21', '07-21', '08-21', '09-21', '10-21', '11-21', '12-21',
-                            '01-22', '02-22', '03-22', '04-22', '05-22', '06-22', '07-22', '08-22', '09-22', '10-22', '11-22', '12-22',
-                            '01-23', '02-23', '03-23'
-                        ],
+                        labels: dateLabels,
                         datasets: [
                             {
                                 label: 'Petrol Prices',
-                                data: data1,
-                                fill: false,
-                                borderColor: 'red',
-                                tension: 0.1,
-                            },
-                            {
-                                label: 'Diesel Prices',
-                                data: data2,
+                                data: petrolPrices,
                                 fill: false,
                                 borderColor: 'green',
                                 tension: 0.1,
                             },
                             {
-                                label: 'GPL Prices',
-                                data: data3,
+                                label: 'Diesel Prices',
+                                data: dieselPrices,
                                 fill: false,
                                 borderColor: 'black',
+                                tension: 0.1,
+                            },
+                            {
+                                label: 'GPL Prices',
+                                data: gplPrices,
+                                fill: false,
+                                borderColor: 'red',
                                 tension: 0.1,
                             },
                         ],
@@ -78,7 +76,8 @@ const GasPricesChart: React.FC<GasPricesChartProps> = ({ data1, data2, data3 }) 
                 chartRef.current.destroy();
             }
         };
-    }, [data1, data2, data3]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [petrolPrices, dieselPrices, gplPrices]);
 
     return <canvas ref={canvasRef} />;
 };
