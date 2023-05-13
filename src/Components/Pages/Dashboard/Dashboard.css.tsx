@@ -16,7 +16,7 @@ export const DashboardContainer = styled.div`
     width: 100%;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div<{ onClick?: () => void}>`
     background-color: ${Colors.brightBlack};
     width: 15rem;
     height: auto;
