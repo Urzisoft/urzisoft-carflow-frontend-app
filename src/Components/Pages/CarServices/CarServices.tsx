@@ -1,33 +1,29 @@
 import React, { FC, useEffect, useState } from "react";
-import {
-    CardsContainer,
-    CardsList,
-    CardsSection,
-    CardsWrapper,
-    CarWashBackgroundImage,
-    CarWashButton,
-    CarWashButtonsContainer,
-    CarWashContainer,
-    CarWashDetailText,
-    CarWashTitle
-} from "./CarWash.css";
 import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
 import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import { CarWashStationType } from "../../../Utils/Types";
+import { CarServicesType, CarWashStationType } from "../../../Utils/Types";
 import { useAuth } from "../../../Hooks/useAuth";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
+import {
+    CardsContainer, CardsList,
+    CardsSection, CardsWrapper,
+    CarWashBackgroundImage, CarWashButton,
+    CarWashButtonsContainer, CarWashContainer,
+    CarWashDetailText,
+    CarWashTitle
+} from "../CarWash/CarWash.css";
 
-export const CarWash: FC = () => {
+export const CarServices: FC = () => {
     const { isLoggedIn } = useAuth();
-    const { response, fetcher } = useGetCustomFetch<CarWashStationType[], string>(requestUrls.carWashStations);
+    const { response, fetcher } = useGetCustomFetch<CarServicesType[], string>(requestUrls.carServices);
     const { token } = useValidateUser();
 
-    const [stations, setStations] = useState<CarWashStationType[]>([]);
+    const [stations, setStations] = useState<CarServicesType[]>([]);
 
     useEffect(() => {
         fetcher(token);
@@ -73,7 +69,7 @@ export const CarWash: FC = () => {
                                         src={item.storageImageUrl}
                                         text={`${item.name} - ${item.address}`}
                                         label={getStationStatusByCurrentTime()}
-                                        content={`City: ${item.city.name} | Price: ${item.standardPrice} EURO | Rank ${item.rank}`}
+                                        content={`Brand: ${item.mainBrand.name}`}
                                     />
                                 )
                             })}

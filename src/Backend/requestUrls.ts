@@ -15,6 +15,7 @@ export const requestUrls = {
 
     prices: `${backendEnvironment}${routeBase}/prices`,
     gasStations: `${backendEnvironment}${routeBase}/gas-stations`,
+    carServices: `${backendEnvironment}${routeBase}/car-services`,
 
     authRegister: `${backendEnvironment}${routeBase}/${authRouteBase}/register`,
     authLogin: `${backendEnvironment}${routeBase}/${authRouteBase}/login`,

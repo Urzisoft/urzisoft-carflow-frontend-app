@@ -103,7 +103,7 @@ export const Fuel: FC = () => {
                                 return (
                                     <CardLocation
                                         src={item.storageImageUrl}
-                                        text={`${item.name} ${item.address}`}
+                                        text={`${item.name} - ${item.address}`}
                                         label={getStationStatusByCurrentTime()}
                                         content={`City: ${item.city.name} | Main Fuel: ${item.fuel.name} EURO | Rank ${item.rank}`}
                                     />

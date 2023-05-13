@@ -80,6 +80,15 @@ export type GasStationsType = {
     rank: string;
 };
 
+export type CarServicesType = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    description: string;
+    address: string;
+    mainBrand: BrandType;
+};
+
 export type WelcomePageConfigType = {
     title: string;
     description: string;
