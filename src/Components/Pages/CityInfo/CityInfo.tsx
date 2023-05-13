@@ -92,7 +92,7 @@ export const CityInfo: FC = () => {
         <>
             <Sidebar />
             <CarLocationContainer>
-                <CarLocationBackgroundImage src={CarWashBackground} />
+                <CarLocationBackgroundImage src={city?.storageImageUrl} />
                 <CarLocationTitle>INFO ABOUT {city?.name}</CarLocationTitle>
                 <CarLocationDetailText>Check out!</CarLocationDetailText>
                 <CarLocationButtonsContainer>
@@ -141,7 +141,7 @@ export const CityInfo: FC = () => {
                     </CardsWrapper>
                     <CardsWrapper>
                         <ContentContainer>
-                            <StripeTitle>All the gas stations from {city?.name}</StripeTitle>
+                            <StripeTitle>All the car services from {city?.name}</StripeTitle>
                         </ContentContainer>
                         <CardsList>
                             {carServices.map((carService) => {
