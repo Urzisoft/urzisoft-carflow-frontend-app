@@ -14,6 +14,7 @@ export const requestUrls = {
     carWashStation: `${backendEnvironment}${routeBase}/car-wash-stations/${id}`,
 
     prices: `${backendEnvironment}${routeBase}/prices`,
+    gasStations: `${backendEnvironment}${routeBase}/gas-stations`,
 
     authRegister: `${backendEnvironment}${routeBase}/${authRouteBase}/register`,
     authLogin: `${backendEnvironment}${routeBase}/${authRouteBase}/login`,

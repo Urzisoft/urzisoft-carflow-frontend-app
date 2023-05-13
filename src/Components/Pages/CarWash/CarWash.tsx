@@ -20,6 +20,7 @@ import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
+import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
 
 export const CarWash: FC = () => {
     const { isLoggedIn } = useAuth();
@@ -46,11 +47,6 @@ export const CarWash: FC = () => {
             cardsSection.scrollIntoView({ behavior: "smooth" });
         }
     };
-
-    const getStationStatusByCurrentTime = (): string => {
-        const currentHour = new Date().getHours();
-        return (currentHour >= 8 && currentHour < 20) ? "Open" : "Closed";
-    }
 
     if (!isLoggedIn) {
         return <OverlayNotification message={'Authentication required'} />;

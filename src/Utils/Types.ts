@@ -60,7 +60,25 @@ export type PriceType = {
     value: number;
     fuel: string;
     date: string;
-}
+};
+
+export type FuelType = {
+    id: number;
+    name: string;
+    description: string;
+    type: string;
+    quality: string;
+};
+
+export type GasStationsType = {
+    id: number;
+    storageImageUrl: string;
+    name: string;
+    fuel: FuelType;
+    city: CityType;
+    address: string;
+    rank: string;
+};
 
 export type WelcomePageConfigType = {
     title: string;

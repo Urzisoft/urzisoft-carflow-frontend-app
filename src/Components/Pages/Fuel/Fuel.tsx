@@ -23,15 +23,19 @@ import GasPricesChart from './GasPricesChart';
 import { Colors } from "../../../Utils/cssMedia";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
-import { PriceType } from "../../../Utils/Types";
+import { CarWashStationType, GasStationsType, PriceType } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { useAuth } from "../../../Hooks/useAuth";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
+import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
+import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
+import { CardsContainer, CardsList, CardsSection, CardsWrapper } from "../CarWash/CarWash.css";
 
 export const Fuel: FC = () => {
     const { isLoggedIn } = useAuth();
-    const { response, fetcher } = useGetCustomFetch<PriceType[], string>(requestUrls.prices);
+    const { response: pricesResponse, fetcher: fetchPrices } = useGetCustomFetch<PriceType[], string>(requestUrls.prices);
+    const { response: stationsResponse, fetcher: fetchStations } = useGetCustomFetch<GasStationsType[], string>(requestUrls.gasStations);
     const { token } = useValidateUser();
 
     const [prices, setPrices] = useState<PriceType[]>([]);
@@ -40,17 +44,26 @@ export const Fuel: FC = () => {
     const [gplPricesState, setGplPricesState] = useState<number[]>([]);
     const [priceDates, setPriceDates] = useState<string[]>([]);
 
+    const [stations, setStations] = useState<GasStationsType[]>([]);
+
     useEffect(() => {
-        fetcher(token);
+        fetchPrices(token);
+        fetchStations(token);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     useEffect(() => {
-        if (response) {
-            setPrices(response);
+        if (pricesResponse) {
+            setPrices(pricesResponse);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [response]);
+    }, [pricesResponse]);
+
+    useEffect(() => {
+        if (stationsResponse) {
+           setStations(stationsResponse);
+        }
+    }, [stationsResponse]);
 
     let petrolPrices: number[] = [];
     let gplPrices: number[] = [];
@@ -82,6 +95,24 @@ export const Fuel: FC = () => {
         <>
             <Sidebar />
             <FuelContainer />
+            <CardsSection id="cards-section">
+                <CardsContainer>
+                    <CardsWrapper>
+                        <CardsList>
+                            {stations.map((item) => {
+                                return (
+                                    <CardLocation
+                                        src={item.storageImageUrl}
+                                        text={`${item.name} ${item.address}`}
+                                        label={getStationStatusByCurrentTime()}
+                                        content={`City: ${item.city.name} | Main Fuel: ${item.fuel.name} EURO | Rank ${item.rank}`}
+                                    />
+                                )
+                            })}
+                        </CardsList>
+                    </CardsWrapper>
+                </CardsContainer>
+            </CardsSection>
             <FuelMainDescription>Prices for Petrol - Diesel - GPL</FuelMainDescription>
             <CircleTextContainer>
                 <CircleContainer>
