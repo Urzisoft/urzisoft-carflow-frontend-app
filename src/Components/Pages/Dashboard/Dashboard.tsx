@@ -38,8 +38,6 @@ export const Dashboard: FC = () => {
         return <OverlayNotification message={'Authentication required'} />;
     }
 
-    console.log(username);
-
     return (
         <>
             <Sidebar />
