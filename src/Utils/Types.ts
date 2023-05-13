@@ -106,7 +106,7 @@ export type SideBarConfigType = {
 };
 export type CarDetailsConfigType = {
     name: string;
-    value: string;
+    value: any;
     icon: JSX.Element;
 };
 

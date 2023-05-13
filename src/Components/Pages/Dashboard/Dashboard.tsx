@@ -80,7 +80,7 @@ export const Dashboard: FC = () => {
             <ContentContainer>
                 <StripeTitle>These are your cars</StripeTitle>
                 <DashboardContainer>
-                    {cars.map((item) => {
+                    {cars.map((item, index) => {
                         const finalUrl = PageRoutes.CAR_DETAILS.replace(':id', `${item.id}`);
 
                         const navigateToDetailPage = () => {
@@ -89,7 +89,7 @@ export const Dashboard: FC = () => {
 
                         if (item.username === username) {
                             return (
-                                <CardContainer onClick={navigateToDetailPage}>
+                                <CardContainer onClick={navigateToDetailPage} key={index}>
                                     <ImageContainer backgroundImg={item.storageImageUrl}></ImageContainer>
                                     <CarName>
                                         <CarBrandName>{item.brand.name} {item.model.name}</CarBrandName>

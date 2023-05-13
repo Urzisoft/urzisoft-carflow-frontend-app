@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { PageRoutes } from "../../../Utils/Routes";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import BlueCarLoginBackground from "../../../Assets/Images/BlueCarLoginBackground.png";
 import * as FaIcons from 'react-icons/fa'
 
 import {
@@ -18,14 +17,15 @@ import {
     ContentGrid
 } from "./CarDetails.css";
 
-import { CarDetailsConfig } from "../../../Utils/CarDetailsConfig";
 import { useParams } from "react-router-dom";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
-import { CarType } from "../../../Utils/Types";
+import { CarDetailsConfigType, CarType } from "../../../Utils/Types";
 import useValidateUser from "../../../Hooks/useValidateUser";
+import * as GiIcons from "react-icons/gi";
+import * as TbIcons from "react-icons/tb";
 
-const renderCharacteristics = (): JSX.Element[] => {
+const renderCharacteristics = (CarDetailsConfig: CarDetailsConfigType[]): JSX.Element[] => {
     return CarDetailsConfig.map((item, index) => {
         return (
                 <DetailsItem key={index}>
@@ -57,7 +57,48 @@ export const CarDetails: FC = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [carResponse]);
 
-    console.log(car);
+    const CarDetailsConfig: CarDetailsConfigType[] = [
+        {
+            name: 'Year',
+            value: car?.year,
+            icon: <FaIcons.FaCalendarAlt />
+        },
+        {
+            name: 'Mileage',
+            value: car?.mileage,
+            icon: <FaIcons.FaTachometerAlt />
+        },
+        {
+            name: 'Gearbox',
+            value: car?.gearbox,
+            icon: <GiIcons.GiGearStickPattern />
+        },
+        {
+            name: 'Power',
+            value: car?.power,
+            icon: <FaIcons.FaHorse />
+        },
+        {
+            name: 'Engine Size',
+            value: car?.engineSize,
+            icon: <TbIcons.TbEngine />
+        },
+        {
+            name: 'Drive wheel',
+            value: car?.driveWheel,
+            icon: <GiIcons.GiSteeringWheel />
+        },
+        {
+            name: 'License plate',
+            value: car?.driveWheel,
+            icon: <TbIcons.TbBadgeAr />
+        },
+        {
+            name: 'Gas type',
+            value: car?.gasType,
+            icon: <FaIcons.FaGasPump />
+        }
+    ];
 
     return (
         <>
@@ -68,20 +109,20 @@ export const CarDetails: FC = () => {
                         <FaIcons.FaChevronLeft />
                     </BackButton>
                     <BrandContainer>
-                        FORD
+                        {car?.brand.name}
                     </BrandContainer>
                     <ModelContainer>
-                        GT
+                        {car?.model.name}
                     </ModelContainer>
                 </TitleContainer>
                 <hr />
                 <ContentGrid>
                     <ImageContainer>
-                        <Image backgroundImg={BlueCarLoginBackground}></Image>
+                        <Image backgroundImg={car?.storageImageUrl}></Image>
                     </ImageContainer>
                     <DetailsContainer>
                         <DetailsGrid>
-                            {renderCharacteristics()}
+                            {renderCharacteristics(CarDetailsConfig)}
                         </DetailsGrid>
                     </DetailsContainer>
                 </ContentGrid>
