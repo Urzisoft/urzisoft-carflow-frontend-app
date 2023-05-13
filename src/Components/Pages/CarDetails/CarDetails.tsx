@@ -14,7 +14,7 @@ import {
     ImageContainer,
     DetailsGrid,
     DetailsItem,
-    ContentGrid, DetailsIcons
+    ContentGrid
 } from "./CarDetails.css";
 
 import { useParams } from "react-router-dom";

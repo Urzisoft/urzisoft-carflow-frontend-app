@@ -85,6 +85,8 @@ export const Fuel: FC = () => {
                setDieselPricesState(dieselPrices);
            }
         });
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [prices]);
 
     if (!isLoggedIn) {
