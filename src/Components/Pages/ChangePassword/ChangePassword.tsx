@@ -12,8 +12,18 @@ import { InputField, InputValidation } from "../../Common/InputField/InputField"
 import { Colors } from "../../../Utils/cssMedia";
 import changePasswordBackgroundImage from "../../../Assets/Images/GreenCarChangePasswordBackground.png"
 import { isNotParamEmpty, validateConfirmPassword, validatePassword } from "../../../Utils/Validation/Validation";
+import useValidateUser from "../../../Hooks/useValidateUser";
+import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
+import { ChangePasswordType } from "../../../Utils/Types";
+import { requestUrls } from "../../../Backend/requestUrls";
+import { useRedirectHome } from "../../../Hooks/useRedirectHome";
 
 export const ChangePassword: FC = () => {
+    const { username } = useValidateUser();
+    const {
+        fetcher: sendChangePasswordPayload
+    } = usePostCustomFetch<any, ChangePasswordType>(requestUrls.changePassword);
+    const { navigateHome } = useRedirectHome();
 
     const [oldPassword, setOldPassword] = useState<string>("");
     const [newPassword, setNewPassword] = useState<string>("");
@@ -45,6 +55,22 @@ export const ChangePassword: FC = () => {
         setConfirmNewPasswordError(confirmNewPasswordErrorMsg);
     },[oldPassword, newPassword, confirmNewPassword]);
 
+    const onChangePasswordButtonClick = () => {
+        const isOldPasswordValidForPayload = !oldPasswordError && isNotParamEmpty(oldPassword);
+        const isNewPasswordValidForPayload = !newPasswordError && isNotParamEmpty(newPassword);
+        const isFormValid = isOldPasswordValidForPayload && isNewPasswordValidForPayload;
+
+        if (isFormValid) {
+            const payload = {
+                username: username,
+                newPassword: newPassword
+            };
+
+            sendChangePasswordPayload(payload);
+        }
+        navigateHome();
+    }
+
     return (
         <AuthenticationBox>
             <AuthenticationBackgroundColor backgroundColor={Colors.turquoise}>
@@ -75,7 +101,7 @@ export const ChangePassword: FC = () => {
                             isEligible={isNotParamEmpty(confirmNewPassword)}
                         />
                         {confirmNewPasswordError && <InputValidation>{confirmNewPasswordError}</InputValidation>}
-                        <AuthenticationButton>Change Password</AuthenticationButton>
+                        <AuthenticationButton onClick={onChangePasswordButtonClick}>Change Password</AuthenticationButton>
                     </AuthenticationUserInputDetailsContainer>
                 </AuthenticationContainer>
             </AuthenticationBackgroundColor>

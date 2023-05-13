@@ -1,56 +1,43 @@
 import styled from "styled-components";
+import { Colors } from "../../../Utils/cssMedia";
 
-type ImgProps = {
-    backgroundImg?: string;
-};
+export const ContentContainer = styled.div`
+    margin-left: 7rem;
+`;
 
+export const StripeTitle = styled.h2`
+  
+`;
 
 export const DashboardContainer = styled.div`
-    box-sizing: border-box;  
-    padding: 0;
-    margin: 0;
-    background: rgb(27, 27, 27);
-  
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
-  
     width: 100%;
-    height: 100vh;
 `;
 
-export const CarsGrid = styled.div`
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 30px;
-    border: solid black;
-    background-color: ghostwhite;
-    width: 75%;
-    height: 60%;
-    padding: 10px;
-    border-radius: 25px;
-`;
-
-export const CardContainer = styled.div`
-    background-color: white;
-    width: 270px;
-    height: 300px;
+export const CardContainer = styled.div<{ onClick?: () => void}>`
+    background-color: ${Colors.brightBlack};
+    width: 15rem;
+    height: auto;
     margin: 10px;
     border-radius: 15px;
-    color: black;
+    color: ${Colors.white};
+    transition: all 0.2s ease;
+    padding: 2rem;
+    text-align: center;
   
     :hover {
-      background-color: rgb(62, 62, 62);
-      color: white;
+      background-color: ${Colors.carCardBlack};
+      color: ${Colors.white};
       cursor: pointer;
       transform: scale(1.1);
-      transition: all 1s ease;
+      transition: all 0.2s ease;
     }
 `;
 
-export const ImageContainer = styled.div<ImgProps>`
-    height: 170px;
+export const ImageContainer = styled.div<{ backgroundImg?: string; }>`
+    height: 12em;
     margin-bottom: 15px;
     background-size: cover;
     border-radius: 15px 15px 0 0;
