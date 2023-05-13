@@ -8,7 +8,7 @@ interface GasPricesChartProps {
     dieselPrices: number[];
     gplPrices: number[];
     dateLabels: string[];
-}
+};
 
 const GasPricesChart: React.FC<GasPricesChartProps> = ({ petrolPrices, dieselPrices,
                                                            gplPrices, dateLabels }) => {
