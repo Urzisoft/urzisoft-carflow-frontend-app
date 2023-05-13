@@ -22,10 +22,10 @@ export const CarDetailContainer = styled.div`
         height: 90vh;
     }
 `;
+
 export const DetailsContainer = styled.div`
     width: 50%;
     padding: 30px;
-  }
 `;
 
 export const TitleContainer = styled.div`
@@ -59,7 +59,7 @@ export const BrandContainer = styled.div`
     margin: 2%;
     position: relative;
     left: 8%;
-    top 20%;
+    top: 20%;
     font-size: 1.5vw;
     color: ${Colors.black};
     ${maxWidthQuery(Breakpoints.small)} {
@@ -77,14 +77,14 @@ export const ModelContainer = styled.div`
     ${maxWidthQuery(Breakpoints.small)} {
          float: left;
          font-size: 1.5em;
-         top 10%;
+         top: 10%;
     }
 `;
 
 export const ImageContainer = styled.div`
-    width=50%
+    width: 50%
     ${maxWidthQuery(Breakpoints.small)} {
-         width=100%
+         width: 100%
     }
 `;
 export const Image = styled.div<ImgProps>`
