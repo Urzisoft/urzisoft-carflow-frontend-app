@@ -69,7 +69,7 @@ export const CarServices: FC = () => {
                                         src={item.storageImageUrl}
                                         text={`${item.name} - ${item.address}`}
                                         label={getStationStatusByCurrentTime()}
-                                        content={`Brand: ${item.mainBrand.name}`}
+                                        content={`Brand: ${item.mainBrand.name} | City: ${item.carServiceCity.name}`}
                                     />
                                 )
                             })}
