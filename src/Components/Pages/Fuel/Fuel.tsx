@@ -29,7 +29,7 @@ import useValidateUser from "../../../Hooks/useValidateUser";
 import { useAuth } from "../../../Hooks/useAuth";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
-import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
+import { getServicesStationStatusByCurrentTime } from "../../../Utils/generalUtils";
 import { CardsContainer, CardsList, CardsSection, CardsWrapper } from "../CommonCss/CarLocations.css";
 
 export const Fuel: FC = () => {
@@ -106,7 +106,7 @@ export const Fuel: FC = () => {
                                     <CardLocation
                                         src={item.storageImageUrl}
                                         text={`${item.name} - ${item.address}`}
-                                        label={getStationStatusByCurrentTime()}
+                                        label={'Open'}
                                         content={`City: ${item.city.name} | Main Fuel: ${item.fuel.name} EURO | Rank ${item.rank}`}
                                     />
                                 )

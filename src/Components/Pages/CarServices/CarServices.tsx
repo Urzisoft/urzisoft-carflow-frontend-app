@@ -8,7 +8,7 @@ import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
-import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
+import { getServicesStationStatusByCurrentTime } from "../../../Utils/generalUtils";
 import {
     CardsContainer, CardsList,
     CardsSection, CardsWrapper,
@@ -68,7 +68,7 @@ export const CarServices: FC = () => {
                                     <CardLocation
                                         src={item.storageImageUrl}
                                         text={`${item.name} - ${item.address}`}
-                                        label={getStationStatusByCurrentTime()}
+                                        label={getServicesStationStatusByCurrentTime()}
                                         content={`Brand: ${item.mainBrand.name} | City: ${item.carServiceCity.name}`}
                                     />
                                 )
