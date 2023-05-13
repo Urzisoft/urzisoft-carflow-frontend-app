@@ -14,7 +14,6 @@ import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 import { useAuth } from "../../../Hooks/useAuth";
-import BmwX3M from "../../../Assets/Images/BMW_x3m.jpg";
 
 export const Dashboard: FC = () => {
     const { isLoggedIn } = useAuth();
@@ -39,35 +38,17 @@ export const Dashboard: FC = () => {
         return <OverlayNotification message={'Authentication required'} />;
     }
 
-    const carsObjectMockup = [
-        {
-            thumbnail: BmwX3M,
-            title: "BMW",
-            model: "X3 2014 Diesel"
-        },
-        {
-            thumbnail: BmwX3M,
-            title: "BMW",
-            model: "X3 2014 Diesel"
-        },
-        {
-            thumbnail: BmwX3M,
-            title: "BMW",
-            model: "X3 2014 Diesel"
-        },
-    ];
-
     return (
         <>
             <Sidebar />
             <DashboardContainer>
-                {carsObjectMockup.map((item) => {
+                {cars.map((item) => {
                     return (
                         <CardContainer>
-                            <ImageContainer backgroundImg={item.thumbnail}></ImageContainer>
+                            <ImageContainer backgroundImg={item.storageImageUrl}></ImageContainer>
                             <CarName>
-                                <CarBrandName>{item.title}</CarBrandName>
-                                <CarModelName>{item.model}</CarModelName>
+                                <CarBrandName>{item.brand.name} {item.model.name}</CarBrandName>
+                                <CarModelName>{item.generation} {item.year}</CarModelName>
                             </CarName>
                         </CardContainer>
                     );

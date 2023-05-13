@@ -22,7 +22,9 @@ export type ModelType = {
 };
 
 export type CarType = {
-    id?: number;
+    id: number;
+    storageImageUrl: string;
+    username: string;
     brand: BrandType;
     model: ModelType;
     generation: string;
