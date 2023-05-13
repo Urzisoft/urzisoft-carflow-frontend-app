@@ -8,7 +8,7 @@ import {
     DashboardContainer,
     ImageContainer, StripeTitle
 } from "./Dashboard.css";
-import { BrandType, CarType } from "../../../Utils/Types";
+import { BrandType, CarType, CityType } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import useValidateUser from "../../../Hooks/useValidateUser";
@@ -19,15 +19,20 @@ export const Dashboard: FC = () => {
     const { isLoggedIn } = useAuth();
     const { response: carsResponse, fetcher: fetchCars } = useGetCustomFetch<CarType[], string>(requestUrls.cars);
     const { response: brandsResponse, fetcher: fetchBrands } = useGetCustomFetch<BrandType[], string>(requestUrls.brands);
+    const { response: citiesResponse, fetcher: fetchCities } = useGetCustomFetch<CityType[], string>(requestUrls.cities);
+
     const { token, username } = useValidateUser();
 
     const [cars, setCars] = useState<CarType[]>([]);
     const [brands, setBrands] = useState<BrandType[]>([]);
+    const [cities, setCities] = useState<CityType[]>([]);
+
     const ownBrands = useRef<BrandType[]>([]);
 
     useEffect(() => {
         fetchCars(token);
         fetchBrands(token);
+        fetchCities(token);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
@@ -45,6 +50,13 @@ export const Dashboard: FC = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [brandsResponse]);
+
+    useEffect(() => {
+        if (citiesResponse) {
+            setCities(citiesResponse);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [citiesResponse]);
 
     useEffect(() => {
         brands.forEach((brand) => {
@@ -100,6 +112,19 @@ export const Dashboard: FC = () => {
                                 <ImageContainer backgroundImg={brand.storageImageUrl}></ImageContainer>
                                 <CarName>
                                     <CarBrandName>{brand.name}</CarBrandName>
+                                </CarName>
+                            </CardContainer>
+                        );
+                    })}
+                </DashboardContainer>
+                <StripeTitle>All registered Cities we have info about</StripeTitle>
+                <DashboardContainer>
+                    {cities.map((city) => {
+                        return (
+                            <CardContainer>
+                                <ImageContainer backgroundImg={city.storageImageUrl}></ImageContainer>
+                                <CarName>
+                                    <CarBrandName>{city.name}</CarBrandName>
                                 </CarName>
                             </CardContainer>
                         );
