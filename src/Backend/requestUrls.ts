@@ -4,6 +4,8 @@ const authRouteBase = 'auth';
 const id = ':id';
 
 export const requestUrls = {
+    brands: `${backendEnvironment}${routeBase}/brands`,
+
     cars: `${backendEnvironment}${routeBase}/cars`,
     car: `${backendEnvironment}${routeBase}/cars/${id}`,
 

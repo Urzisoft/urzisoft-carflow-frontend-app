@@ -1,27 +1,31 @@
 import styled from "styled-components";
 import { Colors } from "../../../Utils/cssMedia";
 
+export const ContentContainer = styled.div`
+    margin-left: 7rem;
+`;
+
+export const StripeTitle = styled.h2`
+  
+`;
+
 export const DashboardContainer = styled.div`
-    box-sizing: border-box;  
-    padding: 0;
-    margin: 0;
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    height: 100vh;
 `;
 
 export const CardContainer = styled.div`
     background-color: ${Colors.brightBlack};
     width: 15rem;
-    height: 18rem;
+    height: auto;
     margin: 10px;
     border-radius: 15px;
     color: ${Colors.white};
     transition: all 0.2s ease;
-    padding: 1rem;
+    padding: 2rem;
+    text-align: center;
   
     :hover {
       background-color: ${Colors.carCardBlack};
@@ -33,7 +37,7 @@ export const CardContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div<{ backgroundImg?: string; }>`
-    height: 12rem;
+    height: 12em;
     margin-bottom: 15px;
     background-size: cover;
     border-radius: 15px 15px 0 0;

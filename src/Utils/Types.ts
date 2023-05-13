@@ -13,6 +13,8 @@ export type FetchResponsePOST<data, param> = {
 };
 
 export type BrandType = {
+    id: number;
+    storageImageUrl: string;
     name: string;
     description: string;
 };
