@@ -121,3 +121,8 @@ export type CredentialsType = {
     username: string;
     password: string;
 };
+
+export type ChangePasswordType = {
+    username: string;
+    newPassword: string;
+}
