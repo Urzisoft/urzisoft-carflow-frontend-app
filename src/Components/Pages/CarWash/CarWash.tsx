@@ -11,7 +11,7 @@ import {
     CarWashDetailText,
     CarWashTitle
 } from "./CarWash.css";
-import { CarWashCardItem } from "../../Common/CarWashCardItem/CarWashCardItem";
+import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
 import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
 import { CarWashStationType } from "../../../Utils/Types";
@@ -73,7 +73,7 @@ export const CarWash: FC = () => {
                         <CardsList>
                             {stations.map((item) => {
                                 return (
-                                    <CarWashCardItem
+                                    <CardLocation
                                         src={item.storageImageUrl}
                                         text={`${item.name} ${item.address}`}
                                         label={getStationStatusByCurrentTime()}

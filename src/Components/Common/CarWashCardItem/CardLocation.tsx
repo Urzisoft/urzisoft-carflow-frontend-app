@@ -19,7 +19,7 @@ interface CarWashCardItemProps extends CarWashCardProps {
     children?: React.ReactNode;
 }
 
-export const CarWashCardItem: FC<CarWashCardItemProps>= (props) => {
+export const CardLocation: FC<CarWashCardItemProps>= (props) => {
     return (
         <CardItem>
             <CardLink>
