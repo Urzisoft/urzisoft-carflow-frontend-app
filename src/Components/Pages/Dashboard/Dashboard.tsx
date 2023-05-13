@@ -74,10 +74,6 @@ export const Dashboard: FC = () => {
         return <OverlayNotification message={'Authentication required'} />;
     }
 
-    const finalUrl = (id: number) => {
-        return
-    }
-
     return (
         <>
             <Sidebar />
