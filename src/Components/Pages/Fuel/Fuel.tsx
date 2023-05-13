@@ -35,6 +35,10 @@ export const Fuel: FC = () => {
     const { token } = useValidateUser();
 
     const [prices, setPrices] = useState<PriceType[]>([]);
+    const [petrolPricesState, setPetrolPricesState] = useState<number[]>([]);
+    const [dieselPricesState, setDieselPricesState] = useState<number[]>([]);
+    const [gplPricesState, setGplPricesState] = useState<number[]>([]);
+    const [priceDates, setPriceDates] = useState<string[]>([]);
 
     useEffect(() => {
         fetcher(token);
@@ -58,10 +62,14 @@ export const Fuel: FC = () => {
            if (price.fuel == 'Petrol') {
                dateLabels.push(price.date);
                petrolPrices.push(price.value);
+               setPriceDates(dateLabels);
+               setPetrolPricesState(petrolPrices);
            } else if (price.fuel === 'Gpl') {
                gplPrices.push(price.value);
+               setGplPricesState(gplPrices);
            } else if (price.fuel === 'Diesel') {
                dieselPrices.push(price.value);
+               setDieselPricesState(dieselPrices);
            }
         });
     }, [prices]);
@@ -78,15 +86,15 @@ export const Fuel: FC = () => {
             <CircleTextContainer>
                 <CircleContainer>
                     <Circle backgroundImg={petrolBackgroundImage} />
-                    <CircleText>Petrol price is 6.61 lei/liter.</CircleText>
+                    <CircleText>Petrol price is {petrolPricesState[petrolPricesState.length - 1]} lei/liter.</CircleText>
                 </CircleContainer>
                 <CircleContainer>
                     <Circle backgroundImg={dieselBackgroundImage} />
-                    <CircleText>Diesel price is 7.06 lei/liter.</CircleText>
+                    <CircleText>Diesel price is {dieselPricesState[dieselPricesState.length - 1]} lei/liter.</CircleText>
                 </CircleContainer>
                 <CircleContainer>
                     <Circle backgroundImg={gplBackgroundImage} />
-                    <CircleText>GPL price is 3.81 lei/liter.</CircleText>
+                    <CircleText>GPL price is {gplPricesState[gplPricesState.length - 1]} lei/liter.</CircleText>
                 </CircleContainer>
             </CircleTextContainer>
             <FuelInformationContainer>
@@ -115,7 +123,7 @@ export const Fuel: FC = () => {
             </LegendContainer>
             <GasPricesWidthContainer>
                 <GasPricesChartContainer>
-                    <GasPricesChart petrolPrices={petrolPrices} dieselPrices={dieselPrices} gplPrices={gplPrices} dateLabels={dateLabels} />
+                    <GasPricesChart petrolPrices={petrolPricesState} dieselPrices={dieselPricesState} gplPrices={gplPricesState} dateLabels={priceDates} />
                 </GasPricesChartContainer>
             </GasPricesWidthContainer>
         </>
