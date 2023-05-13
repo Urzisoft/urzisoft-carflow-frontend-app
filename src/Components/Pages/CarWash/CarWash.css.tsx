@@ -18,7 +18,7 @@ export const CarWashBackgroundImage = styled.img`
     height: 100%;
     position: fixed;
     z-index: -1;
-    filter: brightness(0.7);
+    filter: brightness(0.5);
 `;
 
 export const CarWashTitle = styled.h1`

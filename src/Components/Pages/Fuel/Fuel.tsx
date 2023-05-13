@@ -23,7 +23,7 @@ import GasPricesChart from './GasPricesChart';
 import { Colors } from "../../../Utils/cssMedia";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
-import { CarWashStationType, GasStationsType, PriceType } from "../../../Utils/Types";
+import { GasStationsType, PriceType } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { useAuth } from "../../../Hooks/useAuth";
@@ -72,7 +72,7 @@ export const Fuel: FC = () => {
 
     useEffect(() => {
         prices.forEach((price) => {
-           if (price.fuel == 'Petrol') {
+           if (price.fuel === 'Petrol') {
                dateLabels.push(price.date);
                petrolPrices.push(price.value);
                setPriceDates(dateLabels);

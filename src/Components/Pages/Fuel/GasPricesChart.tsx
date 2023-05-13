@@ -76,6 +76,7 @@ const GasPricesChart: React.FC<GasPricesChartProps> = ({ petrolPrices, dieselPri
                 chartRef.current.destroy();
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [petrolPrices, dieselPrices, gplPrices]);
 
     return <canvas ref={canvasRef} />;

@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
-import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
+import CarServiceBackground from "../../../Assets/Images/CarServiceBackground.jpg"
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import { CarServicesType, CarWashStationType } from "../../../Utils/Types";
+import { CarServicesType } from "../../../Utils/Types";
 import { useAuth } from "../../../Hooks/useAuth";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
@@ -52,8 +52,8 @@ export const CarServices: FC = () => {
         <>
             <Sidebar />
             <CarWashContainer>
-                <CarWashBackgroundImage src={CarWashBackground} />
-                <CarWashTitle>KEEP YOUR CAR CLEAN</CarWashTitle>
+                <CarWashBackgroundImage src={CarServiceBackground} />
+                <CarWashTitle>KEEP YOUR CAR MODERN</CarWashTitle>
                 <CarWashDetailText>What are you waiting for?</CarWashDetailText>
                 <CarWashButtonsContainer>
                     <CarWashButton onClick={scrollToCardsSection}>GET STARTED</CarWashButton>
