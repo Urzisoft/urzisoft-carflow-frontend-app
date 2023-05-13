@@ -12,11 +12,11 @@ import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
 import {
     CardsContainer, CardsList,
     CardsSection, CardsWrapper,
-    CarWashBackgroundImage, CarWashButton,
-    CarWashButtonsContainer, CarWashContainer,
-    CarWashDetailText,
-    CarWashTitle
-} from "../CarWash/CarWash.css";
+    CarLocationBackgroundImage, CarLocationButton,
+    CarLocationButtonsContainer, CarLocationContainer,
+    CarLocationDetailText,
+    CarLocationTitle
+} from "../CommonCss/CarLocations.css";
 
 export const CarServices: FC = () => {
     const { isLoggedIn } = useAuth();
@@ -51,14 +51,14 @@ export const CarServices: FC = () => {
     return (
         <>
             <Sidebar />
-            <CarWashContainer>
-                <CarWashBackgroundImage src={CarServiceBackground} />
-                <CarWashTitle>KEEP YOUR CAR MODERN</CarWashTitle>
-                <CarWashDetailText>What are you waiting for?</CarWashDetailText>
-                <CarWashButtonsContainer>
-                    <CarWashButton onClick={scrollToCardsSection}>GET STARTED</CarWashButton>
-                </CarWashButtonsContainer>
-            </CarWashContainer>
+            <CarLocationContainer>
+                <CarLocationBackgroundImage src={CarServiceBackground} />
+                <CarLocationTitle>KEEP YOUR CAR MODERN</CarLocationTitle>
+                <CarLocationDetailText>What are you waiting for?</CarLocationDetailText>
+                <CarLocationButtonsContainer>
+                    <CarLocationButton onClick={scrollToCardsSection}>GET STARTED</CarLocationButton>
+                </CarLocationButtonsContainer>
+            </CarLocationContainer>
             <CardsSection id="cards-section">
                 <CardsContainer>
                     <CardsWrapper>

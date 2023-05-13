@@ -30,7 +30,7 @@ import { useAuth } from "../../../Hooks/useAuth";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
 import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
 import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
-import { CardsContainer, CardsList, CardsSection, CardsWrapper } from "../CarWash/CarWash.css";
+import { CardsContainer, CardsList, CardsSection, CardsWrapper } from "../CommonCss/CarLocations.css";
 
 export const Fuel: FC = () => {
     const { isLoggedIn } = useAuth();

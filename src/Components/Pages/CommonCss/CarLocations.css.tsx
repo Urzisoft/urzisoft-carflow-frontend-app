@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Breakpoints, maxWidthQuery, Colors, } from "../../../Utils/cssMedia";
 
-export const CarWashContainer = styled.div`
+export const CarLocationContainer = styled.div`
     height: 80vh;
     width: 100%;
     display: flex;
@@ -12,7 +12,7 @@ export const CarWashContainer = styled.div`
     object-fit: contain;
 `;
 
-export const CarWashBackgroundImage = styled.img`
+export const CarLocationBackgroundImage = styled.img`
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -21,7 +21,7 @@ export const CarWashBackgroundImage = styled.img`
     filter: brightness(0.5);
 `;
 
-export const CarWashTitle = styled.h1`
+export const CarLocationTitle = styled.h1`
     color: ${Colors.white};
     font-size: 100px;
     margin-top: -100px;
@@ -33,7 +33,7 @@ export const CarWashTitle = styled.h1`
   }
 `;
 
-export const CarWashDetailText = styled.p`
+export const CarLocationDetailText = styled.p`
     margin-top: 8px;
     color: ${Colors.white};
     font-size: 32px;
@@ -43,11 +43,11 @@ export const CarWashDetailText = styled.p`
   }
 `;
 
-export const CarWashButtonsContainer = styled.div`
+export const CarLocationButtonsContainer = styled.div`
     margin-top: 32px;
 `;
 
-export const CarWashButton = styled.button.attrs(props => ({
+export const CarLocationButton = styled.button.attrs(props => ({
     onClick: props.onClick
 }))`
     background-color: ${Colors.brightRed};

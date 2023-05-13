@@ -4,13 +4,13 @@ import {
     CardsList,
     CardsSection,
     CardsWrapper,
-    CarWashBackgroundImage,
-    CarWashButton,
-    CarWashButtonsContainer,
-    CarWashContainer,
-    CarWashDetailText,
-    CarWashTitle
-} from "./CarWash.css";
+    CarLocationBackgroundImage,
+    CarLocationButton,
+    CarLocationButtonsContainer,
+    CarLocationContainer,
+    CarLocationDetailText,
+    CarLocationTitle
+} from "../CommonCss/CarLocations.css";
 import { CardLocation } from "../../Common/CarWashCardItem/CardLocation";
 import CarWashBackground from "../../../Assets/Images/CarWashBackgroundImage.jpg"
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
@@ -55,14 +55,14 @@ export const CarWash: FC = () => {
     return (
         <>
             <Sidebar />
-            <CarWashContainer>
-                <CarWashBackgroundImage src={CarWashBackground} />
-                <CarWashTitle>KEEP YOUR CAR CLEAN</CarWashTitle>
-                <CarWashDetailText>What are you waiting for?</CarWashDetailText>
-                <CarWashButtonsContainer>
-                    <CarWashButton onClick={scrollToCardsSection}>GET STARTED</CarWashButton>
-                </CarWashButtonsContainer>
-            </CarWashContainer>
+            <CarLocationContainer>
+                <CarLocationBackgroundImage src={CarWashBackground} />
+                <CarLocationTitle>KEEP YOUR CAR CLEAN</CarLocationTitle>
+                <CarLocationDetailText>What are you waiting for?</CarLocationDetailText>
+                <CarLocationButtonsContainer>
+                    <CarLocationButton onClick={scrollToCardsSection}>GET STARTED</CarLocationButton>
+                </CarLocationButtonsContainer>
+            </CarLocationContainer>
             <CardsSection id="cards-section">
                 <CardsContainer>
                     <CardsWrapper>
