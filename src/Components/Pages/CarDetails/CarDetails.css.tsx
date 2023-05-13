@@ -7,18 +7,20 @@ type ImgProps = {
 };
 
 export const CarDetailContainer = styled.div`
-   height: 80vh;  
-   margin: auto;
-   max-width: 75%;
-   margin-top: 5%;
-   border-radius: 1%;
-   background-color: ${Colors.gray};
+    height: auto;  
+    margin: auto;
+    max-width: 75%;
+    margin-top: 5%;
+    border-radius: 1%;
+    background-color: ${Colors.gray};
+    padding: 3rem;
+  
     ${maxWidthQuery(Breakpoints.small)} {
         position: relative;
         left: 10%;
         max-width: 70%;
         height: 90vh;
-        }
+    }
 `;
 export const DetailsContainer = styled.div`
     width: 50%;
@@ -115,24 +117,32 @@ export const DetailsGrid = styled.div`
 `;
 export const DetailsItem = styled.div`
     padding: 20px;
-    font-size: 15px;
+    font-size: 1.5rem;
     background-color: ${Colors.openGray};
     text-align: center;
     transition: 0.2s;
+  
     &:hover {
         transform: scale(1.05);
         transition: 0.2s;
-        }
+    }
+  
     ${maxWidthQuery(Breakpoints.small)} {
          font-size: 10px;
     }
 `;
+
+export const DetailsIcons = styled.div`
+    font-size: 2rem;
+`;
+
 export const ContentGrid = styled.div`
     display: grid;
     grid-template-columns: auto 50%;
     justify-content: space-evenly;
     flex-direction: row;
     width: 100%;
+  
     ${maxWidthQuery(Breakpoints.small)} {
         grid-template-columns: 100%;
     }

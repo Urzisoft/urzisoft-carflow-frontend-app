@@ -14,7 +14,7 @@ import {
     ImageContainer,
     DetailsGrid,
     DetailsItem,
-    ContentGrid
+    ContentGrid, DetailsIcons
 } from "./CarDetails.css";
 
 import { useParams } from "react-router-dom";
@@ -29,8 +29,7 @@ const renderCharacteristics = (CarDetailsConfig: CarDetailsConfigType[]): JSX.El
     return CarDetailsConfig.map((item, index) => {
         return (
                 <DetailsItem key={index}>
-                    {item.icon}
-                    <span style={{ marginLeft: '16px' }}>{item.value}</span>
+                    <span style={{ marginLeft: '16px' }}>{item.icon} {item.value}</span>
                 </DetailsItem>
         )
     })
