@@ -83,20 +83,20 @@ export const Dashboard: FC = () => {
             <ContentContainer>
                 <StripeTitle>These are your cars</StripeTitle>
                 <DashboardContainer>
-                    {cars.map((item, index) => {
-                        const finalUrl = PageRoutes.CAR_DETAILS.replace(':id', `${item.id}`);
+                    {cars.map((car, index) => {
+                        const finalUrl = PageRoutes.CAR_DETAILS.replace(':id', `${car.id}`);
 
                         const navigateToDetailPage = () => {
                             navigate(finalUrl);
                         };
 
-                        if (item.username === username) {
+                        if (car.username === username) {
                             return (
                                 <CardContainer onClick={navigateToDetailPage} key={index}>
-                                    <ImageContainer backgroundImg={item.storageImageUrl}></ImageContainer>
+                                    <ImageContainer backgroundImg={car.storageImageUrl}></ImageContainer>
                                     <CarName>
-                                        <CarBrandName>{item.brand.name} {item.model.name}</CarBrandName>
-                                        <CarModelName>{item.generation} {item.year}</CarModelName>
+                                        <CarBrandName>{car.brand.name} {car.model.name}</CarBrandName>
+                                        <CarModelName>{car.generation} {car.year}</CarModelName>
                                     </CarName>
                                 </CardContainer>
                             );
@@ -107,12 +107,12 @@ export const Dashboard: FC = () => {
                 </DashboardContainer>
                 <StripeTitle>These all registered brands in the app</StripeTitle>
                 <DashboardContainer>
-                    {brands.map((item) => {
+                    {brands.map((brand, index) => {
                         return (
-                            <CardContainer>
-                                <ImageContainer backgroundImg={item.storageImageUrl}></ImageContainer>
+                            <CardContainer key={index}>
+                                <ImageContainer backgroundImg={brand.storageImageUrl}></ImageContainer>
                                 <CarName>
-                                    <CarBrandName>{item.name}</CarBrandName>
+                                    <CarBrandName>{brand.name}</CarBrandName>
                                 </CarName>
                             </CardContainer>
                         );
@@ -120,9 +120,9 @@ export const Dashboard: FC = () => {
                 </DashboardContainer>
                 <StripeTitle>All registered brands by you</StripeTitle>
                 <DashboardContainer>
-                    {ownBrands.current.map((brand) => {
+                    {ownBrands.current.map((brand, index) => {
                         return (
-                            <CardContainer>
+                            <CardContainer key={index}>
                                 <ImageContainer backgroundImg={brand.storageImageUrl}></ImageContainer>
                                 <CarName>
                                     <CarBrandName>{brand.name}</CarBrandName>
@@ -133,9 +133,15 @@ export const Dashboard: FC = () => {
                 </DashboardContainer>
                 <StripeTitle>All registered Cities we have info about</StripeTitle>
                 <DashboardContainer>
-                    {cities.map((city) => {
+                    {cities.map((city, index) => {
+                        const finalUrl = PageRoutes.CITY_INFO.replace(':id', `${city.id}`);
+
+                        const navigateToDetailPage = () => {
+                            navigate(finalUrl);
+                        };
+
                         return (
-                            <CardContainer>
+                            <CardContainer onClick={navigateToDetailPage} key={index}>
                                 <ImageContainer backgroundImg={city.storageImageUrl}></ImageContainer>
                                 <CarName>
                                     <CarBrandName>{city.name}</CarBrandName>

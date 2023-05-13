@@ -20,7 +20,7 @@ import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
-import { getServicesStationStatusByCurrentTime, getWashStationsStatusByCurrentTime } from "../../../Utils/generalUtils";
+import { getWashStationsStatusByCurrentTime } from "../../../Utils/generalUtils";
 
 export const CarWash: FC = () => {
     const { isLoggedIn } = useAuth();

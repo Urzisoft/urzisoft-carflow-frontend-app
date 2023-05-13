@@ -72,6 +72,7 @@ export const CarLocationButton = styled.button.attrs(props => ({
 export const CardsSection = styled.div`
     background: ${Colors.white};
     margin-left: 5rem;
+    padding: 1rem;
 `;
 
 export const CardsContainer = styled.div`

@@ -13,6 +13,7 @@ import { CarWash } from "../Components/Pages/CarWash/CarWash";
 import { PageNotFound } from "../Components/Pages/PageNotFound/PageNotFound";
 import { CarDetails } from "../Components/Pages/CarDetails/CarDetails";
 import { CarServices } from "../Components/Pages/CarServices/CarServices";
+import { CityInfo } from "../Components/Pages/CityInfo/CityInfo";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -28,6 +29,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.CAR_WASH, component: <CarWash/>},
         { path: PageRoutes.CAR_DETAILS, component: <CarDetails /> },
         { path: PageRoutes.CAR_SERVICES, component: <CarServices /> },
+        { path: PageRoutes.CITY_INFO, component: <CityInfo /> },
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> },
     ];
 
