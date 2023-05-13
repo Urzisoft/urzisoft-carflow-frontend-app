@@ -109,6 +109,7 @@ export type CarDetailsConfigType = {
 };
 
 export type AuthResponseType = {
+    username: string;
     token: string;
     expiration: string;
     status?: number;

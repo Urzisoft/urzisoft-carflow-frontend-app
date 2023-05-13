@@ -18,7 +18,7 @@ import { useAuth } from "../../../Hooks/useAuth";
 export const Dashboard: FC = () => {
     const { isLoggedIn } = useAuth();
     const { response, fetcher } = useGetCustomFetch<CarType[], string>(requestUrls.cars);
-    const { token } = useValidateUser();
+    const { token, username } = useValidateUser();
 
     const [cars, setCars] = useState<CarType[]>([]);
 
@@ -38,11 +38,14 @@ export const Dashboard: FC = () => {
         return <OverlayNotification message={'Authentication required'} />;
     }
 
+    console.log(username);
+
     return (
         <>
             <Sidebar />
             <DashboardContainer>
                 {cars.map((item) => {
+                    if (item.username === username)
                     return (
                         <CardContainer>
                             <ImageContainer backgroundImg={item.storageImageUrl}></ImageContainer>
