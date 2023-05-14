@@ -16,15 +16,15 @@ export const DropdownSelectContainer = styled.div`
 `;
 
 export const DropdownSelectElement = styled.select`
-    font-size: 1rem;
     font-weight: normal;
     max-width: 100%;
-    padding: 8px 24px 8px 10px;
+    padding: 0.7rem;
     border: none;
     background-color: transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    font-size: 1.2rem;
   
     :active {
         outline: none;

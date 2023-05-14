@@ -24,8 +24,8 @@ export const InputText = styled.input<{ isValid?: boolean, isEligible?: boolean 
 `;
 
 export const InputValidation = styled.p`
-  color: ${Colors.brightRed} ;
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: -10px;
+    color: ${Colors.brightRed} ;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -10px;
 `;
