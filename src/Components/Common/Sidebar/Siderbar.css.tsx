@@ -20,11 +20,13 @@ export const Navbar = styled.div`
 `;
 
 export const MenuIconOpen = styled(Link)`
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: start;
     font-size: 2rem;
-    color: ${Colors.darkRed};
+    color: ${Colors.black};
+    background: ${Colors.white};
+    border-radius: 25%;
 `;
 
 export const MenuIconClose = styled(Link)`
