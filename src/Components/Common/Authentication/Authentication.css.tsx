@@ -5,6 +5,7 @@ import { Colors } from "../../../Utils/cssMedia";
 type AuthenticationBackgroundColorProps = {
     backgroundColor?: string;
     shouldNotHaveClipPath?: boolean;
+    isNotAuthScreen?: boolean;
 };
 
 type BackgroundImageProps = {
@@ -20,13 +21,13 @@ export const FormGeneralBox = styled.div`
     background-color: ${Colors.darkBlue};
 `;
 
-export const FormGeneralContainer = styled.div<{ maxWidth?: number }>`
+export const FormGeneralContainer = styled.div<{ maxWidth?: number, isNotAuthScreen?: boolean }>`
     max-width: ${(props) => props.maxWidth || 20}%;
     width: 100%;
     background: ${Colors.white};
     padding: 1.5% 2%;
     border-radius: 5px;
-    margin: 5rem auto;
+    ${(props) => props.isNotAuthScreen ? 'margin: 5rem auto;' : 'margin: 9% 10% 0;'}
 
     ${maxWidthQuery(Breakpoints.medium)} {
         max-width: 90%;
@@ -79,6 +80,7 @@ export const FormGeneralBackgroundColor = styled.div<AuthenticationBackgroundCol
     background-color: ${(props) => props.backgroundColor || Colors.darkBlue};
     position: absolute;
     top: 0;
+    ${(props) => !props.isNotAuthScreen ? 'bottom: 0;' : 'none'}
     width: 100%;
     z-index: 1;
 
