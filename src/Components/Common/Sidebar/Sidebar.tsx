@@ -14,7 +14,7 @@ export const Sidebar: FC = () => {
         return SidebarConfig.map((item, index) => {
             return (
                 <MenuItems key={index}>
-                    <MenuItemLinks to={item.path} onClick={item.name === 'Logout' ? logUserOut : () => null}>
+                    <MenuItemLinks to={item.path} onClick={item.name === 'Logout' ? logUserOut : () => null} isActive={item.path === window.location.pathname}>
                         {item.icon}
                         {shouldDisplayName && <span style={{ marginLeft: '16px' }}>{item.name}</span>}
                     </MenuItemLinks>

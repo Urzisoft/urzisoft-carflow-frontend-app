@@ -20,11 +20,13 @@ export const Navbar = styled.div`
 `;
 
 export const MenuIconOpen = styled(Link)`
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: start;
     font-size: 2rem;
-    color: ${Colors.darkRed};
+    color: ${Colors.black};
+    background: ${Colors.white};
+    border-radius: 25%;
 `;
 
 export const MenuIconClose = styled(Link)`
@@ -55,16 +57,18 @@ export const MenuItems = styled.li`
     padding: 1rem 0 1.25rem;
 `;
 
-export const MenuItemLinks = styled(Link)`
+export const MenuItemLinks = styled(Link)<{ isActive?: boolean }>`
     display: flex;
     align-items: center;
     padding: 2rem;
     font-size: 20px;
     text-decoration: none;
     border-radius: 5px;
-    color: ${Colors.white};
+    color: ${(props) => props.isActive ? Colors.brightRed : Colors.white};
+    ${(props) => props.isActive ? `background-color: ${Colors.white};` : 'none'};
     transition: 0.2s;
-
+    width: 100%;
+  
     &:hover {
         background-color: ${Colors.white};
         color: ${Colors.brightRed};
