@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { PageRoutes } from "../../../Utils/Routes";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
 import * as FaIcons from 'react-icons/fa'
@@ -14,7 +14,7 @@ import {
     ImageContainer,
     DetailsGrid,
     DetailsItem,
-    ContentGrid, DetailsIcons
+    ContentGrid, ButtonWrapper
 } from "./CarDetails.css";
 
 import { useParams } from "react-router-dom";
@@ -24,13 +24,16 @@ import { CarDetailsConfigType, CarType } from "../../../Utils/Types";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import * as GiIcons from "react-icons/gi";
 import * as TbIcons from "react-icons/tb";
+import { FormButton } from "../../Common/Authentication/Authentication.css";
+import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
+import { useRedirectHome } from "../../../Hooks/useRedirectHome";
 
 const renderCharacteristics = (CarDetailsConfig: CarDetailsConfigType[]): JSX.Element[] => {
     return CarDetailsConfig.map((item, index) => {
         return (
-                <DetailsItem key={index}>
-                    <span style={{ marginLeft: '16px' }}>{item.icon} {item.value}</span>
-                </DetailsItem>
+            <DetailsItem key={index}>
+                <span style={{ marginLeft: '16px' }}>{item.icon} {item.value}</span>
+            </DetailsItem>
         )
     })
 };
@@ -40,6 +43,10 @@ export const CarDetails: FC = () => {
     const { token } = useValidateUser();
     const carObjectRequestUrl = requestUrls.car.replace(':id', `${id}`);
     const { response: carResponse, fetcher: fetchCar } = useGetCustomFetch<CarType, string>(carObjectRequestUrl);
+    const {
+        fetcher: deleteCarPayload,
+    } = usePostCustomFetch<any, any>(`${requestUrls.cars}/${id}`, 'DELETE');
+    const { navigateHome } = useRedirectHome();
 
     const [car, setCar] = useState<CarType>();
 
@@ -99,6 +106,11 @@ export const CarDetails: FC = () => {
         }
     ];
 
+    const onDeleteButtonClick = () => {
+        deleteCarPayload(undefined, token);
+        navigateHome();
+    };
+
     return (
         <>
             <Sidebar />
@@ -124,6 +136,9 @@ export const CarDetails: FC = () => {
                             {renderCharacteristics(CarDetailsConfig)}
                         </DetailsGrid>
                     </DetailsContainer>
+                    <ButtonWrapper>
+                        <FormButton onClick={onDeleteButtonClick}>Delete Car</FormButton>
+                    </ButtonWrapper>
                 </ContentGrid>
             </CarDetailContainer>
         </>

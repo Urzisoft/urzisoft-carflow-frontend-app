@@ -8,5 +8,9 @@ export enum PageRoutes {
     CAR_DETAILS = '/car-details/:id',
     CAR_WASH = '/car-wash',
     CAR_SERVICES = '/car-services',
+    CITY_INFO = '/city-info/:id',
+    ADD_CAR = '/add-car',
+    ADD_MODEL = '/add-model',
+    ADD_BRAND = '/add-brand',
     PAGE_NOT_FOUND = "*"
 }

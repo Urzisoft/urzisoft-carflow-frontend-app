@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
 import {
-    AuthenticationBackgroundColor,
+    FormGeneralBackgroundColor,
     AuthenticationBackgroundImage,
-    AuthenticationBox,
-    AuthenticationButton,
-    AuthenticationContainer,
-    AuthenticationTitle,
-    AuthenticationUserInputDetailsContainer,
+    FormGeneralBox,
+    FormButton,
+    FormGeneralContainer,
+    FormTitle,
+    FormUserInputDetailsContainer,
 } from "../../Common/Authentication/Authentication.css";
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
@@ -48,11 +48,11 @@ export const Login: FC = () => {
     };
 
     return (
-        <AuthenticationBox>
-            <AuthenticationBackgroundColor backgroundColor={Colors.darkBlue}>
-                <AuthenticationContainer>
-                    <AuthenticationTitle>Login</AuthenticationTitle>
-                    <AuthenticationUserInputDetailsContainer>
+        <FormGeneralBox>
+            <FormGeneralBackgroundColor backgroundColor={Colors.darkBlue}>
+                <FormGeneralContainer>
+                    <FormTitle>Login</FormTitle>
+                    <FormUserInputDetailsContainer>
                         <InputField
                             type="text"
                             placeholder="Username"
@@ -69,13 +69,13 @@ export const Login: FC = () => {
                             isEligible={isNotParamEmpty(password)}
                         />
                         {passwordError && <InputValidation>{passwordError}</InputValidation>}
-                        <AuthenticationButton onClick={onLoginButtonClick}>Login</AuthenticationButton>
-                    </AuthenticationUserInputDetailsContainer>
-                </AuthenticationContainer>
-            </AuthenticationBackgroundColor>
+                        <FormButton onClick={onLoginButtonClick}>Login</FormButton>
+                    </FormUserInputDetailsContainer>
+                </FormGeneralContainer>
+            </FormGeneralBackgroundColor>
             <AuthenticationBackgroundImage
                 backgroundImg={loginBackgroundImage}
             />
-        </AuthenticationBox>
+        </FormGeneralBox>
     );
 };

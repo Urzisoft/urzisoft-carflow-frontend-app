@@ -20,7 +20,7 @@ import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { OverlayNotification } from "../../Common/OverlayNotification/OverlayNotification";
-import { getStationStatusByCurrentTime } from "../../../Utils/generalUtils";
+import { getWashStationsStatusByCurrentTime } from "../../../Utils/generalUtils";
 
 export const CarWash: FC = () => {
     const { isLoggedIn } = useAuth();
@@ -72,7 +72,7 @@ export const CarWash: FC = () => {
                                     <CardLocation
                                         src={item.storageImageUrl}
                                         text={`${item.name} - ${item.address}`}
-                                        label={getStationStatusByCurrentTime()}
+                                        label={getWashStationsStatusByCurrentTime()}
                                         content={`City: ${item.city.name} | Price: ${item.standardPrice} EURO | Rank ${item.rank}`}
                                     />
                                 )

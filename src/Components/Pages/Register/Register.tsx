@@ -1,11 +1,11 @@
 import {
-    AuthenticationBackgroundColor,
+    FormGeneralBackgroundColor,
     AuthenticationBackgroundImage,
-    AuthenticationBox,
-    AuthenticationButton,
-    AuthenticationContainer,
-    AuthenticationTitle,
-    AuthenticationUserInputDetailsContainer,
+    FormGeneralBox,
+    FormButton,
+    FormGeneralContainer,
+    FormTitle,
+    FormUserInputDetailsContainer,
 } from "../../Common/Authentication/Authentication.css";
 import React, { FC, useEffect, useState } from "react";
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
@@ -84,11 +84,11 @@ export const Register: FC = () => {
     }
 
     return (
-        <AuthenticationBox>
-            <AuthenticationBackgroundColor backgroundColor={Colors.darkRed}>
-                <AuthenticationContainer>
-                    <AuthenticationTitle>Register</AuthenticationTitle>
-                    <AuthenticationUserInputDetailsContainer>
+        <FormGeneralBox>
+            <FormGeneralBackgroundColor backgroundColor={Colors.darkRed}>
+                <FormGeneralContainer>
+                    <FormTitle>Register</FormTitle>
+                    <FormUserInputDetailsContainer>
                         <InputField
                             type="text"
                             placeholder="Username"
@@ -121,16 +121,16 @@ export const Register: FC = () => {
                             isEligible={isNotParamEmpty(confirmPassword)}
                         />
                         {confirmPasswordError && <InputValidation>{confirmPasswordError}</InputValidation>}
-                        <AuthenticationButton onClick={onRegisterButtonClick}>
+                        <FormButton onClick={onRegisterButtonClick}>
                             Create Account
-                        </AuthenticationButton>
-                    </AuthenticationUserInputDetailsContainer>
-                </AuthenticationContainer>
-            </AuthenticationBackgroundColor>
+                        </FormButton>
+                    </FormUserInputDetailsContainer>
+                </FormGeneralContainer>
+            </FormGeneralBackgroundColor>
             <AuthenticationBackgroundImage
                 backgroundImg={registerBackgroundImage}
             />
-        </AuthenticationBox>
+        </FormGeneralBox>
     );
 
 };
