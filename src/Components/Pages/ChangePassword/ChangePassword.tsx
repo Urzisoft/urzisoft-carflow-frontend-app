@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
 import {
-    AuthenticationBackgroundColor,
+    FormGeneralBackgroundColor,
     AuthenticationBackgroundImage,
-    AuthenticationBox,
-    AuthenticationButton,
-    AuthenticationContainer,
-    AuthenticationTitle,
-    AuthenticationUserInputDetailsContainer
+    FormGeneralBox,
+    FormButton,
+    FormGeneralContainer,
+    FormTitle,
+    FormUserInputDetailsContainer
 } from "../../Common/Authentication/Authentication.css";
 import { InputField, InputValidation } from "../../Common/InputField/InputField";
 import { Colors } from "../../../Utils/cssMedia";
@@ -72,11 +72,11 @@ export const ChangePassword: FC = () => {
     }
 
     return (
-        <AuthenticationBox>
-            <AuthenticationBackgroundColor backgroundColor={Colors.turquoise}>
-                <AuthenticationContainer>
-                    <AuthenticationTitle>Change Password</AuthenticationTitle>
-                    <AuthenticationUserInputDetailsContainer>
+        <FormGeneralBox>
+            <FormGeneralBackgroundColor backgroundColor={Colors.turquoise}>
+                <FormGeneralContainer>
+                    <FormTitle>Change Password</FormTitle>
+                    <FormUserInputDetailsContainer>
                         <InputField
                             type="password"
                             placeholder="Old Password"
@@ -101,14 +101,14 @@ export const ChangePassword: FC = () => {
                             isEligible={isNotParamEmpty(confirmNewPassword)}
                         />
                         {confirmNewPasswordError && <InputValidation>{confirmNewPasswordError}</InputValidation>}
-                        <AuthenticationButton onClick={onChangePasswordButtonClick}>Change Password</AuthenticationButton>
-                    </AuthenticationUserInputDetailsContainer>
-                </AuthenticationContainer>
-            </AuthenticationBackgroundColor>
+                        <FormButton onClick={onChangePasswordButtonClick}>Change Password</FormButton>
+                    </FormUserInputDetailsContainer>
+                </FormGeneralContainer>
+            </FormGeneralBackgroundColor>
             <AuthenticationBackgroundImage
                 backgroundImg={changePasswordBackgroundImage}
             />
-        </AuthenticationBox>
+        </FormGeneralBox>
     );
 
 }

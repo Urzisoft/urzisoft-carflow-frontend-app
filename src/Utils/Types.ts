@@ -9,7 +9,7 @@ export type FetchResponsePOST<data, param> = {
     response: data | null;
     error: any;
     loading: boolean;
-    fetcher: (arg: param) => any;
+    fetcher: (arg: param, token?: string, isForm?: boolean) => any;
 };
 
 export type BrandType = {
@@ -20,6 +20,7 @@ export type BrandType = {
 };
 
 export type ModelType = {
+    id: number;
     name: string;
 };
 
@@ -91,6 +92,7 @@ export type CarServicesType = {
     description: string;
     address: string;
     mainBrand: BrandType;
+    carServiceCity: CityType;
 };
 
 export type WelcomePageConfigType = {

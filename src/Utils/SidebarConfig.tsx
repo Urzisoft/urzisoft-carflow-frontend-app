@@ -24,6 +24,21 @@ export const SidebarConfig: SideBarConfigType[] = [
         icon: <FaIcons.FaShower />
     },
     {
+        path: PageRoutes.ADD_CAR,
+        name: 'Add a new Car',
+        icon: <FaIcons.FaCar />
+    },
+    {
+        path: PageRoutes.ADD_MODEL,
+        name: 'Add a new Model',
+        icon: <FaIcons.FaChessKing />
+    },
+    {
+        path: PageRoutes.ADD_BRAND,
+        name: 'Add a new Brand',
+        icon: <FaIcons.FaChessQueen />
+    },
+    {
         path: PageRoutes.CHANGE_PASSWORD,
         name: 'Change Password',
         icon: <FaIcons.FaUserCheck />

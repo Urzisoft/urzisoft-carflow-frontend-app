@@ -132,8 +132,8 @@ export const DetailsItem = styled.div`
     }
 `;
 
-export const DetailsIcons = styled.div`
-    font-size: 2rem;
+export const ButtonWrapper = styled.div`
+    margin-top: 4rem;
 `;
 
 export const ContentGrid = styled.div`

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { CssGlobalStyle } from "./Utils/cssGlobalStyle";
 import { AuthProvider } from "./Hooks/useAuth";
+import { ScrollToTop } from "./Components/Common/ScrollToTop/ScrollToTop";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -15,6 +16,7 @@ root.render(
         <BrowserRouter>
             <AuthProvider>
                 <CssGlobalStyle />
+                <ScrollToTop />
                 <Application />
             </AuthProvider>
         </BrowserRouter>
