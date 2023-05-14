@@ -11,5 +11,6 @@ export enum PageRoutes {
     CITY_INFO = '/city-info/:id',
     ADD_CAR = '/add-car',
     ADD_MODEL = '/add-model',
+    ADD_BRAND = '/add-brand',
     PAGE_NOT_FOUND = "*"
 }
