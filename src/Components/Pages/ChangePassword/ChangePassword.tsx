@@ -17,6 +17,7 @@ import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
 import { ChangePasswordType } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import { useRedirectHome } from "../../../Hooks/useRedirectHome";
+import { Sidebar } from "../../Common/Sidebar/Sidebar";
 
 export const ChangePassword: FC = () => {
     const { username } = useValidateUser();
@@ -73,6 +74,7 @@ export const ChangePassword: FC = () => {
 
     return (
         <FormGeneralBox>
+            <Sidebar />
             <FormGeneralBackgroundColor backgroundColor={Colors.turquoise}>
                 <FormGeneralContainer>
                     <FormTitle>Change Password</FormTitle>
