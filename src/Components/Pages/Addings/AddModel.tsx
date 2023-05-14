@@ -12,10 +12,31 @@ import { Colors } from "../../../Utils/cssMedia";
 import { InputField } from "../../Common/InputField/InputField";
 import React, { useState } from "react";
 import loginBackgroundImage from "../../../Assets/Images/BlueCarLoginBackground.png";
+import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
+import { requestUrls } from "../../../Backend/requestUrls";
+import useValidateUser from "../../../Hooks/useValidateUser";
 
 export const AddModel = () => {
+    const {
+        fetcher: sendModelPayload
+    } = usePostCustomFetch<any, any>(requestUrls.models);
 
     const [model, setModel] = useState<string>();
+    const { token } = useValidateUser();
+
+    const handleInputModelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setModel(event.target.value);
+    };
+
+    const onSendButtonClick = () => {
+      if (model !== '') {
+          const payload = {
+              Name: model
+          };
+
+          sendModelPayload(payload, token);
+      }
+    };
 
     return (
         <>
@@ -28,8 +49,9 @@ export const AddModel = () => {
                             <InputField
                                 type="text"
                                 placeholder="Model"
+                                onChange={handleInputModelChange}
                             />
-                            <FormButton>Add a new model</FormButton>
+                            <FormButton onClick={onSendButtonClick}>Add a new model</FormButton>
                         </FormUserInputDetailsContainer>
                     </FormGeneralContainer>
                 </FormGeneralBackgroundColor>

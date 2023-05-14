@@ -164,7 +164,6 @@ export const AddCar = () => {
             imageFile && formData.append('File', imageFile);
             username && formData.append('Username', username);
 
-            console.log(formData);
             sendCarPayload(formData, token, true);
         }
 
