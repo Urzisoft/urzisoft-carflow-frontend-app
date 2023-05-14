@@ -16,17 +16,15 @@ export const Navbar = styled.div`
     justify-content: start;
     align-items: center;
     height: 100vh;
-    background-color: ${Colors.brightRed};
     position: fixed;
 `;
 
 export const MenuIconOpen = styled(Link)`
-    margin-top: 0.75rem;
+    padding: 2rem;
     display: flex;
     justify-content: start;
-    font-size: 1.5rem;
-    margin-left: 2rem;
-    color: ${Colors.white};
+    font-size: 2rem;
+    color: ${Colors.darkRed};
 `;
 
 export const MenuIconClose = styled(Link)`
@@ -60,7 +58,7 @@ export const MenuItems = styled.li`
 export const MenuItemLinks = styled(Link)`
     display: flex;
     align-items: center;
-    padding: 0 2rem;
+    padding: 2rem;
     font-size: 20px;
     text-decoration: none;
     border-radius: 5px;
@@ -71,10 +69,6 @@ export const MenuItemLinks = styled(Link)`
         background-color: ${Colors.white};
         color: ${Colors.brightRed};
         width: 100%;
-        height: 45px;
-        text-align: center;
-        border-radius: 5px;
-        padding: 0 3rem;
         transition: 0.2s;
     }
 `;

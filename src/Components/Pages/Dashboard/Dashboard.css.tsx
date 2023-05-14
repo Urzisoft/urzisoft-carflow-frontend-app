@@ -1,8 +1,13 @@
 import styled from "styled-components";
-import { Colors } from "../../../Utils/cssMedia";
+import { Breakpoints, Colors, maxWidthQuery } from "../../../Utils/cssMedia";
 
 export const ContentContainer = styled.div`
-    margin-left: 7rem;
+    margin-left: 6rem;
+    margin-top: 6rem;
+
+    ${maxWidthQuery(Breakpoints.large)} {
+        margin-left: 2.5rem;
+    }
 `;
 
 export const StripeTitle = styled.h2`

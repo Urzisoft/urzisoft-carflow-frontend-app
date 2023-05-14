@@ -28,7 +28,7 @@ export const FormGeneralContainer = styled.div<{ maxWidth?: number, isNotAuthScr
     padding: 1.5% 2%;
     border-radius: 5px;
     ${(props) => props.isNotAuthScreen ? 'margin: 5rem auto;' : 'margin: 9% 10% 0;'}
-
+    
     ${maxWidthQuery(Breakpoints.medium)} {
         max-width: 90%;
         margin-top: 40%;
@@ -36,7 +36,7 @@ export const FormGeneralContainer = styled.div<{ maxWidth?: number, isNotAuthScr
     }
     ${maxWidthQuery(Breakpoints.large)} {
         max-width: 90%;
-        margin-top: 15%;
+        margin-top: 25%;
         margin-left: 3%;
     }
 `;
