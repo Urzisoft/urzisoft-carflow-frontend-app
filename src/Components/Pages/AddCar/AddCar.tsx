@@ -8,13 +8,19 @@ import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { BrandType, ModelType } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
+import { useRedirectHome } from "../../../Hooks/useRedirectHome";
+import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
 
 const FuelOptions = ["Diesel", "Petrol", "Gpl"];
 
 export const AddCar = () => {
     const { response: brandsResponse, fetcher: fetchBrands } = useGetCustomFetch<BrandType[], string>(requestUrls.brands);
     const { response: modelsResponse, fetcher: fetchModels } = useGetCustomFetch<ModelType[], string>(requestUrls.models);
-    const { token } = useValidateUser();
+    const { token, username } = useValidateUser();
+    const { navigateHome } = useRedirectHome();
+    const {
+        fetcher: sendCarPayload
+    } = usePostCustomFetch<any, any>(requestUrls.cars);
 
     const [brands, setBrands] = useState<BrandType[]>();
     const [models, setModels] = useState<ModelType[]>();
@@ -27,7 +33,7 @@ export const AddCar = () => {
     const [driveWheel, setDriveWheel] = useState<string>('');
     const [licensePlate, setLicensePlate] = useState<string>('');
     const [imageFile, setImageFile] = useState<File | null>(null);
-    const [fuelOption, setFuelOption] = useState<string>('');
+    const [fuelOption, setFuelOption] = useState<string>(FuelOptions[0]);
     const [brandOption, setBrandOption] = useState<string>('');
     const [modelOption, setModelOption] = useState<string>('');
 
@@ -78,7 +84,7 @@ export const AddCar = () => {
     };
 
     const handleInputEngineSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setGeneration(event.target.value);
+        setEngineSize(event.target.value);
     };
 
     const handleInputDriveWheelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,8 +127,38 @@ export const AddCar = () => {
         })
     }, [models]);
 
-    console.log(brandOption);
-    console.log(modelOption);
+    useEffect(() => {
+        if (brandOption === '' || brandOption === 'undefined') setBrandOption(String(brandsResponse?.[0].id) || '');
+        if (modelOption === '' || modelOption === 'undefined') setModelOption(String(modelsResponse?.[0].id) || '');
+    }, [brandsResponse, modelsResponse]);
+
+    const onSendButtonClick = () => {
+        const validationConditional = generation !== '' && year !== '' && mileage !== '' &&
+            gearbox !== '' && power !== '' && engineSize !== '' && driveWheel !== '' &&
+            licensePlate !== '' && fuelOption !== '' && brandOption !== '' && modelOption !== '';
+
+        if (validationConditional) {
+            const formData = new FormData();
+            brandOption && formData.append('BrandId', brandOption);
+            modelOption && formData.append('ModelId', modelOption);
+            generation && formData.append('Generation', generation);
+            year && formData.append('Year', year);
+            fuelOption && formData.append('GasType', fuelOption);
+            mileage && formData.append('Mileage', mileage);
+            gearbox && formData.append('Gearbox', gearbox);
+            power && formData.append('Power', power);
+            engineSize && formData.append('EngineSize', engineSize);
+            driveWheel && formData.append('DriveWheel', driveWheel);
+            licensePlate && formData.append('LicensePlate', licensePlate);
+            imageFile && formData.append('File', imageFile);
+            username && formData.append('Username', username);
+
+            console.log(formData);
+            sendCarPayload(formData, token, true);
+        }
+
+        // navigateHome();
+    };
 
     return (
        <>
@@ -173,6 +209,7 @@ export const AddCar = () => {
                    <InputField
                        type="file"
                        onChange={handleInputFileChange}
+                       isFileInput={true}
                    />
                    <DropdownField options={FuelOptions} splitById={false} handleDropdownChange={handleInputFuelDropdownChange} />
                    <div>&nbsp;</div>
@@ -180,7 +217,7 @@ export const AddCar = () => {
                    <div>&nbsp;</div>
                    <DropdownField options={modelsDropdown.current} splitById={true} handleDropdownChange={handleInputModelDropdownChange} />
                    <SendButtonWrapper>
-                       <AuthenticationButton>Add car</AuthenticationButton>
+                       <AuthenticationButton onClick={onSendButtonClick}>Add car</AuthenticationButton>
                    </SendButtonWrapper>
                </AddCarFormContainer>
            </AddCarContainer>

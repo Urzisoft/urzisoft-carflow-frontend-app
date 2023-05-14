@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import { FetchResponsePOST } from "../Utils/Types";
 
-const usePostCustomFetch = <Data extends any, Param extends any>(url: RequestInfo, method?: 'PUT' | 'DELETE'
-): FetchResponsePOST<Data, Param> => {
+const usePostCustomFetch = <Data extends any, Param extends any>(url: RequestInfo, method?: 'PUT' | 'DELETE'): FetchResponsePOST<Data, Param> => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [apiData, setApiData] = useState<Data | null>(null);
     const [serverError, setServerError] = useState(null);
 
-    const fetcher = async (param?: Param) => {
+    const fetcher = async (param?: Param, token?: string, isForm?: boolean) => {
         setIsLoading(true);
         try {
             const request = await fetch(url, {
                 method: method || 'POST',
                 headers: {
                     Accept: 'application/json',
-                    'Content-Type': 'application/json'
+                    ...(!isForm && { 'Content-Type': 'application/json' }),
+                    ...(token && { Authorization: `Bearer ${token}` })
                 },
                 ...(param && {
-                    body: JSON.stringify(param)
+                    body: isForm ? (param as any) : JSON.stringify(param)
                 })
             });
 
