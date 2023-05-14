@@ -14,6 +14,7 @@ import { PageNotFound } from "../Components/Pages/PageNotFound/PageNotFound";
 import { CarDetails } from "../Components/Pages/CarDetails/CarDetails";
 import { CarServices } from "../Components/Pages/CarServices/CarServices";
 import { CityInfo } from "../Components/Pages/CityInfo/CityInfo";
+import { AddCar } from "../Components/Pages/AddCar/AddCar";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -30,6 +31,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.CAR_DETAILS, component: <CarDetails /> },
         { path: PageRoutes.CAR_SERVICES, component: <CarServices /> },
         { path: PageRoutes.CITY_INFO, component: <CityInfo /> },
+        { path: PageRoutes.ADD_CAR, component: <AddCar /> },
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> },
     ];
 

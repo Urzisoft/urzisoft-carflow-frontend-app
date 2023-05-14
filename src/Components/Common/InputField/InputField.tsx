@@ -7,7 +7,7 @@ import {
 
 type InputFieldType = {
     type: string;
-    placeholder: string;
+    placeholder?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     required?: boolean;
     isValid?: boolean;
