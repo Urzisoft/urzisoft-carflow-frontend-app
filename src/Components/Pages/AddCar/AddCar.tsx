@@ -27,6 +27,9 @@ export const AddCar = () => {
     const [driveWheel, setDriveWheel] = useState<string>('');
     const [licensePlate, setLicensePlate] = useState<string>('');
     const [imageFile, setImageFile] = useState<File | null>(null);
+    const [fuelOption, setFuelOption] = useState<string>('');
+    const [brandOption, setBrandOption] = useState<string>('');
+    const [modelOption, setModelOption] = useState<string>('');
 
     const brandsDropdown = useRef<string[]>();
     const brandsDropdownSet = new Set<string>();
@@ -92,6 +95,18 @@ export const AddCar = () => {
         }
     };
 
+    const handleInputFuelDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setFuelOption(event.target.value);
+    };
+
+    const handleInputBrandDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setBrandOption(event.target.value);
+    };
+
+    const handleInputModelDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setModelOption(event.target.value);
+    };
+
     useEffect(() => {
         brands?.forEach((brand) => {
             brandsDropdownSet.add(`${brand.id}-${brand.name}`);
@@ -105,6 +120,9 @@ export const AddCar = () => {
             modelsDropdown.current = Array.from(modelsDropdownSet);
         })
     }, [models]);
+
+    console.log(brandOption);
+    console.log(modelOption);
 
     return (
        <>
@@ -156,11 +174,11 @@ export const AddCar = () => {
                        type="file"
                        onChange={handleInputFileChange}
                    />
-                   <DropdownField options={FuelOptions} splitById={false} />
+                   <DropdownField options={FuelOptions} splitById={false} handleDropdownChange={handleInputFuelDropdownChange} />
                    <div>&nbsp;</div>
-                   <DropdownField options={brandsDropdown.current} splitById={true} />
+                   <DropdownField options={brandsDropdown.current} splitById={true} handleDropdownChange={handleInputBrandDropdownChange} />
                    <div>&nbsp;</div>
-                   <DropdownField options={modelsDropdown.current} splitById={true} />
+                   <DropdownField options={modelsDropdown.current} splitById={true} handleDropdownChange={handleInputModelDropdownChange} />
                    <SendButtonWrapper>
                        <AuthenticationButton>Add car</AuthenticationButton>
                    </SendButtonWrapper>
