@@ -177,9 +177,8 @@ export const AddCar = () => {
            <FormGeneralBox>
                <FormGeneralBackgroundColor backgroundColor={Colors.darkBlue} shouldNotHaveClipPath={true} isNotAuthScreen={true}>
                    <FormGeneralContainer maxWidth={35} isNotAuthScreen={true}>
-                       <FormTitle>Login</FormTitle>
+                       <FormTitle>Add a car</FormTitle>
                        <FormUserInputDetailsContainer>
-                           <h2>Add a car</h2>
                            <InputField
                                type="text"
                                placeholder="Generation"

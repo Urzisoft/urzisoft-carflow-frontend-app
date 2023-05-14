@@ -29,6 +29,11 @@ export const SidebarConfig: SideBarConfigType[] = [
         icon: <FaIcons.FaCar />
     },
     {
+        path: PageRoutes.ADD_MODEL,
+        name: 'Add a new Model',
+        icon: <FaIcons.FaChessKing />
+    },
+    {
         path: PageRoutes.CHANGE_PASSWORD,
         name: 'Change Password',
         icon: <FaIcons.FaUserCheck />
