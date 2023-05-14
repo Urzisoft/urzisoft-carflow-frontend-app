@@ -34,7 +34,7 @@ export const CarLocationTitle = styled.h1`
         font-size: 50px;
         margin-top: -100px;
         text-align: center;
-  }
+    }
 `;
 
 export const CarLocationDetailText = styled.p`
@@ -75,7 +75,6 @@ export const CarLocationButton = styled.button.attrs(props => ({
 
 export const CardsSection = styled.div`
     background: ${Colors.white};
-    margin-left: 5rem;
     padding: 1rem;
 `;
 

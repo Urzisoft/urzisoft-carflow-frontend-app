@@ -29,7 +29,6 @@ export const Sidebar: FC = () => {
                 <MenuIconOpen to="#" onClick={toggle}>
                     <FaIcons.FaBars />
                 </MenuIconOpen>
-                {renderMenuItems()}
             </Navbar>
             <SidebarMenu isOpen={isOpen}>
                 <MenuIconClose to="#" onClick={toggle}>

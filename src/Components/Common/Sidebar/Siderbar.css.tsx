@@ -16,17 +16,15 @@ export const Navbar = styled.div`
     justify-content: start;
     align-items: center;
     height: 100vh;
-    background-color: ${Colors.brightRed};
     position: fixed;
 `;
 
 export const MenuIconOpen = styled(Link)`
-    margin-top: 0.75rem;
+    padding: 2rem;
     display: flex;
     justify-content: start;
-    font-size: 1.5rem;
-    margin-left: 2rem;
-    color: ${Colors.white};
+    font-size: 2rem;
+    color: ${Colors.darkRed};
 `;
 
 export const MenuIconClose = styled(Link)`
