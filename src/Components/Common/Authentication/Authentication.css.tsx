@@ -4,6 +4,7 @@ import { Colors } from "../../../Utils/cssMedia";
 
 type AuthenticationBackgroundColorProps = {
     backgroundColor?: string;
+    shouldNotHaveClipPath?: boolean;
 };
 
 type BackgroundImageProps = {
@@ -15,17 +16,17 @@ type AuthenticationButtonProps = {
     hoverBackgroundColor?: string;
 };
 
-export const AuthenticationBox = styled.div`
+export const FormGeneralBox = styled.div`
     background-color: ${Colors.darkBlue};
 `;
 
-export const AuthenticationContainer = styled.div`
-    max-width: 20%;
+export const FormGeneralContainer = styled.div<{ maxWidth?: number }>`
+    max-width: ${(props) => props.maxWidth || 20}%;
     width: 100%;
     background: ${Colors.white};
     padding: 1.5% 2%;
     border-radius: 5px;
-    margin: 9% 10% 0;
+    margin: 5rem auto;
 
     ${maxWidthQuery(Breakpoints.medium)} {
         max-width: 90%;
@@ -39,13 +40,13 @@ export const AuthenticationContainer = styled.div`
     }
 `;
 
-export const AuthenticationTitle = styled.div`
+export const FormTitle = styled.div`
     font-size: 30px;
     font-weight: 500;
     text-align: center;
 `;
 
-export const AuthenticationUserInputDetailsContainer = styled.div`
+export const FormUserInputDetailsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -53,7 +54,7 @@ export const AuthenticationUserInputDetailsContainer = styled.div`
     margin: 5% 0 3% 0;
 `;
 
-export const AuthenticationButton = styled.button<AuthenticationButtonProps>`
+export const FormButton = styled.button<AuthenticationButtonProps>`
     height: 2.8em;
     width: 100%;
     outline: none;
@@ -73,11 +74,10 @@ export const AuthenticationButton = styled.button<AuthenticationButtonProps>`
     }
 `;
 
-export const AuthenticationBackgroundColor = styled.div<AuthenticationBackgroundColorProps>`
-    clip-path: polygon(0 0, 70vw 0, 50vw 100%, 0% 100%);
+export const FormGeneralBackgroundColor = styled.div<AuthenticationBackgroundColorProps>`
+    ${(props) => !props.shouldNotHaveClipPath ? 'clip-path: polygon(0 0, 70vw 0, 50vw 100%, 0% 100%)' : 'none'};
     background-color: ${(props) => props.backgroundColor || Colors.darkBlue};
     position: absolute;
-    bottom: 0;
     top: 0;
     width: 100%;
     z-index: 1;
@@ -90,6 +90,7 @@ export const AuthenticationBackgroundColor = styled.div<AuthenticationBackground
 
 export const AuthenticationBackgroundImage = styled.div<BackgroundImageProps>`
     background-image: url(${(props) => props.backgroundImg});
+    background-color: ${Colors.darkBlue};
     background-size: cover;
     position: absolute;
     z-index: -1;

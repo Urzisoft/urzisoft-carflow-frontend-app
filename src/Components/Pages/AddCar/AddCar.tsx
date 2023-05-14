@@ -1,15 +1,23 @@
 import { InputField } from "../../Common/InputField/InputField";
 import React, { useEffect, useRef, useState } from "react";
-import { AddCarContainer, AddCarFormContainer, SendButtonWrapper } from "./AddCar.css";
+import { SendButtonWrapper } from "./AddCar.css";
 import { DropdownField } from "../../Common/DropdownField/DropdownField";
 import { Sidebar } from "../../Common/Sidebar/Sidebar";
-import { AuthenticationButton } from "../../Common/Authentication/Authentication.css";
+import {
+    FormButton,
+    FormGeneralBackgroundColor,
+    FormGeneralBox,
+    FormGeneralContainer,
+    FormTitle,
+    FormUserInputDetailsContainer
+} from "../../Common/Authentication/Authentication.css";
 import useGetCustomFetch from "../../../Hooks/useGetCustomFetch";
 import { BrandType, ModelType } from "../../../Utils/Types";
 import { requestUrls } from "../../../Backend/requestUrls";
 import useValidateUser from "../../../Hooks/useValidateUser";
 import { useRedirectHome } from "../../../Hooks/useRedirectHome";
 import usePostCustomFetch from "../../../Hooks/usePostCustomFetch";
+import { Colors } from "../../../Utils/cssMedia";
 
 const FuelOptions = ["Diesel", "Petrol", "Gpl"];
 
@@ -118,6 +126,7 @@ export const AddCar = () => {
             brandsDropdownSet.add(`${brand.id}-${brand.name}`);
             brandsDropdown.current = Array.from(brandsDropdownSet);
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [brands]);
 
     useEffect(() => {
@@ -125,11 +134,13 @@ export const AddCar = () => {
             modelsDropdownSet.add(`${model.id}-${model.name}`);
             modelsDropdown.current = Array.from(modelsDropdownSet);
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [models]);
 
     useEffect(() => {
         if (brandOption === '' || brandOption === 'undefined') setBrandOption(String(brandsResponse?.[0].id) || '');
         if (modelOption === '' || modelOption === 'undefined') setModelOption(String(modelsResponse?.[0].id) || '');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [brandsResponse, modelsResponse]);
 
     const onSendButtonClick = () => {
@@ -157,70 +168,75 @@ export const AddCar = () => {
             sendCarPayload(formData, token, true);
         }
 
-        // navigateHome();
+        navigateHome();
     };
 
     return (
        <>
            <Sidebar />
-           <AddCarContainer>
-               <AddCarFormContainer>
-                   <h2>Add a car</h2>
-                   <InputField
-                       type="text"
-                       placeholder="Generation"
-                       onChange={handleInputGenerationChange}
-                   />
-                   <InputField
-                       type="text"
-                       placeholder="Year"
-                       onChange={handleInputYearChange}
-                   />
-                   <InputField
-                       type="text"
-                       placeholder="Mileage"
-                       onChange={handleInputMileageChange}
-                   />
-                   <InputField
-                       type="text"
-                       placeholder="Gearbox"
-                       onChange={handleInputGearboxChange}
-                   />
-                   <InputField
-                       type="text"
-                       placeholder="Power"
-                       onChange={handleInputPowerChange}
-                   />
-                   <InputField
-                       type="text"
-                       placeholder="EngineSize"
-                       onChange={handleInputEngineSizeChange}
-                   />
-                   <InputField
-                       type="text"
-                       placeholder="DriveWheel"
-                       onChange={handleInputDriveWheelChange}
-                   />
-                   <InputField
-                       type="text"
-                       placeholder="LicensePlate"
-                       onChange={handleInputLicensePlateChange}
-                   />
-                   <InputField
-                       type="file"
-                       onChange={handleInputFileChange}
-                       isFileInput={true}
-                   />
-                   <DropdownField options={FuelOptions} splitById={false} handleDropdownChange={handleInputFuelDropdownChange} />
-                   <div>&nbsp;</div>
-                   <DropdownField options={brandsDropdown.current} splitById={true} handleDropdownChange={handleInputBrandDropdownChange} />
-                   <div>&nbsp;</div>
-                   <DropdownField options={modelsDropdown.current} splitById={true} handleDropdownChange={handleInputModelDropdownChange} />
-                   <SendButtonWrapper>
-                       <AuthenticationButton onClick={onSendButtonClick}>Add car</AuthenticationButton>
-                   </SendButtonWrapper>
-               </AddCarFormContainer>
-           </AddCarContainer>
+           <FormGeneralBox>
+               <FormGeneralBackgroundColor backgroundColor={Colors.darkBlue} shouldNotHaveClipPath={true}>
+                   <FormGeneralContainer maxWidth={35}>
+                       <FormTitle>Login</FormTitle>
+                       <FormUserInputDetailsContainer>
+                           <h2>Add a car</h2>
+                           <InputField
+                               type="text"
+                               placeholder="Generation"
+                               onChange={handleInputGenerationChange}
+                           />
+                           <InputField
+                               type="text"
+                               placeholder="Year"
+                               onChange={handleInputYearChange}
+                           />
+                           <InputField
+                               type="text"
+                               placeholder="Mileage"
+                               onChange={handleInputMileageChange}
+                           />
+                           <InputField
+                               type="text"
+                               placeholder="Gearbox"
+                               onChange={handleInputGearboxChange}
+                           />
+                           <InputField
+                               type="text"
+                               placeholder="Power"
+                               onChange={handleInputPowerChange}
+                           />
+                           <InputField
+                               type="text"
+                               placeholder="EngineSize"
+                               onChange={handleInputEngineSizeChange}
+                           />
+                           <InputField
+                               type="text"
+                               placeholder="DriveWheel"
+                               onChange={handleInputDriveWheelChange}
+                           />
+                           <InputField
+                               type="text"
+                               placeholder="LicensePlate"
+                               onChange={handleInputLicensePlateChange}
+                           />
+                           <InputField
+                               type="file"
+                               onChange={handleInputFileChange}
+                               isFileInput={true}
+                           />
+                           <DropdownField options={FuelOptions} splitById={false} handleDropdownChange={handleInputFuelDropdownChange} />
+                           <div>&nbsp;</div>
+                           <DropdownField options={brandsDropdown.current} splitById={true} handleDropdownChange={handleInputBrandDropdownChange} />
+                           <div>&nbsp;</div>
+                           <DropdownField options={modelsDropdown.current} splitById={true} handleDropdownChange={handleInputModelDropdownChange} />
+                           <SendButtonWrapper>
+                               <FormButton onClick={onSendButtonClick}>Add a new car into the dashboard</FormButton>
+                           </SendButtonWrapper>
+                       </FormUserInputDetailsContainer>
+                   </FormGeneralContainer>
+               </FormGeneralBackgroundColor>
+           </FormGeneralBox>
        </>
     )
 };
