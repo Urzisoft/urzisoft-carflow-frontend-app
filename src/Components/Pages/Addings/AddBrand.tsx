@@ -58,7 +58,7 @@ export const AddBrand = () => {
             <FormGeneralBox>
                 <FormGeneralBackgroundColor backgroundColor={Colors.darkBlue}>
                     <FormGeneralContainer maxWidth={20} >
-                        <FormTitle>Add Model</FormTitle>
+                        <FormTitle>Add Brand</FormTitle>
                         <FormUserInputDetailsContainer>
                             <InputField
                                 type="text"
