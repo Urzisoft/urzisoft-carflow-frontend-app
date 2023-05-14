@@ -20,6 +20,7 @@ export type BrandType = {
 };
 
 export type ModelType = {
+    id: number;
     name: string;
 };
 

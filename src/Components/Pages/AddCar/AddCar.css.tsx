@@ -5,7 +5,7 @@ export const AddCarContainer = styled.div`
 
 export const AddCarFormContainer = styled.div`
     padding: 2rem;
-    margin-top: 5rem;
+    margin-top: 14rem;
     width: 30%;
     position: absolute;
     top: 50%;
