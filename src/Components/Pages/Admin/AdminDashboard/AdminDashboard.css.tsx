@@ -32,3 +32,20 @@ export const AdminBreaker = styled.div`
     margin-bottom: 4rem;
     height: 0.2rem;
 `;
+
+export const AdminPaddingLiner = styled.div`
+    margin-left: 2rem;
+`;
+
+export const AdminButtonsBox = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+export const AdminContainerItem = styled.button`
+    background: ${Colors.brightRed};
+    padding: 0.7rem;
+    border: none;
+    border-radius: 0.3rem;
+    color: ${Colors.white};
+`;

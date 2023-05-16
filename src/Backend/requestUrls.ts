@@ -20,6 +20,8 @@ export const requestUrls = {
     gasStations: `${backendEnvironment}${routeBase}/gas-stations`,
     carServices: `${backendEnvironment}${routeBase}/car-services`,
 
+    fuels: `${backendEnvironment}${routeBase}/fuels`,
+
     authRegister: `${backendEnvironment}${routeBase}/${authRouteBase}/register`,
     authLogin: `${backendEnvironment}${routeBase}/${authRouteBase}/login`,
     changePassword: `${backendEnvironment}${routeBase}/${authRouteBase}/change-password`
