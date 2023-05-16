@@ -227,9 +227,15 @@ export const AdminDashboard = () => {
             <AdminSectionContainer>
                 <AdminSectionTitle>Fuels</AdminSectionTitle>
                 {fuels?.map((fuel) => {
+                    const finalUrl = PageRoutes.ADMIN_FUEL.replace(':id', `${fuel.id}`);
+
+                    const navigateToDetailPage = () => {
+                        navigate(finalUrl);
+                    };
+
                     return (
                         <>
-                            <AdminContainerItems>
+                            <AdminContainerItems onClick={navigateToDetailPage}>
                                 {fuel.id} - {fuel.name} - {fuel.type} - {fuel.quality}
                             </AdminContainerItems>
                             <div>&nbsp;</div>

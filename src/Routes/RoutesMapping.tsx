@@ -23,6 +23,7 @@ import { AdminModel } from "../Components/Pages/Admin/DetailPages/AdminModel/Adm
 import { AdminCarService } from "../Components/Pages/Admin/DetailPages/AdminCarService/AdminCarService";
 import { AdminCarWashService } from "../Components/Pages/Admin/DetailPages/AdminCarWashService/AdminCarWashService";
 import { AdminCity } from "../Components/Pages/Admin/DetailPages/AdminCity/AdminCity";
+import { AdminFuel } from "../Components/Pages/Admin/DetailPages/AdminFuel/AdminFuel";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -48,6 +49,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.ADMIN_CAR_SERVICES, component: <AdminCarService /> },
         { path: PageRoutes.ADMIN_CAR_WASH_SERVICES, component: <AdminCarWashService /> },
         { path: PageRoutes.ADMIN_CITIES, component: <AdminCity /> },
+        { path: PageRoutes.ADMIN_FUEL, component: <AdminFuel /> },
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> },
     ];
 

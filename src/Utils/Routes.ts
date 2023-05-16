@@ -18,5 +18,6 @@ export enum PageRoutes {
     ADMIN_CAR_SERVICES = '/admin-car-services/:id',
     ADMIN_CAR_WASH_SERVICES = '/admin-car-wash-services/:id',
     ADMIN_CITIES = '/admin-cities/:id',
+    ADMIN_FUEL = '/admin-fuels/:id',
     PAGE_NOT_FOUND = "*"
 }

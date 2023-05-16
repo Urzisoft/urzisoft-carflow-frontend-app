@@ -2,36 +2,37 @@ import { useParams } from "react-router-dom";
 import useValidateUser from "../../../../../Hooks/useValidateUser";
 import { requestUrls } from "../../../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../../../Hooks/useGetCustomFetch";
-import { CityType } from "../../../../../Utils/Types";
+import { FuelType } from "../../../../../Utils/Types";
 import { useEffect, useState } from "react";
 import { AdminDashboardContainer } from "../../AdminDashboard/AdminDashboard.css";
 
-export const AdminCity = () => {
+export const AdminFuel = () => {
     const { id } = useParams();
     const { token } = useValidateUser();
-    const adminCityObjectRequestUrl = requestUrls.city.replace(':id', `${id}`);
-    const { response: carCityResponse, fetcher: fetchCarCity } = useGetCustomFetch<CityType, string>(adminCityObjectRequestUrl);
+    const adminFuelObjectRequestUrl = requestUrls.fuel.replace(':id', `${id}`);
+    const { response: carFuelResponse, fetcher: fetchCarFuel } = useGetCustomFetch<FuelType, string>(adminFuelObjectRequestUrl);
 
-    const [city, setCity] = useState<CityType>();
+    const [fuel, setFuel] = useState<FuelType>();
 
     useEffect(() => {
-        fetchCarCity(token);
+        fetchCarFuel(token);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     useEffect(() => {
-        if (carCityResponse) {
-            setCity(carCityResponse);
+        if (carFuelResponse) {
+            setFuel(carFuelResponse);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [carCityResponse]);
+    }, [carFuelResponse]);
 
     return (
         <AdminDashboardContainer>
-            <p>{city?.storageImageUrl}</p>
-            <p>{city?.name}</p>
-            <p>{city?.county}</p>
+            <p>{fuel?.name}</p>
+            <p>{fuel?.description}</p>
+            <p>{fuel?.type}</p>
+            <p>{fuel?.quality}</p>
         </AdminDashboardContainer>
     )
 };

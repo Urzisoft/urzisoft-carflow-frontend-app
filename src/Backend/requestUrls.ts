@@ -20,6 +20,7 @@ export const requestUrls = {
     carWashStation: `${backendEnvironment}${routeBase}/car-wash-stations/${id}`,
 
     prices: `${backendEnvironment}${routeBase}/prices`,
+    fuel: `${backendEnvironment}${routeBase}/fuels/${id}`,
 
     gasStations: `${backendEnvironment}${routeBase}/gas-stations`,
 
