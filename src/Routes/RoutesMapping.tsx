@@ -19,8 +19,9 @@ import { AddModel } from "../Components/Pages/User/Addings/AddModel";
 import { AddBrand } from "../Components/Pages/User/Addings/AddBrand";
 import { AdminDashboard } from "../Components/Pages/Admin/AdminDashboard/AdminDashboard";
 import { AdminBrand } from "../Components/Pages/Admin/DetailPages/AdminBrands/AdminBrand";
-import { AdminModel } from "../Components/Pages/Admin/DetailPages/AdminModels/AdminModel";
-import { AdminCarService } from "../Components/Pages/Admin/DetailPages/AdminCarServices/AdminCarService";
+import { AdminModel } from "../Components/Pages/Admin/DetailPages/AdminModel/AdminModel";
+import { AdminCarService } from "../Components/Pages/Admin/DetailPages/AdminCarService/AdminCarService";
+import { AdminCarWashService } from "../Components/Pages/Admin/DetailPages/AdminCarWashService/AdminCarWashService";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -44,6 +45,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.ADMIN_BRANDS, component: <AdminBrand /> },
         { path: PageRoutes.ADMIN_MODELS, component: <AdminModel /> },
         { path: PageRoutes.ADMIN_CAR_SERVICES, component: <AdminCarService /> },
+        { path: PageRoutes.ADMIN_CAR_WASH_SERVICES, component: <AdminCarWashService /> },
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> },
     ];
 

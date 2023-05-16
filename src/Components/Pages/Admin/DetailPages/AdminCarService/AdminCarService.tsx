@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import useValidateUser from "../../../../../Hooks/useValidateUser";
 import { requestUrls } from "../../../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../../../Hooks/useGetCustomFetch";
-import { CarServicesType, ModelType } from "../../../../../Utils/Types";
+import { CarServicesType } from "../../../../../Utils/Types";
 import { useEffect, useState } from "react";
 import { AdminDashboardContainer } from "../../AdminDashboard/AdminDashboard.css";
 

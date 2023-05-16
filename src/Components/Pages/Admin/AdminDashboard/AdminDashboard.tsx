@@ -183,9 +183,15 @@ export const AdminDashboard = () => {
             <AdminSectionContainer>
                 <AdminSectionTitle>Car Wash Stations</AdminSectionTitle>
                 {carWashStations?.map((carWashStation) => {
+                    const finalUrl = PageRoutes.ADMIN_CAR_WASH_SERVICES.replace(':id', `${carWashStation.id}`);
+
+                    const navigateToDetailPage = () => {
+                        navigate(finalUrl);
+                    };
+
                     return (
                         <>
-                            <AdminContainerItems>
+                            <AdminContainerItems onClick={navigateToDetailPage}>
                                 {carWashStation.id} - {carWashStation.name} - {carWashStation.city.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
