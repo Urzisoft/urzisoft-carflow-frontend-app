@@ -13,5 +13,6 @@ export enum PageRoutes {
     ADD_MODEL = '/add-model',
     ADD_BRAND = '/add-brand',
     ADMIN_DASHBOARD = '/admin-dashboard',
+    ADMIN_BRANDS = '/admin-brands/:id',
     PAGE_NOT_FOUND = "*"
 }

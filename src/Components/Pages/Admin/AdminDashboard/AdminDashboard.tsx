@@ -20,6 +20,7 @@ import {
 } from "./AdminDashboard.css";
 import { PageRoutes } from "../../../../Utils/Routes";
 import { OverlayNotification } from "../../../Common/OverlayNotification/OverlayNotification";
+import { useNavigate } from "react-router-dom";
 
 export const AdminDashboard = () => {
     const { response: brandsResponse, fetcher: fetchBrands } = useGetCustomFetch<BrandType[], string>(requestUrls.brands);
@@ -29,7 +30,7 @@ export const AdminDashboard = () => {
     const { response: citiesResponse, fetcher: fetchCities } = useGetCustomFetch<CityType[], string>(requestUrls.cities);
     const { response: fuelsResponse, fetcher: fetchFuels } = useGetCustomFetch<FuelType[], string>(requestUrls.fuels);
     const { response: gasStationsResponse, fetcher: fetchGasStations } = useGetCustomFetch<GasStationsType[], string>(requestUrls.gasStations);
-
+    const navigate = useNavigate();
     const { token, roles } = useValidateUser();
 
     const [brands, setBrands] = useState<BrandType[]>([]);
@@ -116,9 +117,15 @@ export const AdminDashboard = () => {
             <AdminSectionContainer>
                 <AdminSectionTitle>Brands</AdminSectionTitle>
                 {brands?.map((brand) => {
+                    const finalUrl = PageRoutes.ADMIN_BRANDS.replace(':id', `${brand.id}`);
+
+                    const navigateToDetailPage = () => {
+                        navigate(finalUrl);
+                    };
+
                     return (
                         <>
-                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                            <AdminContainerItems onClick={navigateToDetailPage}>
                                 {brand.id} - {brand.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
@@ -134,7 +141,7 @@ export const AdminDashboard = () => {
                 {models?.map((model) => {
                     return (
                         <>
-                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                            <AdminContainerItems>
                                 {model.id} - {model.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
@@ -150,7 +157,7 @@ export const AdminDashboard = () => {
                 {carServices?.map((carService) => {
                     return (
                         <>
-                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                            <AdminContainerItems>
                                 {carService.id} - {carService.name} - {carService.mainBrand.name} - {carService.carServiceCity.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
@@ -166,7 +173,7 @@ export const AdminDashboard = () => {
                 {carWashStations?.map((carWashStation) => {
                     return (
                         <>
-                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                            <AdminContainerItems>
                                 {carWashStation.id} - {carWashStation.name} - {carWashStation.city.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
@@ -182,7 +189,7 @@ export const AdminDashboard = () => {
                 {cities?.map((city) => {
                     return (
                         <>
-                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                            <AdminContainerItems>
                                 {city.id} - {city.name} - {city.county}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
@@ -198,7 +205,7 @@ export const AdminDashboard = () => {
                 {fuels?.map((fuel) => {
                     return (
                         <>
-                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                            <AdminContainerItems>
                                 {fuel.id} - {fuel.name} - {fuel.type} - {fuel.quality}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
@@ -214,7 +221,7 @@ export const AdminDashboard = () => {
                 {gasStations?.map((gasStation) => {
                     return (
                         <>
-                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                            <AdminContainerItems>
                                 {gasStation.id} - {gasStation.name} - {gasStation.city.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>

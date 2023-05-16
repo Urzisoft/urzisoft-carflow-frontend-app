@@ -5,6 +5,8 @@ const id = ':id';
 
 export const requestUrls = {
     brands: `${backendEnvironment}${routeBase}/brands`,
+    brand: `${backendEnvironment}${routeBase}/brands/${id}`,
+
     models: `${backendEnvironment}${routeBase}/models`,
 
     cars: `${backendEnvironment}${routeBase}/cars`,

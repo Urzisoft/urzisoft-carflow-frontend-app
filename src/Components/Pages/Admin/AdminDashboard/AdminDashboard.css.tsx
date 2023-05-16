@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { Colors } from "../../../../Utils/cssMedia";
-import { Link } from "react-router-dom";
 
 export const AdminDashboardContainer = styled.div`
     padding: 3rem;
     background: ${Colors.carCardBlack};
     color: ${Colors.white};
+    min-height: 100vh;
 `;
 
 export const AdminSectionTitle = styled.h2``;
@@ -14,11 +14,12 @@ export const AdminSectionContainer = styled.div`
     
 `;
 
-export const AdminContainerItems = styled(Link)`
+export const AdminContainerItems = styled.div`
     padding: 0.5rem;
     text-decoration: none;
     color: ${Colors.white};
     transition: all 200ms ease;
+    cursor: pointer;
   
     :hover {
       color: ${Colors.brightRed};
