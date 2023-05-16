@@ -1,5 +1,13 @@
 import useGetCustomFetch from "../../../../Hooks/useGetCustomFetch";
-import { BrandType, CarServicesType, CarWashStationType, CityType, FuelType, ModelType } from "../../../../Utils/Types";
+import {
+    BrandType,
+    CarServicesType,
+    CarWashStationType,
+    CityType,
+    FuelType,
+    GasStationsType,
+    ModelType
+} from "../../../../Utils/Types";
 import { requestUrls } from "../../../../Backend/requestUrls";
 import { useEffect, useState } from "react";
 import useValidateUser from "../../../../Hooks/useValidateUser";
@@ -20,6 +28,7 @@ export const AdminDashboard = () => {
     const { response: carWashStationsResponse, fetcher: fetchCarWashStations } = useGetCustomFetch<CarWashStationType[], string>(requestUrls.carWashStations);
     const { response: citiesResponse, fetcher: fetchCities } = useGetCustomFetch<CityType[], string>(requestUrls.cities);
     const { response: fuelsResponse, fetcher: fetchFuels } = useGetCustomFetch<FuelType[], string>(requestUrls.fuels);
+    const { response: gasStationsResponse, fetcher: fetchGasStations } = useGetCustomFetch<GasStationsType[], string>(requestUrls.gasStations);
 
     const { token, roles } = useValidateUser();
 
@@ -29,6 +38,7 @@ export const AdminDashboard = () => {
     const [carWashStations, setCarWashStations] = useState<CarWashStationType[]>([]);
     const [cities, setCities] = useState<CityType[]>([]);
     const [fuels, setFuels] = useState<FuelType[]>([]);
+    const [gasStations, setGasStations] = useState<GasStationsType[]>([]);
 
     useEffect(() => {
         fetchBrands(token);
@@ -37,6 +47,7 @@ export const AdminDashboard = () => {
         fetchCarWashStations(token);
         fetchCities(token);
         fetchFuels(token);
+        fetchGasStations(token);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
@@ -82,6 +93,13 @@ export const AdminDashboard = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fuelsResponse]);
+
+    useEffect(() => {
+        if (gasStationsResponse) {
+            setGasStations(gasStationsResponse);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [gasStationsResponse]);
 
     const addOperationButtons = () => {
         return (
@@ -182,6 +200,22 @@ export const AdminDashboard = () => {
                         <>
                             <AdminContainerItems to={PageRoutes.ADD_BRAND}>
                                 {fuel.id} - {fuel.name} - {fuel.type} - {fuel.quality}
+                            </AdminContainerItems>
+                            <div>&nbsp;</div>
+                        </>
+                    )
+                })}
+                <div>&nbsp;</div>
+                {addOperationButtons()}
+            </AdminSectionContainer>
+            <AdminBreaker />
+            <AdminSectionContainer>
+                <AdminSectionTitle>Gas Stations</AdminSectionTitle>
+                {gasStations?.map((gasStation) => {
+                    return (
+                        <>
+                            <AdminContainerItems to={PageRoutes.ADD_BRAND}>
+                                {gasStation.id} - {gasStation.name} - {gasStation.city.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
                         </>
