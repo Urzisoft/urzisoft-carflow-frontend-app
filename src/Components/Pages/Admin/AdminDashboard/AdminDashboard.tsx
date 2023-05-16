@@ -205,9 +205,15 @@ export const AdminDashboard = () => {
             <AdminSectionContainer>
                 <AdminSectionTitle>Cities</AdminSectionTitle>
                 {cities?.map((city) => {
+                    const finalUrl = PageRoutes.ADMIN_CITIES.replace(':id', `${city.id}`);
+
+                    const navigateToDetailPage = () => {
+                        navigate(finalUrl);
+                    };
+
                     return (
                         <>
-                            <AdminContainerItems>
+                            <AdminContainerItems onClick={navigateToDetailPage}>
                                 {city.id} - {city.name} - {city.county}
                             </AdminContainerItems>
                             <div>&nbsp;</div>
