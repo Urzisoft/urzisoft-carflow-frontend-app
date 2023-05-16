@@ -139,9 +139,15 @@ export const AdminDashboard = () => {
             <AdminSectionContainer>
                 <AdminSectionTitle>Models</AdminSectionTitle>
                 {models?.map((model) => {
+                    const finalUrl = PageRoutes.ADMIN_MODELS.replace(':id', `${model.id}`);
+
+                    const navigateToDetailPage = () => {
+                        navigate(finalUrl);
+                    };
+
                     return (
                         <>
-                            <AdminContainerItems>
+                            <AdminContainerItems onClick={navigateToDetailPage}>
                                 {model.id} - {model.name}
                             </AdminContainerItems>
                             <div>&nbsp;</div>

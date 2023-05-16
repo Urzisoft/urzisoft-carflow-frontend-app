@@ -8,6 +8,7 @@ export const requestUrls = {
     brand: `${backendEnvironment}${routeBase}/brands/${id}`,
 
     models: `${backendEnvironment}${routeBase}/models`,
+    model: `${backendEnvironment}${routeBase}/models/${id}`,
 
     cars: `${backendEnvironment}${routeBase}/cars`,
     car: `${backendEnvironment}${routeBase}/cars/${id}`,

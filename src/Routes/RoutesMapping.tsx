@@ -19,6 +19,7 @@ import { AddModel } from "../Components/Pages/User/Addings/AddModel";
 import { AddBrand } from "../Components/Pages/User/Addings/AddBrand";
 import { AdminDashboard } from "../Components/Pages/Admin/AdminDashboard/AdminDashboard";
 import { AdminBrands } from "../Components/Pages/Admin/DetailPages/AdminBrands/AdminBrands";
+import { AdminModels } from "../Components/Pages/Admin/DetailPages/AdminModels/AdminModels";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -40,6 +41,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.ADD_BRAND, component: <AddBrand /> },
         { path: PageRoutes.ADMIN_DASHBOARD, component: <AdminDashboard /> },
         { path: PageRoutes.ADMIN_BRANDS, component: <AdminBrands /> },
+        { path: PageRoutes.ADMIN_MODELS, component: <AdminModels /> },
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> },
     ];
 
