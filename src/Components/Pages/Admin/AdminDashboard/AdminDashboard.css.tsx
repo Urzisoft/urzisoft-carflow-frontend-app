@@ -18,7 +18,7 @@ export const AdminContainerItems = styled(Link)`
     padding: 0.5rem;
     text-decoration: none;
     color: ${Colors.white};
-    transition: all 500ms ease;
+    transition: all 200ms ease;
   
     :hover {
       color: ${Colors.brightRed};
