@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { useRedirectHome } from '../../../Hooks/useRedirectHome';
-import { WelcomeButton } from "../../Pages/Welcome/Welcome.css";
+import { WelcomeButton } from "../../Pages/User/Welcome/Welcome.css";
 import OverlayNotificationBackground from "../../../Assets/Images/OverlayNotification.png";
 import {
     OverlayNotificationContainer,
