@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom";
 import useValidateUser from "../../../../../Hooks/useValidateUser";
 import { requestUrls } from "../../../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../../../Hooks/useGetCustomFetch";
-import { BrandType, ModelType } from "../../../../../Utils/Types";
+import { ModelType } from "../../../../../Utils/Types";
 import { useEffect, useState } from "react";
 import { AdminDashboardContainer } from "../../AdminDashboard/AdminDashboard.css";
 
-export const AdminModels = () => {
+export const AdminModel = () => {
     const { id } = useParams();
     const { token } = useValidateUser();
     const modelObjectRequestUrl = requestUrls.model.replace(':id', `${id}`);

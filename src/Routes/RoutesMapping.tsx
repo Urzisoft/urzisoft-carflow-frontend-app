@@ -18,8 +18,9 @@ import { AddCar } from "../Components/Pages/User/Addings/AddCar";
 import { AddModel } from "../Components/Pages/User/Addings/AddModel";
 import { AddBrand } from "../Components/Pages/User/Addings/AddBrand";
 import { AdminDashboard } from "../Components/Pages/Admin/AdminDashboard/AdminDashboard";
-import { AdminBrands } from "../Components/Pages/Admin/DetailPages/AdminBrands/AdminBrands";
-import { AdminModels } from "../Components/Pages/Admin/DetailPages/AdminModels/AdminModels";
+import { AdminBrand } from "../Components/Pages/Admin/DetailPages/AdminBrands/AdminBrand";
+import { AdminModel } from "../Components/Pages/Admin/DetailPages/AdminModels/AdminModel";
+import { AdminCarService } from "../Components/Pages/Admin/DetailPages/AdminCarServices/AdminCarService";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -40,8 +41,9 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.ADD_MODEL, component: <AddModel /> },
         { path: PageRoutes.ADD_BRAND, component: <AddBrand /> },
         { path: PageRoutes.ADMIN_DASHBOARD, component: <AdminDashboard /> },
-        { path: PageRoutes.ADMIN_BRANDS, component: <AdminBrands /> },
-        { path: PageRoutes.ADMIN_MODELS, component: <AdminModels /> },
+        { path: PageRoutes.ADMIN_BRANDS, component: <AdminBrand /> },
+        { path: PageRoutes.ADMIN_MODELS, component: <AdminModel /> },
+        { path: PageRoutes.ADMIN_CAR_SERVICES, component: <AdminCarService /> },
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> },
     ];
 

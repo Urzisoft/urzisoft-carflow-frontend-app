@@ -15,5 +15,6 @@ export enum PageRoutes {
     ADMIN_DASHBOARD = '/admin-dashboard',
     ADMIN_BRANDS = '/admin-brands/:id',
     ADMIN_MODELS = '/admin-models/:id',
+    ADMIN_CAR_SERVICES = '/admin-car-services/:id',
     PAGE_NOT_FOUND = "*"
 }

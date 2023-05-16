@@ -6,7 +6,7 @@ import { BrandType } from "../../../../../Utils/Types";
 import { useEffect, useState } from "react";
 import { AdminDashboardContainer } from "../../AdminDashboard/AdminDashboard.css";
 
-export const AdminBrands = () => {
+export const AdminBrand = () => {
     const { id } = useParams();
     const { token } = useValidateUser();
     const brandObjectRequestUrl = requestUrls.brand.replace(':id', `${id}`);
