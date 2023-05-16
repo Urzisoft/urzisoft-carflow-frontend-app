@@ -117,6 +117,7 @@ export type AuthResponseType = {
     token: string;
     expiration: string;
     status?: number;
+    roles: string[];
 };
 
 export type CredentialsType = {

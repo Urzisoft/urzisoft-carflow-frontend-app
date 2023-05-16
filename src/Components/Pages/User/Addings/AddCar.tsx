@@ -15,7 +15,7 @@ import useGetCustomFetch from "../../../../Hooks/useGetCustomFetch";
 import { BrandType, ModelType } from "../../../../Utils/Types";
 import { requestUrls } from "../../../../Backend/requestUrls";
 import useValidateUser from "../../../../Hooks/useValidateUser";
-import { useRedirectHome } from "../../../../Hooks/useRedirectHome";
+import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
 import usePostCustomFetch from "../../../../Hooks/usePostCustomFetch";
 import { Colors } from "../../../../Utils/cssMedia";
 
@@ -25,7 +25,7 @@ export const AddCar = () => {
     const { response: brandsResponse, fetcher: fetchBrands } = useGetCustomFetch<BrandType[], string>(requestUrls.brands);
     const { response: modelsResponse, fetcher: fetchModels } = useGetCustomFetch<ModelType[], string>(requestUrls.models);
     const { token, username } = useValidateUser();
-    const { navigateHome } = useRedirectHome();
+    const { navigateHome } = useRedirectDashboard();
     const {
         fetcher: sendCarPayload
     } = usePostCustomFetch<any, any>(requestUrls.cars);

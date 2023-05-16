@@ -26,7 +26,7 @@ import * as GiIcons from "react-icons/gi";
 import * as TbIcons from "react-icons/tb";
 import { FormButton } from "../../../Common/Authentication/Authentication.css";
 import usePostCustomFetch from "../../../../Hooks/usePostCustomFetch";
-import { useRedirectHome } from "../../../../Hooks/useRedirectHome";
+import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
 
 const renderCharacteristics = (CarDetailsConfig: CarDetailsConfigType[]): JSX.Element[] => {
     return CarDetailsConfig.map((item, index) => {
@@ -46,7 +46,7 @@ export const CarDetails: FC = () => {
     const {
         fetcher: deleteCarPayload,
     } = usePostCustomFetch<any, any>(`${requestUrls.cars}/${id}`, 'DELETE');
-    const { navigateHome } = useRedirectHome();
+    const { navigateHome } = useRedirectDashboard();
 
     const [car, setCar] = useState<CarType>();
 

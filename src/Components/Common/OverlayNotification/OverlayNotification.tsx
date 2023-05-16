@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { useRedirectHome } from '../../../Hooks/useRedirectHome';
+import { useRedirectDashboard } from '../../../Hooks/useRedirectDashboard';
 import { WelcomeButton } from "../../Pages/User/Welcome/Welcome.css";
 import OverlayNotificationBackground from "../../../Assets/Images/OverlayNotification.png";
 import {
@@ -13,7 +13,7 @@ type OverlayNotificationType = {
 };
 
 export const OverlayNotification: FC<OverlayNotificationType> = ({ message }) => {
-    const { navigateHome } = useRedirectHome();
+    const { navigateHome } = useRedirectDashboard();
     const [isClosed, setIsClosed] = useState<boolean>(false);
 
     const onButtonClick = () => {

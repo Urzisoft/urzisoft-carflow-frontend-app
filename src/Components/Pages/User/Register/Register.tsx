@@ -20,11 +20,11 @@ import {
     validatePassword,
     validateUsername
 } from "../../../../Utils/Validation/Validation";
-import { useRedirectHome } from "../../../../Hooks/useRedirectHome";
+import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
 
 export const Register: FC = () => {
     const { response: RegisterResponse, fetcher: sendRegisterPayload } = usePostCustomFetch<any, any>(requestUrls.authRegister);
-    const { navigateHome } = useRedirectHome();
+    const { navigateHome } = useRedirectDashboard();
 
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");

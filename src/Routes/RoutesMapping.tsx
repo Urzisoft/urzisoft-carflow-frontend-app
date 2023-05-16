@@ -17,6 +17,7 @@ import { CityInfo } from "../Components/Pages/User/CityInfo/CityInfo";
 import { AddCar } from "../Components/Pages/User/Addings/AddCar";
 import { AddModel } from "../Components/Pages/User/Addings/AddModel";
 import { AddBrand } from "../Components/Pages/User/Addings/AddBrand";
+import { AdminDashboard } from "../Components/Pages/Admin/AdminDashboard/AdminDashboard";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -36,6 +37,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.ADD_CAR, component: <AddCar /> },
         { path: PageRoutes.ADD_MODEL, component: <AddModel /> },
         { path: PageRoutes.ADD_BRAND, component: <AddBrand /> },
+        { path: PageRoutes.ADMIN_DASHBOARD, component: <AdminDashboard /> },
         { path: PageRoutes.PAGE_NOT_FOUND, component: <PageNotFound /> },
     ];
 

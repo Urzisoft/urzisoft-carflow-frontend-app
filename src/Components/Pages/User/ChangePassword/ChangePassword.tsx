@@ -16,7 +16,7 @@ import useValidateUser from "../../../../Hooks/useValidateUser";
 import usePostCustomFetch from "../../../../Hooks/usePostCustomFetch";
 import { ChangePasswordType } from "../../../../Utils/Types";
 import { requestUrls } from "../../../../Backend/requestUrls";
-import { useRedirectHome } from "../../../../Hooks/useRedirectHome";
+import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
 import { Sidebar } from "../../../Common/Sidebar/Sidebar";
 
 export const ChangePassword: FC = () => {
@@ -24,7 +24,7 @@ export const ChangePassword: FC = () => {
     const {
         fetcher: sendChangePasswordPayload
     } = usePostCustomFetch<any, ChangePasswordType>(requestUrls.changePassword);
-    const { navigateHome } = useRedirectHome();
+    const { navigateHome } = useRedirectDashboard();
 
     const [oldPassword, setOldPassword] = useState<string>("");
     const [newPassword, setNewPassword] = useState<string>("");

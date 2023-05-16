@@ -1,14 +1,17 @@
 import { createContext, FC, useContext, useEffect, useState } from 'react';
-import { useRedirectHome } from "./useRedirectHome";
+import { useRedirectDashboard } from "./useRedirectDashboard";
 import usePersistentState, { removeStorage, setStorage } from "./usePersistentState";
 import usePostCustomFetch from "./usePostCustomFetch";
 import { AuthResponseType, CredentialsType } from "../Utils/Types";
 import { requestUrls } from "../Backend/requestUrls";
+import { useNavigate } from "react-router-dom";
+import { PageRoutes } from "../Utils/Routes";
 
 const useAuthService = () => {
-    const { navigateHome } = useRedirectHome();
+    const navigate = useNavigate();
     const { set: setUsername } = usePersistentState('userName');
     const { set: setToken } = usePersistentState('token');
+    const { set: setRoles } = usePersistentState('roles');
     const { store: isLoggedIn, set: setIsLoggedIn } = usePersistentState('loggedIn');
     const { store: tokenExpiration, set: setTokenExpiration } = usePersistentState('tokenExpiration');
     const {
@@ -35,13 +38,15 @@ const useAuthService = () => {
         setToken(props ? props.token : '');
         setDirectTokenAccess(props ? props.token : '');
         setTokenExpiration(props ? props.expiration : '');
+        setRoles(props ? props.roles : '');
     };
 
     const logUserOut = async () => {
         removeStorage('token');
         removeStorage('tokenExpiration');
+        removeStorage('roles');
         setStorage('loggedIn', false);
-        navigateHome();
+        navigate(PageRoutes.HOME);
     };
 
     useEffect(() => {
@@ -59,7 +64,12 @@ const useAuthService = () => {
     useEffect(() => {
         if (loginResponse) {
             setAuthFields(loginResponse?.status ? undefined : loginResponse);
-            navigateHome();
+
+            if (loginResponse.roles[0] === 'Admin') {
+                navigate(PageRoutes.ADMIN_DASHBOARD);
+            } else {
+                navigate(PageRoutes.DASHBOARD);
+            }
         }
         // eslint-disable-next-line
     }, [loginError, loginResponse, loginLoading]);
