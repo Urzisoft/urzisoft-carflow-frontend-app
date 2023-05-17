@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FetchResponsePOST } from "../Utils/Types";
 
-const usePostCustomFetch = <Data extends any, Param extends any>(url: RequestInfo, method?: 'PUT' | 'DELETE'): FetchResponsePOST<Data, Param> => {
+const usePostCustomFetch = <Data extends any, Param extends any>(url: RequestInfo, method?: 'PATCH' | 'DELETE'): FetchResponsePOST<Data, Param> => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [apiData, setApiData] = useState<Data | null>(null);
     const [serverError, setServerError] = useState(null);
