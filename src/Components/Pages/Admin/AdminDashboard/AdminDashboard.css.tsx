@@ -50,3 +50,31 @@ export const AdminContainerItem = styled.button`
     border-radius: 0.3rem;
     color: ${Colors.white};
 `;
+
+export const AdminFormContainer = styled.div`
+    width: 30%;
+    margin-top: 10rem;
+`;
+
+export const AdminFormDashboard = styled.div`
+    display: flex;
+    justify-content: center; 
+  
+    button {
+        margin-left: 1rem;
+    }
+`;
+
+export const ExtraFormContainer = styled.div`
+    min-height: 100vh;
+    background: ${Colors.carCardBlack};
+    text-align: center;
+  
+    h2 {
+        color: ${Colors.white};
+    }
+`;
+
+export const AdminPadding = styled.div`
+    padding: 5rem;
+`;

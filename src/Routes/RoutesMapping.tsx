@@ -25,6 +25,7 @@ import { AdminCarWashService } from "../Components/Pages/Admin/DetailPages/Admin
 import { AdminCity } from "../Components/Pages/Admin/DetailPages/AdminCity/AdminCity";
 import { AdminFuel } from "../Components/Pages/Admin/DetailPages/AdminFuel/AdminFuel";
 import { AdminGasStation } from "../Components/Pages/Admin/DetailPages/AdminGasStation/AdminGasStation";
+import { AddAdminBrand } from "../Components/Pages/Admin/DetailPages/AdminBrands/AddAdminBrand";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -46,6 +47,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.ADD_BRAND, component: <AddBrand /> },
         { path: PageRoutes.ADMIN_DASHBOARD, component: <AdminDashboard /> },
         { path: PageRoutes.ADMIN_BRANDS, component: <AdminBrand /> },
+        { path: PageRoutes.ADD_ADMIN_BRANDS, component: <AddAdminBrand /> },
         { path: PageRoutes.ADMIN_MODELS, component: <AdminModel /> },
         { path: PageRoutes.ADMIN_CAR_SERVICES, component: <AdminCarService /> },
         { path: PageRoutes.ADMIN_CAR_WASH_SERVICES, component: <AdminCarWashService /> },

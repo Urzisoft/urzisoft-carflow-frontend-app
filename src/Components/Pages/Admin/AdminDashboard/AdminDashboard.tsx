@@ -102,10 +102,10 @@ export const AdminDashboard = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [gasStationsResponse]);
 
-    const addOperationButtons = () => {
+    const addOperationButtons = (onClick: () => void) => {
         return (
             <AdminButtonsBox>
-                <AdminContainerItem>Add Item</AdminContainerItem>
+                <AdminContainerItem onClick={onClick}>Add Item</AdminContainerItem>
             </AdminButtonsBox>
         )
     };
@@ -133,7 +133,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons()}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
             </AdminSectionContainer>
             <AdminBreaker />
             <AdminSectionContainer>
@@ -155,7 +155,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons()}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
             </AdminSectionContainer>
             <AdminBreaker />
             <AdminSectionContainer>
@@ -177,7 +177,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons()}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
             </AdminSectionContainer>
             <AdminBreaker />
             <AdminSectionContainer>
@@ -199,7 +199,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons()}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
             </AdminSectionContainer>
             <AdminBreaker />
             <AdminSectionContainer>
@@ -221,7 +221,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons()}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
             </AdminSectionContainer>
             <AdminBreaker />
             <AdminSectionContainer>
@@ -243,7 +243,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons()}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
             </AdminSectionContainer>
             <AdminBreaker />
             <AdminSectionContainer>
@@ -265,7 +265,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons()}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
             </AdminSectionContainer>
         </AdminDashboardContainer>
     )
