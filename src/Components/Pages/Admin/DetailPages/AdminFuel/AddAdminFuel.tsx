@@ -9,39 +9,44 @@ import { PageRoutes } from "../../../../../Utils/Routes";
 import { useNavigate } from "react-router-dom";
 import { Colors } from "../../../../../Utils/cssMedia";
 
-export const AddAdminCity = () => {
+export const AddAdminFuel = () => {
     const {
-        fetcher: setPayload
-    } = usePostCustomFetch<any, any>(requestUrls.cities);
+        fetcher: sendPayload
+    } = usePostCustomFetch<any, any>(requestUrls.fuels);
     const { token } = useValidateUser();
     const navigate = useNavigate();
 
     const [name, setName] = useState<string>();
-    const [county, setCounty] = useState<string>();
-    const [imageFile, setImageFile] = useState<File | null>(null);
+    const [description, setDescription] = useState<string>();
+    const [type, setType] = useState<string>();
+    const [quality, setQuality] = useState<string>();
 
     const handleInputNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     };
 
-    const handleInputCountyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCounty(event.target.value);
+    const handleInputDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setDescription(event.target.value);
     };
 
-    const handleInputFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files?.[0]) {
-            setImageFile(event.target.files?.[0]);
-        }
-    };
+    const handleInputTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setType(event.target.value);
+    }
+
+    const handleInputQualityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setQuality(event.target.value);
+    }
 
     const onSendButtonClick = () => {
-        if (name !== '' && county !== '') {
-            const formData = new FormData();
-            name && formData.append('Name', name);
-            county && formData.append('County', county);
-            imageFile && formData.append('File', imageFile);
+        if (name !== '' && description !== '' && type !== '' && quality !== '') {
+            const payload = {
+                Name: name,
+                Description: description,
+                Type: type,
+                Quality: quality
+            };
 
-            setPayload(formData, token, true);
+            sendPayload(payload, token);
         }
     };
 
@@ -56,15 +61,20 @@ export const AddAdminCity = () => {
                     />
                     <InputField
                         type="text"
-                        placeholder="County"
-                        onChange={handleInputCountyChange}
+                        placeholder="Description"
+                        onChange={handleInputDescriptionChange}
                     />
                     <InputField
-                        type="file"
-                        isFileInput={true}
-                        onChange={handleInputFileChange}
+                        type="text"
+                        placeholder="Type"
+                        onChange={handleInputTypeChange}
                     />
-                    <FormButton onClick={onSendButtonClick}>Add a new City</FormButton>
+                    <InputField
+                        type="text"
+                        placeholder="Quality"
+                        onChange={handleInputQualityChange}
+                    />
+                    <FormButton onClick={onSendButtonClick}>Add a new fuel</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>
