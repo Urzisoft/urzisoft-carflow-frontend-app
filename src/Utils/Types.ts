@@ -92,7 +92,9 @@ export type CarServicesType = {
     description: string;
     address: string;
     mainBrand: BrandType;
+    mainBrandId: string;
     carServiceCity: CityType;
+    carServiceCityId: string;
 };
 
 export type WelcomePageConfigType = {
