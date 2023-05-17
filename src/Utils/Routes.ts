@@ -18,6 +18,7 @@ export enum PageRoutes {
     ADMIN_MODELS = '/admin-models/:id',
     ADD_ADMIN_MODELS = '/add-admin-models',
     ADMIN_CAR_SERVICES = '/admin-car-services/:id',
+    ADD_ADMIN_CAR_SERVICES = '/add-admin-car-services',
     ADMIN_CAR_WASH_SERVICES = '/admin-car-wash-services/:id',
     ADMIN_CITIES = '/admin-cities/:id',
     ADMIN_FUEL = '/admin-fuels/:id',

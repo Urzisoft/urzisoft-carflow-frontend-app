@@ -177,7 +177,7 @@ export const AdminDashboard = () => {
                     )
                 })}
                 <div>&nbsp;</div>
-                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_BRANDS))}
+                {addOperationButtons(() => navigate(PageRoutes.ADD_ADMIN_CAR_SERVICES))}
             </AdminSectionContainer>
             <AdminBreaker />
             <AdminSectionContainer>
