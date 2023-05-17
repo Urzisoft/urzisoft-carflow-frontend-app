@@ -52,8 +52,8 @@ export type CarWashStationType = {
     id: number;
     storageImageUrl: string;
     name: string;
-    standardPrice: number;
-    premiumPrice: number;
+    standardPrice: string;
+    premiumPrice: string;
     city: CityType;
     address: string;
     rank: string;

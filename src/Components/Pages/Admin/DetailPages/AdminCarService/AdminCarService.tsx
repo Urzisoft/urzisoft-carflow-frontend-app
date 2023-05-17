@@ -118,7 +118,7 @@ export const AdminCarService = () => {
                         isFileInput={true}
                         onChange={handleInputFileChange}
                     />
-                    <FormButton onClick={onSendButtonClick}>Add a new Car Service</FormButton>
+                    <FormButton onClick={onSendButtonClick}>Update Car Service</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>
