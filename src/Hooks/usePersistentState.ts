@@ -9,6 +9,7 @@ type localStorageKeys = {
     email?: string;
     profilePicture?: string;
     cookiesAccepted?: boolean;
+    roles?: string[];
 };
 
 const getStorage = (key: string) => {

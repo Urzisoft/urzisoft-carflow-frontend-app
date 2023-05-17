@@ -67,9 +67,10 @@ export const FormButton = styled.button<AuthenticationButtonProps>`
     font-weight: bold;
     text-decoration: none;
     margin-top: 0.7em;
-
+    transition: all 250ms ease;
+  
     :hover {
-        transition: 5ms;
+        transition: all 250ms ease;
         background-color: ${(props) => props.hoverBackgroundColor || Colors.darkRed};
         cursor: pointer;
     }

@@ -52,8 +52,8 @@ export type CarWashStationType = {
     id: number;
     storageImageUrl: string;
     name: string;
-    standardPrice: number;
-    premiumPrice: number;
+    standardPrice: string;
+    premiumPrice: string;
     city: CityType;
     address: string;
     rank: string;
@@ -92,7 +92,9 @@ export type CarServicesType = {
     description: string;
     address: string;
     mainBrand: BrandType;
+    mainBrandId: string;
     carServiceCity: CityType;
+    carServiceCityId: string;
 };
 
 export type WelcomePageConfigType = {
@@ -117,6 +119,7 @@ export type AuthResponseType = {
     token: string;
     expiration: string;
     status?: number;
+    roles: string[];
 };
 
 export type CredentialsType = {
