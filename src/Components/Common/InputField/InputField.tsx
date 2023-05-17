@@ -13,15 +13,17 @@ type InputFieldType = {
     isValid?: boolean;
     isEligible?: boolean;
     isFileInput?: boolean
+    value?: string;
 }
 
 export const InputField: FC<InputFieldType> = ({ type, placeholder, onChange,
-                                                    required = true, isValid, isEligible, isFileInput}) => {
+                                                    required = true, isValid,
+                                                   isEligible, isFileInput, value}) => {
 
     if (isFileInput) {
         return (
             <InputBox>
-                <InputText type={type} placeholder={placeholder} required={required} onChange={onChange} isValid={isValid} isEligible={isEligible} accept={'image/png, image/jpeg'}></InputText>
+                <InputText value={value} type={type} placeholder={placeholder} required={required} onChange={onChange} isValid={isValid} isEligible={isEligible} accept={'image/png, image/jpeg'}></InputText>
             </InputBox>
         )
     }
