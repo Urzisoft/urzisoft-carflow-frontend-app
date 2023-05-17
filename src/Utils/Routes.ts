@@ -26,5 +26,6 @@ export enum PageRoutes {
     ADMIN_FUEL = '/admin-fuels/:id',
     ADD_ADMIN_FUEL = '/add-admin-fuels',
     ADMIN_GAS_STATION = '/admin-gas-stations/:id',
+    ADD_ADMIN_GAS_STATION = '/add-admin-gas-stations',
     PAGE_NOT_FOUND = "*"
 }
