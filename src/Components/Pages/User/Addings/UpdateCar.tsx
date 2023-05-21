@@ -1,5 +1,5 @@
 import useGetCustomFetch from "../../../../Hooks/useGetCustomFetch";
-import { BrandType, ModelType } from "../../../../Utils/Types";
+import { BrandType, CarType, ModelType } from "../../../../Utils/Types";
 import { requestUrls } from "../../../../Backend/requestUrls";
 import useValidateUser from "../../../../Hooks/useValidateUser";
 import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
@@ -16,20 +16,21 @@ import { Colors } from "../../../../Utils/cssMedia";
 import { InputField } from "../../../Common/InputField/InputField";
 import { DropdownField } from "../../../Common/DropdownField/DropdownField";
 import { SendButtonWrapper } from "./AddCar.css";
+import { useParams } from "react-router-dom";
 
 const FuelOptions = ["Diesel", "Petrol", "Gpl"];
 
 export const UpdateCar = () => {
-    const { response: brandsResponse, fetcher: fetchBrands } = useGetCustomFetch<BrandType[], string>(requestUrls.brands);
-    const { response: modelsResponse, fetcher: fetchModels } = useGetCustomFetch<ModelType[], string>(requestUrls.models);
+    const { id } = useParams();
     const { token, username } = useValidateUser();
     const { navigateHome } = useRedirectDashboard();
+    const carObjectRequestUrl = requestUrls.car.replace(':id', `${id}`);
+    const { response: carResponse, fetcher: fetchCar } = useGetCustomFetch<CarType, string>(carObjectRequestUrl);
     const {
         fetcher: sendCarPayload
-    } = usePostCustomFetch<any, any>(requestUrls.cars);
+    } = usePostCustomFetch<any, any>(carObjectRequestUrl, 'PATCH');
 
-    const [brands, setBrands] = useState<BrandType[]>();
-    const [models, setModels] = useState<ModelType[]>();
+    const [car, setCar] = useState<CarType>();
     const [generation, setGeneration] = useState<string>('');
     const [year, setYear] = useState<string>('');
     const [mileage, setMileage] = useState<string>('');
@@ -39,35 +40,19 @@ export const UpdateCar = () => {
     const [driveWheel, setDriveWheel] = useState<string>('');
     const [licensePlate, setLicensePlate] = useState<string>('');
     const [imageFile, setImageFile] = useState<File | null>(null);
-    const [fuelOption, setFuelOption] = useState<string>(FuelOptions[0]);
-    const [brandOption, setBrandOption] = useState<string>('');
-    const [modelOption, setModelOption] = useState<string>('');
-
-    const brandsDropdown = useRef<string[]>();
-    const brandsDropdownSet = new Set<string>();
-    const modelsDropdown = useRef<string[]>();
-    const modelsDropdownSet = new Set<string>();
 
     useEffect(() => {
-        fetchBrands(token);
-        fetchModels(token);
+        fetchCar(token);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     useEffect(() => {
-        if (brandsResponse) {
-            setBrands(brandsResponse);
+        if (carResponse) {
+            setCar(carResponse);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [brandsResponse]);
-
-    useEffect(() => {
-        if (modelsResponse) {
-            setModels(modelsResponse);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modelsResponse]);
+    }, [carResponse]);
 
     const handleInputGenerationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setGeneration(event.target.value);
@@ -107,63 +92,22 @@ export const UpdateCar = () => {
         }
     };
 
-    const handleInputFuelDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setFuelOption(event.target.value);
-    };
-
-    const handleInputBrandDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setBrandOption(event.target.value);
-    };
-
-    const handleInputModelDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setModelOption(event.target.value);
-    };
-
-    useEffect(() => {
-        brands?.forEach((brand) => {
-            brandsDropdownSet.add(`${brand.id}-${brand.name}`);
-            brandsDropdown.current = Array.from(brandsDropdownSet);
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [brands]);
-
-    useEffect(() => {
-        models?.forEach((model) => {
-            modelsDropdownSet.add(`${model.id}-${model.name}`);
-            modelsDropdown.current = Array.from(modelsDropdownSet);
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [models]);
-
-    useEffect(() => {
-        if (brandOption === '' || brandOption === 'undefined') setBrandOption(String(brandsResponse?.[0].id) || '');
-        if (modelOption === '' || modelOption === 'undefined') setModelOption(String(modelsResponse?.[0].id) || '');
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [brandsResponse, modelsResponse]);
-
     const onSendButtonClick = () => {
-        const validationConditional = generation !== '' && year !== '' && mileage !== '' &&
-            gearbox !== '' && power !== '' && engineSize !== '' && driveWheel !== '' &&
-            licensePlate !== '' && fuelOption !== '' && brandOption !== '' && modelOption !== '';
+        const formData = new FormData();
+        generation && formData.append('Generation', generation);
+        year && formData.append('Year', year);
+        mileage && formData.append('Mileage', mileage);
+        gearbox && formData.append('Gearbox', gearbox);
+        power && formData.append('Power', power);
+        engineSize && formData.append('EngineSize', engineSize);
+        driveWheel && formData.append('DriveWheel', driveWheel);
+        licensePlate && formData.append('LicensePlate', licensePlate);
+        imageFile && formData.append('File', imageFile);
+        username && formData.append('Username', username);
+        formData.append('BrandId', String(car?.brand.id) ?? '');
+        formData.append('ModelId', String(car?.model.id) ?? '');
 
-        if (validationConditional) {
-            const formData = new FormData();
-            brandOption && formData.append('BrandId', brandOption);
-            modelOption && formData.append('ModelId', modelOption);
-            generation && formData.append('Generation', generation);
-            year && formData.append('Year', year);
-            fuelOption && formData.append('GasType', fuelOption);
-            mileage && formData.append('Mileage', mileage);
-            gearbox && formData.append('Gearbox', gearbox);
-            power && formData.append('Power', power);
-            engineSize && formData.append('EngineSize', engineSize);
-            driveWheel && formData.append('DriveWheel', driveWheel);
-            licensePlate && formData.append('LicensePlate', licensePlate);
-            imageFile && formData.append('File', imageFile);
-            username && formData.append('Username', username);
-
-            sendCarPayload(formData, token, true);
-        }
+        sendCarPayload(formData, token, true);
 
         navigateHome();
     };
@@ -178,42 +122,42 @@ export const UpdateCar = () => {
                         <FormUserInputDetailsContainer>
                             <InputField
                                 type="text"
-                                placeholder="Generation"
+                                placeholder={`${car?.generation}`}
                                 onChange={handleInputGenerationChange}
                             />
                             <InputField
                                 type="text"
-                                placeholder="Year"
+                                placeholder={`${car?.year}`}
                                 onChange={handleInputYearChange}
                             />
                             <InputField
                                 type="text"
-                                placeholder="Mileage"
+                                placeholder={`${car?.mileage}`}
                                 onChange={handleInputMileageChange}
                             />
                             <InputField
                                 type="text"
-                                placeholder="Gearbox"
+                                placeholder={`${car?.gearbox}`}
                                 onChange={handleInputGearboxChange}
                             />
                             <InputField
                                 type="text"
-                                placeholder="Power"
+                                placeholder={`Power ${car?.power}`}
                                 onChange={handleInputPowerChange}
                             />
                             <InputField
                                 type="text"
-                                placeholder="EngineSize"
+                                placeholder={`Engine Size ${car?.engineSize}`}
                                 onChange={handleInputEngineSizeChange}
                             />
                             <InputField
                                 type="text"
-                                placeholder="DriveWheel"
+                                placeholder={`${car?.driveWheel}`}
                                 onChange={handleInputDriveWheelChange}
                             />
                             <InputField
                                 type="text"
-                                placeholder="LicensePlate"
+                                placeholder={`${car?.licensePlate}`}
                                 onChange={handleInputLicensePlateChange}
                             />
                             <InputField
@@ -221,13 +165,8 @@ export const UpdateCar = () => {
                                 onChange={handleInputFileChange}
                                 isFileInput={true}
                             />
-                            <DropdownField options={FuelOptions} splitById={false} handleDropdownChange={handleInputFuelDropdownChange} />
-                            <div>&nbsp;</div>
-                            <DropdownField options={brandsDropdown.current} splitById={true} handleDropdownChange={handleInputBrandDropdownChange} />
-                            <div>&nbsp;</div>
-                            <DropdownField options={modelsDropdown.current} splitById={true} handleDropdownChange={handleInputModelDropdownChange} />
                             <SendButtonWrapper>
-                                <FormButton onClick={onSendButtonClick}>Add a new car into the dashboard</FormButton>
+                                <FormButton onClick={onSendButtonClick}>Update Car</FormButton>
                             </SendButtonWrapper>
                         </FormUserInputDetailsContainer>
                     </FormGeneralContainer>
