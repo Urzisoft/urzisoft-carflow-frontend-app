@@ -15,11 +15,13 @@ import loginBackgroundImage from "../../../../Assets/Images/BlueCarLoginBackgrou
 import usePostCustomFetch from "../../../../Hooks/usePostCustomFetch";
 import { requestUrls } from "../../../../Backend/requestUrls";
 import useValidateUser from "../../../../Hooks/useValidateUser";
+import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
 
 export const AddModel = () => {
     const {
         fetcher: sendModelPayload
     } = usePostCustomFetch<any, any>(requestUrls.models);
+    const { navigateHome } = useRedirectDashboard();
 
     const [model, setModel] = useState<string>();
     const { token } = useValidateUser();
@@ -36,6 +38,8 @@ export const AddModel = () => {
 
           sendModelPayload(payload, token);
       }
+
+      navigateHome();
     };
 
     return (

@@ -15,6 +15,7 @@ import loginBackgroundImage from "../../../../Assets/Images/BlueCarLoginBackgrou
 import usePostCustomFetch from "../../../../Hooks/usePostCustomFetch";
 import { requestUrls } from "../../../../Backend/requestUrls";
 import useValidateUser from "../../../../Hooks/useValidateUser";
+import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
 
 export const AddBrand = () => {
     const {
@@ -24,6 +25,7 @@ export const AddBrand = () => {
     const [name, setName] = useState<string>();
     const [description, setDescription] = useState<string>();
     const [imageFile, setImageFile] = useState<File | null>(null);
+    const { navigateHome } = useRedirectDashboard();
 
     const { token } = useValidateUser();
 
@@ -50,6 +52,8 @@ export const AddBrand = () => {
 
             sendBrandPayload(formData, token, true);
         }
+
+        navigateHome();
     };
 
     return (
