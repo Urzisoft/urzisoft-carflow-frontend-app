@@ -10,6 +10,7 @@ export enum PageRoutes {
     CAR_SERVICES = '/car-services',
     CITY_INFO = '/city-info/:id',
     ADD_CAR = '/add-car',
+    UPDATE_CAR = '/update-car',
     ADD_MODEL = '/add-model',
     ADD_BRAND = '/add-brand',
     ADMIN_DASHBOARD = '/admin-dashboard',

@@ -34,6 +34,7 @@ import {
 import { AddAdminCity } from "../Components/Pages/Admin/DetailPages/AdminCity/AddAdminCity";
 import { AddAdminFuel } from "../Components/Pages/Admin/DetailPages/AdminFuel/AddAdminFuel";
 import { AddAdminGasStation } from "../Components/Pages/Admin/DetailPages/AdminGasStation/AddAdminGasStation";
+import { UpdateCar } from "../Components/Pages/User/Addings/UpdateCar";
 
 export const RoutesMapping: FC = () => {
     const config = Config.getInstance();
@@ -51,6 +52,7 @@ export const RoutesMapping: FC = () => {
         { path: PageRoutes.CAR_SERVICES, component: <CarServices /> },
         { path: PageRoutes.CITY_INFO, component: <CityInfo /> },
         { path: PageRoutes.ADD_CAR, component: <AddCar /> },
+        { path: PageRoutes.UPDATE_CAR, component: <UpdateCar /> },
         { path: PageRoutes.ADD_MODEL, component: <AddModel /> },
         { path: PageRoutes.ADD_BRAND, component: <AddBrand /> },
         { path: PageRoutes.ADMIN_DASHBOARD, component: <AdminDashboard /> },
