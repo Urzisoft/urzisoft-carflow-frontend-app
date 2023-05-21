@@ -38,8 +38,6 @@ export const AddModel = () => {
 
           sendModelPayload(payload, token);
       }
-
-      navigateHome();
     };
 
     return (

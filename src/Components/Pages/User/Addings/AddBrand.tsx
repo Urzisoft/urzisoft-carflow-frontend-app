@@ -52,8 +52,6 @@ export const AddBrand = () => {
 
             sendBrandPayload(formData, token, true);
         }
-
-        navigateHome();
     };
 
     return (

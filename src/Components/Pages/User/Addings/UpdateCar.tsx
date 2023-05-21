@@ -108,8 +108,6 @@ export const UpdateCar = () => {
         formData.append('ModelId', String(car?.model.id) ?? '');
 
         sendCarPayload(formData, token, true);
-
-        navigateHome();
     };
 
     return (
