@@ -28,6 +28,7 @@ export const Dashboard: FC = () => {
     const [cars, setCars] = useState<CarType[]>([]);
     const [brands, setBrands] = useState<BrandType[]>([]);
     const [cities, setCities] = useState<CityType[]>([]);
+    const [display, setDisplay] = useState<boolean>(false);
 
     const ownBrands = useRef<BrandType[]>([]);
     const brandsSet = new Set<BrandType>();
@@ -73,7 +74,16 @@ export const Dashboard: FC = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cars, brands]);
 
+    useEffect(() => {
+        cars.forEach((car) => {
+            if (car.username === username) {
+                setDisplay(true);
+            }
+        });
+    },[cars])
+
     if (!isLoggedIn) {
+
         return <OverlayNotification message={'Authentication required'} />;
     }
 
@@ -81,7 +91,7 @@ export const Dashboard: FC = () => {
         <>
             <Sidebar />
             <ContentContainer>
-                <StripeTitle>These are your cars</StripeTitle>
+                {display && <StripeTitle>These are your cars</StripeTitle>}
                 <DashboardContainer>
                     {cars.map((car, index) => {
                         const finalUrl = PageRoutes.CAR_DETAILS.replace(':id', `${car.id}`);
@@ -118,7 +128,7 @@ export const Dashboard: FC = () => {
                         );
                     })}
                 </DashboardContainer>
-                <StripeTitle>All registered brands by you</StripeTitle>
+                {display && <StripeTitle>All registered brands by you</StripeTitle>}
                 <DashboardContainer>
                     {ownBrands.current.map((brand, index) => {
                         return (

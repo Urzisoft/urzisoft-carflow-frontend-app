@@ -17,7 +17,7 @@ import {
     ContentGrid, ButtonWrapper
 } from "./CarDetails.css";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { requestUrls } from "../../../../Backend/requestUrls";
 import useGetCustomFetch from "../../../../Hooks/useGetCustomFetch";
 import { CarDetailsConfigType, CarType } from "../../../../Utils/Types";
@@ -27,6 +27,7 @@ import * as TbIcons from "react-icons/tb";
 import { FormButton } from "../../../Common/Authentication/Authentication.css";
 import usePostCustomFetch from "../../../../Hooks/usePostCustomFetch";
 import { useRedirectDashboard } from "../../../../Hooks/useRedirectDashboard";
+import { Colors } from "../../../../Utils/cssMedia";
 
 const renderCharacteristics = (CarDetailsConfig: CarDetailsConfigType[]): JSX.Element[] => {
     return CarDetailsConfig.map((item, index) => {
@@ -39,6 +40,7 @@ const renderCharacteristics = (CarDetailsConfig: CarDetailsConfigType[]): JSX.El
 };
 
 export const CarDetails: FC = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const { token } = useValidateUser();
     const carObjectRequestUrl = requestUrls.car.replace(':id', `${id}`);
@@ -111,6 +113,12 @@ export const CarDetails: FC = () => {
         navigateHome();
     };
 
+    const finalUrl = PageRoutes.UPDATE_CAR.replace(':id', `${id}`);
+
+    const navigateToUpdatePage = () => {
+        navigate(finalUrl);
+    };
+
     return (
         <>
             <Sidebar />
@@ -138,6 +146,7 @@ export const CarDetails: FC = () => {
                     </DetailsContainer>
                     <ButtonWrapper>
                         <FormButton onClick={onDeleteButtonClick}>Delete Car</FormButton>
+                        <FormButton backgroundColor={Colors.darkBlue} onClick={navigateToUpdatePage}>Update Car</FormButton>
                     </ButtonWrapper>
                 </ContentGrid>
             </CarDetailContainer>
