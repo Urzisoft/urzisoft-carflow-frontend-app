@@ -32,6 +32,9 @@ export const AdminCarService = () => {
     const [mainBrandId, setMainBrandId] = useState<string>();
     const [carServiceCityId, setCarServiceCityId] = useState<string>();
     const [imageFile, setImageFile] = useState<File | null>(null);
+    const {
+        fetcher: deleteEndpoint,
+    } = usePostCustomFetch<any, any>(`${requestUrls.carServices}/${id}`, 'DELETE');
 
     useEffect(() => {
         fetchCarService(token);
@@ -84,6 +87,10 @@ export const AdminCarService = () => {
         sendPayload(formData, token, true);
     };
 
+    const onDeleteButtonClick = () => {
+        deleteEndpoint(undefined, token);
+    };
+
     return (
         <ExtraFormContainer>
             <AdminFormDashboard>
@@ -119,6 +126,7 @@ export const AdminCarService = () => {
                         onChange={handleInputFileChange}
                     />
                     <FormButton onClick={onSendButtonClick}>Update Car Service</FormButton>
+                    <FormButton onClick={onDeleteButtonClick}>Delete Car Service</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>

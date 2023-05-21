@@ -23,6 +23,9 @@ export const AdminFuel = () => {
     const {
         fetcher: sendPayload
     } = usePostCustomFetch<any, any>(adminFuelObjectRequestUrl, 'PATCH');
+    const {
+        fetcher: deleteEndpoint,
+    } = usePostCustomFetch<any, any>(`${requestUrls.fuels}/${id}`, 'DELETE');
 
     const [fuel, setFuel] = useState<FuelType>();
     const navigate = useNavigate();
@@ -74,6 +77,10 @@ export const AdminFuel = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [carFuelResponse]);
 
+    const onDeleteButtonClick = () => {
+        deleteEndpoint(undefined, token);
+    };
+
     return (
         <ExtraFormContainer>
             <AdminFormDashboard>
@@ -99,6 +106,7 @@ export const AdminFuel = () => {
                         onChange={handleInputQualityChange}
                     />
                     <FormButton onClick={onSendButtonClick}>Update fuel</FormButton>
+                    <FormButton onClick={onDeleteButtonClick}>Delete fuel</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>

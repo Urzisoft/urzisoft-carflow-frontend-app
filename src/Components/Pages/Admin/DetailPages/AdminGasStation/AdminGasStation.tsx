@@ -23,6 +23,9 @@ export const AdminGasStation = () => {
     const {
         fetcher: sendPayload
     } = usePostCustomFetch<any, any>(adminGasStationObjectRequestUrl, 'PATCH');
+    const {
+        fetcher: deleteEndpoint,
+    } = usePostCustomFetch<any, any>(`${requestUrls.gasStations}/${id}`, 'DELETE');
 
     const navigate = useNavigate();
 
@@ -85,6 +88,10 @@ export const AdminGasStation = () => {
         sendPayload(formData, token, true);
     };
 
+    const onDeleteButtonClick = () => {
+        deleteEndpoint(undefined, token);
+    };
+
     return (
         <ExtraFormContainer>
             <AdminFormDashboard>
@@ -120,6 +127,7 @@ export const AdminGasStation = () => {
                         onChange={handleInputFileChange}
                     />
                     <FormButton onClick={onSendButtonClick}>Update GasStation</FormButton>
+                    <FormButton onClick={onDeleteButtonClick}>Delete brand</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>

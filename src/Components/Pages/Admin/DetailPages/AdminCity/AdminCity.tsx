@@ -26,6 +26,9 @@ export const AdminCity = () => {
     const navigate = useNavigate();
 
     const [city, setCity] = useState<CityType>();
+    const {
+        fetcher: deleteEndpoint,
+    } = usePostCustomFetch<any, any>(`${requestUrls.cities}/${id}`, 'DELETE');
 
     useEffect(() => {
         fetchCarCity(token);
@@ -67,6 +70,10 @@ export const AdminCity = () => {
         sendPayload(formData, token, true);
     };
 
+    const onDeleteButtonClick = () => {
+        deleteEndpoint(undefined, token);
+    };
+
     return (
         <ExtraFormContainer>
             <AdminFormDashboard>
@@ -87,6 +94,7 @@ export const AdminCity = () => {
                         onChange={handleInputFileChange}
                     />
                     <FormButton onClick={onSendButtonClick}>Update City</FormButton>
+                    <FormButton onClick={onDeleteButtonClick}>Delete City</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>
