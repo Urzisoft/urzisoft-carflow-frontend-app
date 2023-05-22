@@ -27,6 +27,9 @@ export const AdminModel = () => {
 
     const [name, setName] = useState<string>();
     const [model, setModel] = useState<ModelType>();
+    const {
+        fetcher: deleteEndpoint,
+    } = usePostCustomFetch<any, any>(`${requestUrls.models}/${id}`, 'DELETE');
 
     useEffect(() => {
         fetchModel(token);
@@ -53,6 +56,10 @@ export const AdminModel = () => {
         sendPayload(payload, token);
     };
 
+    const onDeleteButtonClick = () => {
+        deleteEndpoint(undefined, token);
+    };
+
     return (
         <ExtraFormContainer>
             <AdminFormDashboard>
@@ -63,6 +70,7 @@ export const AdminModel = () => {
                         onChange={handleInputNameChange}
                     />
                     <FormButton onClick={onSendButtonClick}>Update Model</FormButton>
+                    <FormButton onClick={onDeleteButtonClick}>Delete Model</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>

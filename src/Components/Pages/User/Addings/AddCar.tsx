@@ -166,8 +166,6 @@ export const AddCar = () => {
 
             sendCarPayload(formData, token, true);
         }
-
-        navigateHome();
     };
 
     return (

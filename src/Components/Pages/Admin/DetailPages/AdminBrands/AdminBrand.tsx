@@ -24,6 +24,9 @@ export const AdminBrand = () => {
         fetcher: sendPayload
     } = usePostCustomFetch<any, any>(brandObjectRequestUrl, 'PATCH');
     const navigate = useNavigate();
+    const {
+        fetcher: deleteEndpoint,
+    } = usePostCustomFetch<any, any>(`${requestUrls.brands}/${id}`, 'DELETE');
 
     const [brand, setBrand] = useState<BrandType>();
     const [name, setName] = useState<string | undefined>();
@@ -66,6 +69,10 @@ export const AdminBrand = () => {
         sendPayload(formData, token, true);
     };
 
+    const onDeleteButtonClick = () => {
+        deleteEndpoint(undefined, token);
+    };
+
     return (
         <ExtraFormContainer>
             <AdminFormDashboard>
@@ -86,6 +93,7 @@ export const AdminBrand = () => {
                         onChange={handleInputFileChange}
                     />
                     <FormButton onClick={onSendButtonClick}>Update brand</FormButton>
+                    <FormButton onClick={onDeleteButtonClick}>Delete brand</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>

@@ -97,7 +97,7 @@ export const AddAdminGasStation = () => {
                         isFileInput={true}
                         onChange={handleInputFileChange}
                     />
-                    <FormButton onClick={onSendButtonClick}>Add a new City</FormButton>
+                    <FormButton onClick={onSendButtonClick}>Add a new GasStation</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>

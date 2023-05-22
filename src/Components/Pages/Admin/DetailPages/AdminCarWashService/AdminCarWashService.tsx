@@ -24,6 +24,9 @@ export const AdminCarWashService = () => {
         fetcher: sendPayload
     } = usePostCustomFetch<any, any>(carWashObjectRequestUrl, 'PATCH');
     const navigate = useNavigate();
+    const {
+        fetcher: deleteEndpoint,
+    } = usePostCustomFetch<any, any>(`${requestUrls.carWashStations }/${id}`, 'DELETE');
 
     const [carWash, setCarWash] = useState<CarWashStationType>();
 
@@ -99,6 +102,10 @@ export const AdminCarWashService = () => {
         }
     };
 
+    const onDeleteButtonClick = () => {
+        deleteEndpoint(undefined, token);
+    };
+
     return (
         <ExtraFormContainer>
             <AdminFormDashboard>
@@ -144,6 +151,7 @@ export const AdminCarWashService = () => {
                         onChange={handleInputFileChange}
                     />
                     <FormButton onClick={onSendButtonClick}>Update Car Wash Station</FormButton>
+                    <FormButton onClick={onDeleteButtonClick}>Delete Car Wash Station</FormButton>
                     <FormButton onClick={() => navigate(PageRoutes.ADMIN_DASHBOARD)} backgroundColor={Colors.darkBlue}>Go back</FormButton>
                 </AdminFormContainer>
             </AdminFormDashboard>
